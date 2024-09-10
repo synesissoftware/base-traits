@@ -1,0 +1,42 @@
+# ##########################################################
+# Package
+
+[package]
+
+authors = [
+	"Matt Wilson <matthew@synesis.com.au>",
+]
+description = "base traits (for Rust)"
+edition = "2021"
+homepage = "https://github.com/synesissoftware/base-traits"
+license = "BSD-3-Clause"
+name = "base-traits"
+readme = "README.md"
+version = "0.0.0"
+
+
+# ##########################################################
+# Targets
+
+[lib]
+name = "base_traits"
+path = "src/lib.rs"
+
+
+# ##########################################################
+# Features
+
+[features]
+
+
+# ##########################################################
+# Dependencies
+
+[dependencies]
+
+
+[dev-dependencies]
+
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
