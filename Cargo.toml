@@ -12,7 +12,7 @@ homepage = "https://github.com/synesissoftware/base-traits"
 license = "BSD-3-Clause"
 name = "base-traits"
 readme = "README.md"
-version = "0.0.0"
+version = "0.0.1"
 
 
 # ##########################################################
@@ -27,6 +27,80 @@ path = "src/lib.rs"
 # Features
 
 [features]
+
+default = [
+	# AsF64
+	"implement-AsF64-for-built_ins",
+	# AsStr
+	"implement-AsStr-for-built_ins",
+	"implement-AsStr-for-standard_collection_types",
+	# IsEmpty
+	"implement-IsEmpty-for-built_ins",
+	"implement-IsEmpty-for-standard_collection_types",
+	"implement-IsEmpty-for-standard_ffi_types",
+	"implement-IsEmpty-for-standard_path_types",
+	"implement-IsEmpty-for-standard_process_types",
+	"implement-IsEmpty-for-standard_range_types",
+	# IsZero
+	"implement-IsZero-for-built_ins",
+	"implement-IsZero-for-standard_num_types",
+	"implement-IsZero-for-standard_process_types",
+	"implement-IsZero-for-standard_time_types",
+	# Len
+	"implement-Len-for-built_ins",
+	"implement-Len-for-standard_collection_types",
+	"implement-Len-for-standard_ffi_types",
+	"implement-Len-for-standard_path_types",
+	"implement-Len-for-standard_process_types",
+	# ToF64
+	"implement-ToF64-for-built_ins",
+	# Zero
+	"implement-Zero-for-built_ins",
+]
+
+experimental-exact_size_is_empty = []
+
+# AsF64
+
+implement-AsF64-for-built_ins = []
+
+# AsStr
+
+implement-AsStr-for-built_ins = []
+implement-AsStr-for-standard_collection_types = []
+
+# IsEmpty:
+
+implement-IsEmpty-for-built_ins = []
+implement-IsEmpty-for-standard_collection_types = []
+implement-IsEmpty-for-standard_ffi_types = []
+implement-IsEmpty-for-standard_path_types = []
+implement-IsEmpty-for-standard_process_types = []
+implement-IsEmpty-for-standard_range_types = []
+implement-IsEmpty-for-standard_time_types = []
+
+# IsZero
+
+implement-IsZero-for-built_ins = []
+implement-IsZero-for-standard_num_types = []
+implement-IsZero-for-standard_process_types = []
+implement-IsZero-for-standard_time_types = []
+
+# Len:
+
+implement-Len-for-built_ins = []
+implement-Len-for-standard_collection_types = []
+implement-Len-for-standard_ffi_types = []
+implement-Len-for-standard_path_types = []
+implement-Len-for-standard_process_types = []
+
+# ToF64
+
+implement-ToF64-for-built_ins = []
+
+# Zero
+
+implement-Zero-for-built_ins = []
 
 
 # ##########################################################

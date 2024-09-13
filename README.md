@@ -7,7 +7,7 @@ base traits, for Rust
 
 This crate defines general-purpose `trait`s that:
 * seem obvious and yet are missing from the standard library (e.g. `IsEmpty`, `Len`); or
-* provide ;
+* provide a basis to introduce specific functionality to allow for other crates to interoperate;
 
 
 ## Table of Contents <!-- omit in toc -->
@@ -58,7 +58,15 @@ None defined at this time.
 
 ### Traits
 
-None defined at this time.
+The following traits are defined:
+
+* `AsF64` - provides (non-mutating) instance method `#as_f64() : f64`;
+* `AsStr` - provides (non-mutating) instance method `#as_str() : &str`;
+* `IsEmpty` - provides (non-mutating) instance method `#is_empty() : bool`;
+* `IsZero` - provides (non-mutating) instance method `#is_zero() : bool`;
+* `Len` - provides (non-mutating) instance method `#len() : usize`;
+* `ToF64` - provides (non-mutating) instance method `#to_f64() : f64`;
+* `Zero` - provides class method `::zero() : Self`;
 
 
 ## Examples

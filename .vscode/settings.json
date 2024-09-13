@@ -11,7 +11,7 @@
 		"editor.tabSize": 2,
 	},
 	"[rust]": {
-		"editor.insertSpaces": false,
+		"editor.insertSpaces": true,
 		"editor.rulers": [ 60, 76 ],
 		"editor.tabSize": 4,
 	},
