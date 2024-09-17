@@ -10,6 +10,19 @@ pub trait ToF64 {
 }
 
 
+impl<T : ToF64 + ?Sized> ToF64 for Box<T> {
+    fn to_f64(&self) -> f64 {
+        (**self).to_f64()
+    }
+}
+
+impl<T : ToF64 + ?Sized> ToF64 for std::rc::Rc<T> {
+    fn to_f64(&self) -> f64 {
+        (**self).to_f64()
+    }
+}
+
+
 #[cfg(feature = "implement-ToF64-for-built_ins")]
 mod impl_for_built_ins {
     #![allow(non_snake_case)]
@@ -287,6 +300,28 @@ mod tests {
                 let ie = as_ToF64(&v);
 
                 assert_ne!(0.0, ie.to_f64());
+            }
+
+            #[test]
+            fn TEST_ZERO_IN_Box() {
+                let v = Box::new(0.0f64);
+
+                assert_eq!(0.0, v.to_f64());
+
+                let ie = as_ToF64(&v);
+
+                assert_eq!(0.0, ie.to_f64());
+            }
+
+            #[test]
+            fn TEST_ZERO_IN_Box_ref() {
+                let v = &Box::new(0.0f64);
+
+                assert_eq!(0.0, v.to_f64());
+
+                let ie = as_ToF64(v);
+
+                assert_eq!(0.0, ie.to_f64());
             }
         }
     }

@@ -3,10 +3,12 @@
 		"editor.tabSize": 2,
 	},
 	"[python]": {
+		"editor.insertSpaces": true,
 		"editor.rulers": [ 60, 76 ],
 		"editor.tabSize": 2,
 	},
 	"[ruby]": {
+		"editor.insertSpaces": true,
 		"editor.rulers": [ 60, 76 ],
 		"editor.tabSize": 2,
 	},
@@ -23,7 +25,9 @@
 	"editor.detectIndentation": false,
 	"editor.insertSpaces": false,
 	"editor.renderWhitespace": "all",
+	"editor.rulers": [ 76 ],
 	"editor.tabSize": 2,
+	"files.insertFinalNewline": true,
 	"files.trimTrailingWhitespace": true,
 	"git.mergeEditor": false,
 	"rust-analyzer.cargo.noDefaultFeatures": true,

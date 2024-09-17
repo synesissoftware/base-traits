@@ -7,6 +7,19 @@ pub trait IsZero {
 }
 
 
+impl<T : IsZero + ?Sized> IsZero for Box<T> {
+    fn is_zero(&self) -> bool {
+        (**self).is_zero()
+    }
+}
+
+impl<T : IsZero + ?Sized> IsZero for std::rc::Rc<T> {
+    fn is_zero(&self) -> bool {
+        (**self).is_zero()
+    }
+}
+
+
 #[cfg(feature = "implement-IsZero-for-built_ins")]
 mod impl_for_built_ins {
     #![allow(non_snake_case)]
@@ -338,6 +351,28 @@ mod tests {
                 let ie = as_IsZero(&v);
 
                 assert!(!ie.is_zero());
+            }
+
+            #[test]
+            fn TEST_ZERO_IN_Box() {
+                let v = Box::new(0.0f64);
+
+                assert!(v.is_zero());
+
+                let ie = as_IsZero(&v);
+
+                assert!(ie.is_zero());
+            }
+
+            #[test]
+            fn TEST_ZERO_IN_Box_ref() {
+                let v = &Box::new(0.0f64);
+
+                assert!(v.is_zero());
+
+                let ie = as_IsZero(v);
+
+                assert!(ie.is_zero());
             }
         }
 

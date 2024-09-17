@@ -7,4 +7,17 @@ pub trait IsDefault {
 }
 
 
+impl<T : IsDefault + ?Sized> IsDefault for Box<T> {
+    fn is_default(&self) -> bool {
+        (**self).is_default()
+    }
+}
+
+impl<T : IsDefault + ?Sized> IsDefault for std::rc::Rc<T> {
+    fn is_default(&self) -> bool {
+        (**self).is_default()
+    }
+}
+
+
 // ///////////////////////////// end of file //////////////////////////// //

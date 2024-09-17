@@ -10,6 +10,19 @@ pub trait AsF64 {
 }
 
 
+impl<T : AsF64 + ?Sized> AsF64 for Box<T> {
+    fn as_f64(&self) -> f64 {
+        (**self).as_f64()
+    }
+}
+
+impl<T : AsF64 + ?Sized> AsF64 for std::rc::Rc<T> {
+    fn as_f64(&self) -> f64 {
+        (**self).as_f64()
+    }
+}
+
+
 #[cfg(feature = "implement-AsF64-for-built_ins")]
 mod impl_for_built_ins {
     #![allow(non_snake_case)]
