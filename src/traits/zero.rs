@@ -1,7 +1,7 @@
 // src/traits/zero.rs : `Zero`
 
-/// Trait defining class method `zero() : T` that indicates whether
-/// the implementing type instance is numerically zero.
+/// Trait defining class method `zero() : T` that creates an instance of
+/// the implementing type that is conceptually (or actually) zero.
 pub trait Zero {
     fn zero() -> Self;
 }

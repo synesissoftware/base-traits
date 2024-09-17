@@ -19,8 +19,11 @@ mod traits;
 pub use traits::{
     AsF64,
     AsStr,
+    Infinity,
     IsDefault,
     IsEmpty,
+    IsInfinity,
+    IsNAN,
     IsZero,
     Len,
     ToF64,

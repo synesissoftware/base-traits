@@ -12,7 +12,7 @@ homepage = "https://github.com/synesissoftware/base-traits"
 license = "BSD-3-Clause"
 name = "base-traits"
 readme = "README.md"
-version = "0.0.2"
+version = "0.0.3"
 
 
 # ##########################################################
@@ -34,6 +34,8 @@ default = [
 	# AsStr
 	"implement-AsStr-for-built_ins",
 	"implement-AsStr-for-standard_collection_types",
+	# Infinity
+	"implement-Infinity-for-built_ins",
 	# IsEmpty
 	"implement-IsEmpty-for-built_ins",
 	"implement-IsEmpty-for-standard_collection_types",
@@ -41,6 +43,10 @@ default = [
 	"implement-IsEmpty-for-standard_path_types",
 	"implement-IsEmpty-for-standard_process_types",
 	"implement-IsEmpty-for-standard_range_types",
+	# IsInfinity:
+	"implement-IsInfinity-for-built_ins",
+	# IsNAN:
+	"implement-IsNAN-for-built_ins",
 	# IsZero
 	"implement-IsZero-for-built_ins",
 	"implement-IsZero-for-standard_num_types",
@@ -69,6 +75,10 @@ implement-AsF64-for-built_ins = []
 implement-AsStr-for-built_ins = []
 implement-AsStr-for-standard_collection_types = []
 
+# Infinity
+
+implement-Infinity-for-built_ins = []
+
 # IsEmpty:
 
 implement-IsEmpty-for-built_ins = []
@@ -78,6 +88,14 @@ implement-IsEmpty-for-standard_path_types = []
 implement-IsEmpty-for-standard_process_types = []
 implement-IsEmpty-for-standard_range_types = []
 implement-IsEmpty-for-standard_time_types = []
+
+# IsInfinity:
+
+implement-IsInfinity-for-built_ins = []
+
+# IsNAN:
+
+implement-IsNAN-for-built_ins = []
 
 # IsZero
 
