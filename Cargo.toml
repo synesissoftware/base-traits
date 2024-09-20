@@ -12,7 +12,7 @@ homepage = "https://github.com/synesissoftware/base-traits"
 license = "BSD-3-Clause"
 name = "base-traits"
 readme = "README.md"
-version = "0.0.3"
+version = "0.0.4"
 
 
 # ##########################################################
@@ -34,6 +34,8 @@ default = [
 	# AsStr
 	"implement-AsStr-for-built_ins",
 	"implement-AsStr-for-standard_collection_types",
+	# AsUSize
+	"implement-AsUSize-for-built_ins",
 	# Infinity
 	"implement-Infinity-for-built_ins",
 	# IsEmpty
@@ -60,6 +62,8 @@ default = [
 	"implement-Len-for-standard_process_types",
 	# ToF64
 	"implement-ToF64-for-built_ins",
+	# ToUSize
+	"implement-ToUSize-for-built_ins",
 	# Zero
 	"implement-Zero-for-built_ins",
 ]
@@ -74,6 +78,10 @@ implement-AsF64-for-built_ins = []
 
 implement-AsStr-for-built_ins = []
 implement-AsStr-for-standard_collection_types = []
+
+# AsUSize
+
+implement-AsUSize-for-built_ins = []
 
 # Infinity
 
@@ -119,6 +127,10 @@ implement-ToF64-for-built_ins = []
 # Zero
 
 implement-Zero-for-built_ins = []
+
+# ToUSize
+
+implement-ToUSize-for-built_ins = []
 
 
 # ##########################################################

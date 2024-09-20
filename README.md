@@ -62,6 +62,7 @@ The following traits are defined:
 
 * `AsF64` - provides (non-mutating) instance method `#as_f64() : f64`;
 * `AsStr` - provides (non-mutating) instance method `#as_str() : &str`;
+* `AsUSize` - provides (non-mutating) instance method `#as_usize() : usize`;
 * `Infinity` - provides method `::infinity() : Self`;
 * `IsEmpty` - provides (non-mutating) instance method `#is_empty() : bool`;
 * `IsInfinity` - provides (non-mutating) instance method `#is_infinity() : bool`;
@@ -69,6 +70,7 @@ The following traits are defined:
 * `IsZero` - provides (non-mutating) instance method `#is_zero() : bool`;
 * `Len` - provides (non-mutating) instance method `#len() : usize`;
 * `ToF64` - provides (non-mutating) instance method `#to_f64() : f64`;
+* `ToUSize` - provides (non-mutating) instance method `#to_usize() : usize`;
 * `Zero` - provides class method `::zero() : Self`;
 
 

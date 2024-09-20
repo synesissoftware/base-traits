@@ -19,6 +19,7 @@ mod traits;
 pub use traits::{
     AsF64,
     AsStr,
+    AsUSize,
     Infinity,
     IsDefault,
     IsEmpty,
@@ -27,6 +28,7 @@ pub use traits::{
     IsZero,
     Len,
     ToF64,
+    ToUSize,
     Zero,
 };
 
@@ -37,3 +39,4 @@ mod private {
 
 
 // ///////////////////////////// end of file //////////////////////////// //
+
