@@ -87,7 +87,7 @@ mod impl_for_built_ins {
     ))]
     mod bits_32plus {
         implement_ToISize_!(i16);
-        implement_ToISize_!(us32);
+        implement_ToISize_!(u32);
     }
 
     #[cfg(any(
