@@ -3,6 +3,16 @@
 /// Trait defining instance method `is_nan() : bool` that indicates
 /// whether the implementing type instance has a value that is deemed to be
 /// "not a number" (as in so for [`f32::NAN`] [`f64::NAN`]).
+///
+/// # Additional Implementations on Foreign Types
+///
+/// ## Built-in Types
+///
+/// If the feature `"implement-IsNAN-for-built_ins"`
+/// is defined (as it is by `"default"`), then this is also implemented
+/// for the following types:
+/// - [`f32`];
+/// - [`f64`];
 pub trait IsNAN {
     fn is_nan(&self) -> bool;
 }

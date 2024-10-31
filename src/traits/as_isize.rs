@@ -5,6 +5,15 @@
 ///
 /// It is expected that the implementing type "is-a" `isize` in a direct
 /// manner as well as in a logical manner.
+///
+/// # Additional Implementations on Foreign Types
+///
+/// ## Built-in Types
+///
+/// If the feature `"implement-AsISize-for-built_ins"`
+/// is defined (as it is by `"default"`), then this is also implemented
+/// for the following type(s):
+/// - [`isize`];
 pub trait AsISize {
     fn as_isize(&self) -> isize;
 }

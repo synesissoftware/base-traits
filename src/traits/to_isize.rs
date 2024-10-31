@@ -5,6 +5,23 @@
 ///
 /// It is expected that the implementing type "is-a" `isize` in a logical
 /// manner.
+///
+/// # Additional Implementations on Foreign Types
+///
+/// ## Built-in Types
+///
+/// If the feature `"implement-ToISize-for-built_ins"`
+/// is defined (as it is by `"default"`), then this is also implemented
+/// for the following type(s):
+/// - [`isize`];
+/// - [`i8`];
+/// - [`i16`] - if architecture is 16+ bits;
+/// - [`i32`] - if architecture is 32+ bits;
+/// - [`i64`] - if architecture is 64+ bits;
+/// - [`i128`] - if architecture is 128+ bits;
+/// - [`u16`] - if architecture is 32+ bits;
+/// - [`u32`] - if architecture is 64+ bits;
+/// - [`u64`] - if architecture is 128+ bits;
 pub trait ToISize {
     fn to_isize(&self) -> isize;
 }
@@ -51,6 +68,7 @@ mod impl_for_built_ins {
     }
 
     implement_ToISize_!(u8);
+
     #[cfg(any(
         target_pointer_width = "16",
         target_pointer_width = "32",
@@ -61,6 +79,7 @@ mod impl_for_built_ins {
         implement_ToISize_!(i8);
         implement_ToISize_!(u16);
     }
+
     #[cfg(any(
         target_pointer_width = "32",
         target_pointer_width = "64",
@@ -70,6 +89,7 @@ mod impl_for_built_ins {
         implement_ToISize_!(i16);
         implement_ToISize_!(u32);
     }
+
     #[cfg(any(
         target_pointer_width = "64",
         target_pointer_width = "128",
@@ -78,6 +98,7 @@ mod impl_for_built_ins {
         implement_ToISize_!(i32);
         implement_ToISize_!(u64);
     }
+
     #[cfg(any(
         target_pointer_width = "128",
     ))]
