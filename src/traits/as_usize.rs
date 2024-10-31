@@ -1,6 +1,10 @@
 // src/traits/as_usize.rs : `AsUSize`
 
-/// T.B.C.
+/// Trait defining instance method `as_usize() : usize` that provides a
+/// cost-free conversion into `usize`.
+///
+/// It is expected that the implementing type "is-a" `usize` in a direct
+/// manner as well as in a logical manner.
 pub trait AsUSize {
     fn as_usize(&self) -> usize;
 }
