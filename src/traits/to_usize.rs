@@ -27,6 +27,7 @@ mod impl_for_built_ins {
 
 
     impl super::ToUSize for usize {
+        #[inline]
         fn to_usize(&self) -> usize {
             *self
         }

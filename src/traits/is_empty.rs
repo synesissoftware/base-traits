@@ -43,12 +43,14 @@ mod impl_for_built_ins {
     // str
 
     impl super::IsEmpty for str {
+        #[inline]
         fn is_empty(&self) -> bool {
             isolate_::get_is_empty_str_(self)
         }
     }
 
     impl super::IsEmpty for &str {
+        #[inline]
         fn is_empty(&self) -> bool {
             isolate_::get_is_empty_str_(self)
         }
@@ -57,12 +59,14 @@ mod impl_for_built_ins {
     // Array
 
     impl<T, const N: usize> super::IsEmpty for [T; N] {
+        #[inline]
         fn is_empty(&self) -> bool {
             0 == N
         }
     }
 
     impl<T, const N: usize> super::IsEmpty for &[T; N] {
+        #[inline]
         fn is_empty(&self) -> bool {
             0 == N
         }
@@ -71,12 +75,14 @@ mod impl_for_built_ins {
     // Slice
 
     impl<T> super::IsEmpty for [T] {
+        #[inline]
         fn is_empty(&self) -> bool {
             isolate_::get_is_empty_Slice_(self)
         }
     }
 
     impl<T> super::IsEmpty for &[T] {
+        #[inline]
         fn is_empty(&self) -> bool {
             isolate_::get_is_empty_Slice_(self)
         }
@@ -147,6 +153,7 @@ mod impl_for_std_coll_types {
     // BTreeMap<>
 
     impl<K, V> super::IsEmpty for std_collections::BTreeMap<K, V> {
+        #[inline]
         fn is_empty(&self) -> bool {
             isolate_::get_is_empty_BTreeMap_(self)
         }
@@ -155,6 +162,7 @@ mod impl_for_std_coll_types {
     // BTreeSet<>
 
     impl<T> super::IsEmpty for std_collections::BTreeSet<T> {
+        #[inline]
         fn is_empty(&self) -> bool {
             isolate_::get_is_empty_BTreeSet_(self)
         }
@@ -163,6 +171,7 @@ mod impl_for_std_coll_types {
     // BinaryHeap<>
 
     impl<T> super::IsEmpty for std_collections::BinaryHeap<T> {
+        #[inline]
         fn is_empty(&self) -> bool {
             isolate_::get_is_empty_BinaryHeap_(self)
         }
@@ -171,6 +180,7 @@ mod impl_for_std_coll_types {
     // HashMap<>
 
     impl<K, V> super::IsEmpty for std_collections::HashMap<K, V> {
+        #[inline]
         fn is_empty(&self) -> bool {
             isolate_::get_is_empty_HashMap_(self)
         }
@@ -179,6 +189,7 @@ mod impl_for_std_coll_types {
     // HashSet<>
 
     impl<T> super::IsEmpty for std_collections::HashSet<T> {
+        #[inline]
         fn is_empty(&self) -> bool {
             isolate_::get_is_empty_HashSet_(self)
         }
@@ -187,6 +198,7 @@ mod impl_for_std_coll_types {
     // LinkedList<>
 
     impl<T> super::IsEmpty for std_collections::LinkedList<T> {
+        #[inline]
         fn is_empty(&self) -> bool {
             isolate_::get_is_empty_LinkedList_(self)
         }
@@ -195,6 +207,7 @@ mod impl_for_std_coll_types {
     // String
 
     impl super::IsEmpty for String {
+        #[inline]
         fn is_empty(&self) -> bool {
             isolate_::get_is_empty_String_(self)
         }
@@ -203,6 +216,7 @@ mod impl_for_std_coll_types {
     // Vec<>
 
     impl<T> super::IsEmpty for Vec<T> {
+        #[inline]
         fn is_empty(&self) -> bool {
             isolate_::get_is_empty_Vec_(self)
         }
@@ -211,6 +225,7 @@ mod impl_for_std_coll_types {
     // VecDeque<>
 
     impl<T> super::IsEmpty for std_collections::VecDeque<T> {
+        #[inline]
         fn is_empty(&self) -> bool {
             isolate_::get_is_empty_VecDeque_(self)
         }
@@ -246,12 +261,14 @@ mod impl_for_std_ffi_types {
     // CStr
 
     impl super::IsEmpty for std_ffi::CStr {
+        #[inline]
         fn is_empty(&self) -> bool {
             isolate_::get_is_empty_CStr_(self)
         }
     }
 
     impl super::IsEmpty for &std_ffi::CStr {
+        #[inline]
         fn is_empty(&self) -> bool {
             isolate_::get_is_empty_CStr_(self)
         }
@@ -260,6 +277,7 @@ mod impl_for_std_ffi_types {
     // CString
 
     impl super::IsEmpty for std_ffi::CString {
+        #[inline]
         fn is_empty(&self) -> bool {
             isolate_::get_is_empty_CString_(self)
         }
@@ -377,6 +395,7 @@ mod impl_for_std_range_types {
     // Range<>
 
     impl<Idx : std_cmp::PartialOrd> super::IsEmpty for std_ops::Range<Idx> {
+        #[inline]
         fn is_empty(&self) -> bool {
             isolate_::get_is_empty_Range_(self)
         }
@@ -385,6 +404,7 @@ mod impl_for_std_range_types {
     // RangeFrom<>
 
     impl<Idx> super::IsEmpty for std_ops::RangeFrom<Idx> {
+        #[inline]
         fn is_empty(&self) -> bool {
             false
         }
@@ -393,6 +413,7 @@ mod impl_for_std_range_types {
     // RangeFull<>
 
     impl super::IsEmpty for std_ops::RangeFull {
+        #[inline]
         fn is_empty(&self) -> bool {
             false
         }
@@ -401,6 +422,7 @@ mod impl_for_std_range_types {
     // RangeInclusive<>
 
     impl<Idx : std_cmp::PartialOrd> super::IsEmpty for std_ops::RangeInclusive<Idx> {
+        #[inline]
         fn is_empty(&self) -> bool {
             isolate_::get_is_empty_RangeInclusive_(self)
         }
@@ -409,6 +431,7 @@ mod impl_for_std_range_types {
     // RangeTo<>
 
     impl<Idx> super::IsEmpty for std_ops::RangeTo<Idx> {
+        #[inline]
         fn is_empty(&self) -> bool {
             false
         }
@@ -426,12 +449,14 @@ mod impl_for_std_time_types {
     // Duration
 
     impl super::IsEmpty for std_time::Duration {
+        #[inline]
         fn is_empty(&self) -> bool {
             self.is_zero()
         }
     }
 
     impl super::IsEmpty for &std_time::Duration {
+        #[inline]
         fn is_empty(&self) -> bool {
             self.is_zero()
         }

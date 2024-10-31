@@ -29,6 +29,7 @@ mod impl_for_built_ins {
 
 
     impl super::AsISize for isize {
+        #[inline]
         fn as_isize(&self) -> isize {
             *self
         }

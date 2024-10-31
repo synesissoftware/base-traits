@@ -6,13 +6,20 @@
 authors = [
 	"Matt Wilson <matthew@synesis.com.au>",
 ]
+categories = [
+	"data-structures",
+	"rust-patterns",
+]
 description = "base traits (for Rust)"
 edition = "2021"
 homepage = "https://github.com/synesissoftware/base-traits"
+keywords = [
+	"traits",
+]
 license = "BSD-3-Clause"
 name = "base-traits"
 readme = "README.md"
-version = "0.0.5"
+version = "0.0.6"
 
 
 # ##########################################################

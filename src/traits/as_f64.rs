@@ -29,12 +29,14 @@ mod impl_for_built_ins {
 
 
     impl super::AsF64 for f64 {
+        #[inline]
         fn as_f64(&self) -> f64 {
             *self
         }
     }
 
     impl super::AsF64 for &f64 {
+        #[inline]
         fn as_f64(&self) -> f64 {
             **self
         }

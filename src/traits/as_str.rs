@@ -24,12 +24,14 @@ impl<T : AsStr + ?Sized> AsStr for std::rc::Rc<T> {
 mod impl_for_built_ins {
 
     impl super::AsStr for str {
+        #[inline]
         fn as_str(&self) -> &str {
             self
         }
     }
 
     impl super::AsStr for &str {
+        #[inline]
         fn as_str(&self) -> &str {
             self
         }
@@ -40,6 +42,7 @@ mod impl_for_built_ins {
 mod impl_for_std_coll_types {
 
     impl super::AsStr for String {
+        #[inline]
         fn as_str(&self) -> &str {
             self.as_str()
         }

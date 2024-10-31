@@ -25,16 +25,11 @@ mod impl_for_built_ins {
 
 
     impl super::AsUSize for usize {
+        #[inline]
         fn as_usize(&self) -> usize {
             *self
         }
     }
-
-    // impl super::AsUSize for &usize {
-    //     fn as_usize(&self) -> usize {
-    //         **self
-    //     }
-    // }
 }
 
 
