@@ -349,24 +349,20 @@ mod impl_for_std_path_types {
 mod impl_for_std_process_types {
     #![allow(non_snake_case)]
 
-    #[cfg(feature = "experimental-exact_size_is_empty")]
     use std::process as std_process;
 
 
     mod isolate_ {
         #![allow(non_snake_case)]
 
-        #[cfg(feature = "experimental-exact_size_is_empty")]
         use std::process as std_process;
 
 
-        #[cfg(feature = "experimental-exact_size_is_empty")]
         #[inline]
         pub(super) fn get_len_CommandArgs_<'a>(ca : &std_process::CommandArgs<'a>) -> usize {
             ca.len()
         }
 
-        #[cfg(feature = "experimental-exact_size_is_empty")]
         #[inline]
         pub(super) fn get_len_CommandEnvs_<'a>(ce : &std_process::CommandEnvs<'a>) -> usize {
             ce.len()
@@ -376,7 +372,6 @@ mod impl_for_std_process_types {
 
     // CommandArgs<'>
 
-    #[cfg(feature = "experimental-exact_size_is_empty")]
     impl<'a> super::Len for &std_process::CommandArgs<'a> {
         fn len(&self) -> usize {
             isolate_::get_len_CommandArgs_(self)
@@ -385,7 +380,6 @@ mod impl_for_std_process_types {
 
     // CommandEnvs<'>
 
-    #[cfg(feature = "experimental-exact_size_is_empty")]
     impl<'a> super::Len for &std_process::CommandEnvs<'a> {
         fn len(&self) -> usize {
             isolate_::get_len_CommandEnvs_(self)
