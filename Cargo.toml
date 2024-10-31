@@ -19,7 +19,7 @@ keywords = [
 license = "BSD-3-Clause"
 name = "base-traits"
 readme = "README.md"
-version = "0.0.7"
+version = "0.0.8"
 
 
 # ##########################################################
@@ -108,7 +108,9 @@ implement-IsEmpty-for-built_ins = []
 implement-IsEmpty-for-standard_collection_types = []
 implement-IsEmpty-for-standard_ffi_types = []
 implement-IsEmpty-for-standard_path_types = []
-implement-IsEmpty-for-standard_process_types = []
+implement-IsEmpty-for-standard_process_types = [
+	"experimental-exact_size_is_empty",
+]
 implement-IsEmpty-for-standard_range_types = []
 implement-IsEmpty-for-standard_time_types = []
 

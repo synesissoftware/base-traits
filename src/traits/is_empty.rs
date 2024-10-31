@@ -66,7 +66,7 @@
 ///
 /// ## Standard Time Types
 ///
-/// If the feature `"implement-IsEmpty-for-standard_process_types"`
+/// If the feature `"implement-IsEmpty-for-standard_time_types"`
 /// is defined (which is NOT by `"default"`), then this is also implemented
 /// for the following types:
 /// - [`std::time::Duration`];
