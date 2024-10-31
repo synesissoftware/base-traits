@@ -18,6 +18,7 @@ mod traits;
 
 pub use traits::{
     AsF64,
+    AsISize,
     AsStr,
     AsUSize,
     Infinity,
@@ -28,6 +29,7 @@ pub use traits::{
     IsZero,
     Len,
     ToF64,
+    ToISize,
     ToUSize,
     Zero,
 };
