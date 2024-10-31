@@ -2,6 +2,43 @@
 
 /// Trait defining instance method `is_zero() : bool` that indicates whether
 /// the implementing type instance is numerically zero.
+///
+/// # Additional Implementations on Foreign Types
+///
+/// ## Built-in Types
+///
+/// If the feature `"implement-IsZero-for-built_ins"`
+/// is defined (as it is by `"default"`), then this is also implemented
+/// for the following types:
+/// - [`i8`];
+/// - [`i16`];
+/// - [`i32`];
+/// - [`i64`];
+/// - [`i128`];
+/// - [`u8`];
+/// - [`u16`];
+/// - [`u32`];
+/// - [`u64`];
+/// - [`u128`];
+/// - [`isize`];
+/// - [`usize`];
+/// - [`f32`];
+/// - [`f64`];
+/// - [`char`];
+///
+/// ## Standard Process Types
+///
+/// If the feature `"implement-IsZero-for-standard_process_types"`
+/// is defined (as it is by `"default"`), then this is also implemented
+/// for the following types:
+/// - [`std::process::ExitStatus`];
+///
+/// ## Standard Time Types
+///
+/// If the feature `"implement-IsZero-for-standard_time_types"`
+/// is defined (as it is by `"default"`), then this is also implemented
+/// for the following types:
+/// - [`std::time::Duration`];
 pub trait IsZero {
     fn is_zero(&self) -> bool;
 }

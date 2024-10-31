@@ -2,6 +2,29 @@
 
 /// Trait defining class method `zero() : T` that creates an instance of
 /// the implementing type that is conceptually (or actually) zero.
+///
+/// # Additional Implementations on Foreign Types
+///
+/// ## Built-in Types
+///
+/// If the feature `"implement-Zero-for-built_ins"`
+/// is defined (as it is by `"default"`), then this is also implemented
+/// for the following type(s):
+/// - [`i8`];
+/// - [`i16`];
+/// - [`i32`];
+/// - [`i64`];
+/// - [`i128`];
+/// - [`u8`];
+/// - [`u16`];
+/// - [`u32`];
+/// - [`u64`];
+/// - [`u128`];
+/// - [`isize`];
+/// - [`usize`];
+/// - [`f32`];
+/// - [`f64`];
+/// - [`char`];
 pub trait Zero {
     fn zero() -> Self;
 }

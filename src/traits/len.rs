@@ -2,6 +2,56 @@
 
 /// Trait defining instance method `len() : usize` that indicates
 /// whether the implementing type instance is logically empty.
+///
+/// # Additional Implementations on Foreign Types
+///
+/// ## Built-in Types
+///
+/// If the feature `"implement-Len-for-built_ins"`
+/// is defined (as it is by `"default"`), then this is also implemented
+/// for the following types:
+/// - [`str`];
+/// - `[T; N]`;
+/// - `[T]`;
+///
+/// ## Standard Collection Types
+///
+/// If the feature `"implement-Len-for-standard_collection_types"`
+/// is defined (as it is by `"default"`), then this is also implemented
+/// for the following types:
+/// - [`std::collections::BTreeMap<>`];
+/// - [`std::collections::BTreeSet<>`];
+/// - [`std::collections::BinaryHeap<>`];
+/// - [`std::collections::HashMap<>`];
+/// - [`std::collections::HashSet<>`];
+/// - [`std::collections::LinkedList<>`];
+/// - [`String`];
+/// - [`Vec<>`];
+/// - [`std::collections::VecDeque<>`];
+///
+/// ## Standard FFI Types
+///
+/// If the feature `"implement-Len-for-standard_ffi_types"`
+/// is defined (as it is by `"default"`), then this is also implemented
+/// for the following types:
+/// - [`std::ffi::CStr`];
+/// - [`std::ffi::CString`];
+///
+/// ## Standard Path Types
+///
+/// If the feature `"implement-Len-for-standard_path_types"`
+/// is defined (as it is by `"default"`), then this is also implemented
+/// for the following types:
+/// - [`std::path::Path`];
+/// - [`std::path::PathBuf`];
+///
+/// ## Standard Process Types
+///
+/// If the feature `"implement-Len-for-standard_process_types"`
+/// is defined (as it is by `"default"`), then this is also implemented
+/// for the following types:
+/// - [`std::process::CommandArgs`];
+/// - [`std::process::CommandEnvs`];
 #[allow(clippy::len_without_is_empty)]
 pub trait Len {
     fn len(&self) -> usize;

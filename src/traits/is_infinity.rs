@@ -3,6 +3,16 @@
 /// Trait defining instance method `is_infinity() : bool` that indicates
 /// whether the implementing type instance is conceptually (or actually)
 /// infinite.
+///
+/// # Additional Implementations on Foreign Types
+///
+/// ## Built-in Types
+///
+/// If the feature `"implement-IsInfinity-for-built_ins"`
+/// is defined (as it is by `"default"`), then this is also implemented
+/// for the following types:
+/// - [`f32`];
+/// - [`f64`];
 pub trait IsInfinity {
     fn is_infinity(&self) -> bool;
 }

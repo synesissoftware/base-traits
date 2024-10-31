@@ -5,6 +5,28 @@
 ///
 /// It is expected that the implementing type "is-a" `f64` in a logical
 /// manner.
+///
+/// # Additional Implementations on Foreign Types
+///
+/// ## Built-in Types
+///
+/// If the feature `"implement-ToF64-for-built_ins"`
+/// is defined (as it is by `"default"`), then this is also implemented
+/// for the following type(s):
+/// - [`i8`];
+/// - [`i16`];
+/// - [`i32`];
+/// - [`i64`];
+/// - [`i128`];
+/// - [`u8`];
+/// - [`u16`];
+/// - [`u32`];
+/// - [`u64`];
+/// - [`u128`];
+/// - [`isize`];
+/// - [`usize`];
+/// - [`f32`];
+/// - [`f64`];
 pub trait ToF64 {
     fn to_f64(&self) -> f64;
 }
