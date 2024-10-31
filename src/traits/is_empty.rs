@@ -2,6 +2,74 @@
 
 /// Trait defining instance method `is_empty() : bool` that indicates
 /// whether the implementing type instance is logically empty.
+///
+/// # Additional Implementations on Foreign Types
+///
+/// ## Built-in Types
+///
+/// If the feature `"implement-IsEmpty-for-built_ins"`
+/// is defined (as it is by `"default"`), then this is also implemented
+/// for the following types:
+/// - [`str`];
+/// - `[T; N]`;
+/// - `[T]`;
+///
+/// ## Standard Collection Types
+///
+/// If the feature `"implement-IsEmpty-for-standard_collection_types"`
+/// is defined (as it is by `"default"`), then this is also implemented
+/// for the following types:
+/// - [`std::collections::BTreeMap<>`];
+/// - [`std::collections::BTreeSet<>`];
+/// - [`std::collections::BinaryHeap<>`];
+/// - [`std::collections::HashMap<>`];
+/// - [`std::collections::HashSet<>`];
+/// - [`std::collections::LinkedList<>`];
+/// - [`String`];
+/// - [`Vec<>`];
+/// - [`std::collections::VecDeque<>`];
+///
+/// ## Standard FFI Types
+///
+/// If the feature `"implement-IsEmpty-for-standard_ffi_types"`
+/// is defined (as it is by `"default"`), then this is also implemented
+/// for the following types:
+/// - [`std::ffi::CStr`];
+/// - [`std::ffi::CString`];
+///
+/// ## Standard Path Types
+///
+/// If the feature `"implement-IsEmpty-for-standard_path_types"`
+/// is defined (as it is by `"default"`), then this is also implemented
+/// for the following types:
+/// - [`std::path::Path`];
+/// - [`std::path::PathBuf`];
+///
+/// ## Standard Process Types
+///
+/// If the feature `"implement-IsEmpty-for-standard_process_types"`
+/// is defined (as it is by `"default"`), then this is also implemented
+/// for the following types:
+/// - [`std::process::CommandArgs`];
+/// - [`std::process::CommandEnvs`];
+///
+/// ## Standard Range Types
+///
+/// If the feature `"implement-IsEmpty-for-standard_range_types"`
+/// is defined (as it is by `"default"`), then this is also implemented
+/// for the following types:
+/// - [`std::ops::Range<>`];
+/// - [`std::ops::RangeFrom<>`];
+/// - [`std::ops::RangeFull`];
+/// - [`std::ops::RangeInclusive<>`];
+/// - [`std::ops::RangeTo<>`];
+///
+/// ## Standard Time Types
+///
+/// If the feature `"implement-IsEmpty-for-standard_process_types"`
+/// is defined (which is NOT by `"default"`), then this is also implemented
+/// for the following types:
+/// - [`std::time::Duration`];
 pub trait IsEmpty {
     fn is_empty(&self) -> bool;
 }

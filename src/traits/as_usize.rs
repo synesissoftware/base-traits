@@ -5,6 +5,15 @@
 ///
 /// It is expected that the implementing type "is-a" `usize` in a direct
 /// manner as well as in a logical manner.
+///
+/// # Additional Implementations on Foreign Types
+///
+/// ## Built-in Types
+///
+/// If the feature `"implement-AsUSize-for-built_ins"`
+/// is defined (as it is by `"default"`), then this is also implemented
+/// for the following type(s):
+/// - [`usize`];
 pub trait AsUSize {
     fn as_usize(&self) -> usize;
 }

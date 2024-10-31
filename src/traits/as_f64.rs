@@ -5,6 +5,15 @@
 ///
 /// It is expected that the implementing type "is-a" `f64` in a direct
 /// manner as well as in a logical manner.
+///
+/// # Additional Implementations on Foreign Types
+///
+/// ## Built-in Types
+///
+/// If the feature `"implement-AsF64-for-built_ins"`
+/// is defined (as it is by `"default"`), then this is also implemented
+/// for the following type(s):
+/// - [`f64`];
 pub trait AsF64 {
     fn as_f64(&self) -> f64;
 }

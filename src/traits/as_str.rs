@@ -2,6 +2,22 @@
 
 /// Trait defining instance method `as_str() : &str` that allows a type to
 /// expose its contiguous character representation to client code.
+///
+/// # Additional Implementations on Foreign Types
+///
+/// ## Built-in Types
+///
+/// If the feature `"implement-AsStr-for-built_ins"`
+/// is defined (as it is by `"default"`), then this is also implemented
+/// for the following type(s):
+/// - [`str`];
+///
+/// ## Standard Collection Types
+///
+/// If the feature `"implement-AsStr-for-standard_collection_types"`
+/// is defined (as it is by `"default"`), then this is also implemented
+/// for the following type(s):
+/// - [`String`];
 pub trait AsStr {
     fn as_str(&self) -> &str;
 }
