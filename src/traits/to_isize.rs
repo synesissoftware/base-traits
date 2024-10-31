@@ -67,7 +67,7 @@ mod impl_for_built_ins {
         };
     }
 
-    implement_ToISize_!(u8);
+    implement_ToISize_!(i8);
 
     #[cfg(any(
         target_pointer_width = "16",
@@ -76,8 +76,8 @@ mod impl_for_built_ins {
         target_pointer_width = "128",
     ))]
     mod bits_16plus {
-        implement_ToISize_!(i8);
-        implement_ToISize_!(u16);
+        implement_ToISize_!(u8);
+        implement_ToISize_!(i16);
     }
 
     #[cfg(any(
@@ -86,8 +86,8 @@ mod impl_for_built_ins {
         target_pointer_width = "128",
     ))]
     mod bits_32plus {
-        implement_ToISize_!(i16);
-        implement_ToISize_!(u32);
+        implement_ToISize_!(u16);
+        implement_ToISize_!(i32);
     }
 
     #[cfg(any(
@@ -95,16 +95,16 @@ mod impl_for_built_ins {
         target_pointer_width = "128",
     ))]
     mod bits_64plus {
-        implement_ToISize_!(i32);
-        implement_ToISize_!(u64);
+        implement_ToISize_!(u32);
+        implement_ToISize_!(i64);
     }
 
     #[cfg(any(
         target_pointer_width = "128",
     ))]
     mod bits_128plus {
-        implement_ToISize_!(i64);
-        implement_ToISize_!(u128);
+        implement_ToISize_!(u64);
+        implement_ToISize_!(i128);
     }
 }
 
