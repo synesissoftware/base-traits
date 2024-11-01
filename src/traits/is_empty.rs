@@ -19,15 +19,15 @@
 /// If the feature `"implement-IsEmpty-for-standard_collection_types"`
 /// is defined (as it is by `"default"`), then this is also implemented
 /// for the following types:
-/// - [`std::collections::BTreeMap<>`];
-/// - [`std::collections::BTreeSet<>`];
-/// - [`std::collections::BinaryHeap<>`];
-/// - [`std::collections::HashMap<>`];
-/// - [`std::collections::HashSet<>`];
-/// - [`std::collections::LinkedList<>`];
+/// - [`std::collections::BTreeMap`];
+/// - [`std::collections::BTreeSet`];
+/// - [`std::collections::BinaryHeap`];
+/// - [`std::collections::HashMap`];
+/// - [`std::collections::HashSet`];
+/// - [`std::collections::LinkedList`];
 /// - [`String`];
-/// - [`Vec<>`];
-/// - [`std::collections::VecDeque<>`];
+/// - [`Vec`];
+/// - [`std::collections::VecDeque`];
 ///
 /// ## Standard FFI Types
 ///
@@ -58,11 +58,11 @@
 /// If the feature `"implement-IsEmpty-for-standard_range_types"`
 /// is defined (as it is by `"default"`), then this is also implemented
 /// for the following types:
-/// - [`std::ops::Range<>`];
-/// - [`std::ops::RangeFrom<>`];
+/// - [`std::ops::Range`];
+/// - [`std::ops::RangeFrom`];
 /// - [`std::ops::RangeFull`];
-/// - [`std::ops::RangeInclusive<>`];
-/// - [`std::ops::RangeTo<>`];
+/// - [`std::ops::RangeInclusive`];
+/// - [`std::ops::RangeTo`];
 ///
 /// ## Standard Time Types
 ///
