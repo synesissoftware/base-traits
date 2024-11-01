@@ -19,7 +19,7 @@ keywords = [
 license = "BSD-3-Clause"
 name = "base-traits"
 readme = "README.md"
-version = "0.0.7"
+version = "0.0.8"
 
 
 # ##########################################################
@@ -28,6 +28,10 @@ version = "0.0.7"
 [lib]
 name = "base_traits"
 path = "src/lib.rs"
+
+[[example]]
+name = "price-to_f64"
+path = "examples/price-to_f64.rs"
 
 
 # ##########################################################
@@ -52,7 +56,6 @@ default = [
 	"implement-IsEmpty-for-standard_collection_types",
 	"implement-IsEmpty-for-standard_ffi_types",
 	"implement-IsEmpty-for-standard_path_types",
-	"implement-IsEmpty-for-standard_process_types",
 	"implement-IsEmpty-for-standard_range_types",
 	# IsInfinity:
 	"implement-IsInfinity-for-built_ins",
@@ -68,7 +71,6 @@ default = [
 	"implement-Len-for-standard_collection_types",
 	"implement-Len-for-standard_ffi_types",
 	"implement-Len-for-standard_path_types",
-	"implement-Len-for-standard_process_types",
 	# ToF64
 	"implement-ToF64-for-built_ins",
 	# ToISize
@@ -108,7 +110,9 @@ implement-IsEmpty-for-built_ins = []
 implement-IsEmpty-for-standard_collection_types = []
 implement-IsEmpty-for-standard_ffi_types = []
 implement-IsEmpty-for-standard_path_types = []
-implement-IsEmpty-for-standard_process_types = []
+implement-IsEmpty-for-standard_process_types = [
+	"experimental-exact_size_is_empty",
+]
 implement-IsEmpty-for-standard_range_types = []
 implement-IsEmpty-for-standard_time_types = []
 
