@@ -18,8 +18,14 @@ mod traits;
 
 pub use traits::{
     AsF64,
+    AsI32,
+    AsI64,
+    AsI128,
     AsISize,
     AsStr,
+    AsU32,
+    AsU64,
+    AsU128,
     AsUSize,
     Infinity,
     IsDefault,

@@ -54,9 +54,15 @@ The following crate features are defined:
 | --------------------------------------------------- | ------------------------------------- | --------------- | ------------------------------------- |
 | `"experimental-exact_size_is_empty"`                | Causes the experimental feature `"exact_size_is_empty"` to be enabled | **No** | |
 | `"implement-AsF64-for-built_ins"`                   | Causes `AsF64` to be implemented for built-in type `f64` | Yes | |
+| `"implement-AsI128-for-built_ins"`                  | Causes `AsI128` to be implemented for built-in type `i128` | Yes | |
+| `"implement-AsI32-for-built_ins"`                   | Causes `AsI32` to be implemented for built-in type `i32` | Yes | |
+| `"implement-AsI64-for-built_ins"`                   | Causes `AsI64` to be implemented for built-in type `i64` | Yes | |
 | `"implement-AsISize-for-built_ins"`                 | Causes `AsISize` to be implemented for built-in type `isize` | Yes | |
 | `"implement-AsStr-for-built_ins"`                   | Causes `AsStr` to be implemented for built-in type `str` | Yes | |
 | `"implement-AsStr-for-standard_collection_types"`   | Causes `AsStr` to be implemented for standard collection type `String` | Yes | |
+| `"implement-AsU128-for-built_ins"`                  | Causes `AsU128` to be implemented for built-in type `u128` | Yes | |
+| `"implement-AsU32-for-built_ins"`                   | Causes `AsU32` to be implemented for built-in type `u32` | Yes | |
+| `"implement-AsU64-for-built_ins"`                   | Causes `AsU64` to be implemented for built-in type `u64` | Yes | |
 | `"implement-AsUSize-for-built_ins"`                 | Causes `AsUSize` to be implemented for built-in type `usize` | Yes | |
 | `"implement-Infinity-for-built_ins"`                | Causes `Infinity` to be implemented for built-in types `f32`, `f64` | Yes | |
 | `"implement-IsEmpty-for-built_ins"`                 | Causes `IsEmpty` to be implemented for built-in types `str`, `[T; N]`, `[T]` | Yes | |
@@ -102,8 +108,14 @@ None defined at this time.
 The following traits are defined:
 
 * `AsF64` - provides (non-mutating) instance method `#as_f64() : f64`;
+* `AsI128` - provides (non-mutating) instance method `#as_i128() : i128`;
+* `AsI32` - provides (non-mutating) instance method `#as_i32() : i32`;
+* `AsI64` - provides (non-mutating) instance method `#as_i64() : i64`;
 * `AsISize` - provides (non-mutating) instance method `#as_isize() : isize`;
 * `AsStr` - provides (non-mutating) instance method `#as_str() : &str`;
+* `AsU128` - provides (non-mutating) instance method `#as_u128() : u128`;
+* `AsU32` - provides (non-mutating) instance method `#as_u32() : u32`;
+* `AsU64` - provides (non-mutating) instance method `#as_u64() : u64`;
 * `AsUSize` - provides (non-mutating) instance method `#as_usize() : usize`;
 * `Infinity` - provides method `::infinity() : Self`;
 * `IsEmpty` - provides (non-mutating) instance method `#is_empty() : bool`;
@@ -112,6 +124,9 @@ The following traits are defined:
 * `IsZero` - provides (non-mutating) instance method `#is_zero() : bool`;
 * `Len` - provides (non-mutating) instance method `#len() : usize`;
 * `ToF64` - provides (non-mutating) instance method `#to_f64() : f64`;
+* `AsU32` - provides (non-mutating) instance method `#as_u32() : u32`;
+* `AsU64` - provides (non-mutating) instance method `#as_u64() : u64`;
+* `AsU128` - provides (non-mutating) instance method `#as_u128() : u128`;
 * `ToISize` - provides (non-mutating) instance method `#to_isize() : isize`;
 * `ToUSize` - provides (non-mutating) instance method `#to_usize() : usize`;
 * `Zero` - provides class method `::zero() : Self`;

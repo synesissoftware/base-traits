@@ -11,8 +11,14 @@ macro_rules! declare_and_publish {
 }
 
 declare_and_publish!(as_f64, AsF64);
+declare_and_publish!(as_i32, AsI32);
+declare_and_publish!(as_i64, AsI64);
+declare_and_publish!(as_i128, AsI128);
 declare_and_publish!(as_isize, AsISize);
 declare_and_publish!(as_str, AsStr);
+declare_and_publish!(as_u32, AsU32);
+declare_and_publish!(as_u64, AsU64);
+declare_and_publish!(as_u128, AsU128);
 declare_and_publish!(as_usize, AsUSize);
 declare_and_publish!(infinity, Infinity);
 declare_and_publish!(is_default, IsDefault);
