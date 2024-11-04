@@ -33,6 +33,12 @@
 	"rust-analyzer.cargo.noDefaultFeatures": true,
 	"rust-analyzer.cargo.features": [
 		"default",
+		"implement-AsI128-for-built_ins",
+		"implement-AsI32-for-built_ins",
+		"implement-AsI64-for-built_ins",
+		"implement-AsU128-for-built_ins",
+		"implement-AsU32-for-built_ins",
+		"implement-AsU64-for-built_ins",
 	],
 	"rust-analyzer.completion.autoimport.enable": false,
 	"rust-analyzer.showUnlinkedFileNotification": false,

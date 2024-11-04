@@ -19,7 +19,7 @@ keywords = [
 license = "BSD-3-Clause"
 name = "base-traits"
 readme = "README.md"
-version = "0.0.8"
+version = "0.0.9"
 
 
 # ##########################################################
@@ -42,11 +42,23 @@ path = "examples/price-to_f64.rs"
 default = [
 	# AsF64
 	"implement-AsF64-for-built_ins",
+	# AsI128
+	"implement-AsI128-for-built_ins",
+	# AsI32
+	"implement-AsI32-for-built_ins",
+	# AsI64
+	"implement-AsI64-for-built_ins",
 	# AsISize
 	"implement-AsISize-for-built_ins",
 	# AsStr
 	"implement-AsStr-for-built_ins",
 	"implement-AsStr-for-standard_collection_types",
+	# AsU128
+	"implement-AsU128-for-built_ins",
+	# AsU32
+	"implement-AsU32-for-built_ins",
+	# AsU64
+	"implement-AsU64-for-built_ins",
 	# AsUSize
 	"implement-AsUSize-for-built_ins",
 	# Infinity
@@ -87,6 +99,18 @@ experimental-exact_size_is_empty = []
 
 implement-AsF64-for-built_ins = []
 
+# AsI128
+
+implement-AsI128-for-built_ins = []
+
+# AsI32
+
+implement-AsI32-for-built_ins = []
+
+# AsI64
+
+implement-AsI64-for-built_ins = []
+
 # AsISize
 
 implement-AsISize-for-built_ins = []
@@ -95,6 +119,18 @@ implement-AsISize-for-built_ins = []
 
 implement-AsStr-for-built_ins = []
 implement-AsStr-for-standard_collection_types = []
+
+# AsU128
+
+implement-AsU128-for-built_ins = []
+
+# AsU32
+
+implement-AsU32-for-built_ins = []
+
+# AsU64
+
+implement-AsU64-for-built_ins = []
 
 # AsUSize
 
