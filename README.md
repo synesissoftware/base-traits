@@ -118,17 +118,22 @@ The following traits are defined:
 * `AsU64` - provides (non-mutating) instance method `#as_u64() : u64`;
 * `AsUSize` - provides (non-mutating) instance method `#as_usize() : usize`;
 * `Infinity` - provides method `::infinity() : Self`;
+* `Integer` - provides no methods;
 * `IsEmpty` - provides (non-mutating) instance method `#is_empty() : bool`;
 * `IsInfinity` - provides (non-mutating) instance method `#is_infinity() : bool`;
 * `IsNAN` - provides (non-mutating) instance method `#is_nan() : bool`;
 * `IsZero` - provides (non-mutating) instance method `#is_zero() : bool`;
 * `Len` - provides (non-mutating) instance method `#len() : usize`;
+* `Numeric` - provides no methods;
+* `Real` - provides no methods;
+* `Signed` - provides no methods;
 * `ToF64` - provides (non-mutating) instance method `#to_f64() : f64`;
 * `AsU32` - provides (non-mutating) instance method `#as_u32() : u32`;
 * `AsU64` - provides (non-mutating) instance method `#as_u64() : u64`;
 * `AsU128` - provides (non-mutating) instance method `#as_u128() : u128`;
 * `ToISize` - provides (non-mutating) instance method `#to_isize() : isize`;
 * `ToUSize` - provides (non-mutating) instance method `#to_usize() : usize`;
+* `Unsigned` - provides no methods;
 * `Zero` - provides class method `::zero() : Self`;
 
 
