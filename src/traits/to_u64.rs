@@ -1,48 +1,67 @@
-// src/traits/as_isize.rs : `AsISize`
+// src/traits/to_u64.rs : `ToU64`
 
-/// Trait defining instance method `as_isize() : isize` that provides a
-/// cost-free conversion into `isize`.
+/// Trait defining instance method `to_u64() : u64` that provides a
+/// no-cost or low-cost conversion into `u64`.
 ///
-/// It is expected that the implementing type "is-a" `isize` in a direct
-/// manner as well as in a logical manner.
+/// It is expected that the implementing type "is-a" `u64` in a logical
+/// manner.
 ///
 /// # Additional Implementations on Foreign Types
 ///
 /// ## Built-in Types
 ///
-/// If the feature `"implement-AsISize-for-built_ins"`
+/// If the feature `"implement-ToU64-for-built_ins"`
 /// is defined (as it is by `"default"`), then this is also implemented
 /// for the following type(s):
-/// - [`isize`];
-pub trait AsISize {
-    fn as_isize(&self) -> isize;
+/// - [`u8`];
+/// - [`u16`];
+/// - [`u32`];
+/// - [`u64`];
+pub trait ToU64 {
+    fn to_u64(&self) -> u64;
 }
 
 
-impl<T : AsISize + ?Sized> AsISize for Box<T> {
-    fn as_isize(&self) -> isize {
-        (**self).as_isize()
+impl<T : ToU64 + ?Sized> ToU64 for Box<T> {
+    fn to_u64(&self) -> u64 {
+        (**self).to_u64()
     }
 }
 
-impl<T : AsISize + ?Sized> AsISize for std::rc::Rc<T> {
-    fn as_isize(&self) -> isize {
-        (**self).as_isize()
+impl<T : ToU64 + ?Sized> ToU64 for std::rc::Rc<T> {
+    fn to_u64(&self) -> u64 {
+        (**self).to_u64()
     }
 }
 
 
-#[cfg(feature = "implement-AsISize-for-built_ins")]
+#[cfg(feature = "implement-ToU64-for-built_ins")]
+#[rustfmt::skip]
 mod impl_for_built_ins {
     #![allow(non_snake_case)]
 
 
-    impl super::AsISize for isize {
+    impl super::ToU64 for u64 {
         #[inline]
-        fn as_isize(&self) -> isize {
+        fn to_u64(&self) -> u64 {
             *self
         }
     }
+
+    macro_rules! implement_ToU64_ {
+        ($type:tt) => {
+            impl super::ToU64 for $type {
+                #[inline]
+                fn to_u64(&self) -> u64 {
+                    *self as u64
+                }
+            }
+        };
+    }
+
+    implement_ToU64_!(u8);
+    implement_ToU64_!(u16);
+    implement_ToU64_!(u32);
 }
 
 
@@ -50,7 +69,7 @@ mod impl_for_built_ins {
 mod tests {
     #![allow(non_snake_case)]
 
-    use super::AsISize;
+    use super::ToU64;
 
     use std::rc as std_rc;
 
@@ -58,71 +77,36 @@ mod tests {
     mod TEST_CUSTOM_TYPE {
         #![allow(non_snake_case)]
 
-        use super::*;
+        use super::ToU64;
 
 
         struct CustomType {
             value : u64,
         }
 
-        impl AsISize for CustomType {
-            fn as_isize(&self) -> isize {
-                self.value as isize
+        impl ToU64 for CustomType {
+            fn to_u64(&self) -> u64 {
+                self.value as u64
             }
         }
-
 
         #[test]
         fn TEST_RANGE_OF_VALUES() {
 
-            const VALUES : &[isize] = &[
+            const VALUES : &[u64] = &[
                 // insert list:
                 0,
                 1,
-                2,
-                4,
-                8,
-                16,
-                32,
-                64,
-                128,
-                256,
-                u16::MAX as isize,
-                u32::MAX as isize,
-                u64::MAX as isize,
+                2, 4, 8, 16, 32, 64, 64, 256,
+                u16::MAX as u64,
+                u32::MAX as u64,
+                u64::MAX as u64,
             ];
 
             for &value in VALUES {
                 let expected = value;
                 let instance = CustomType { value: value as u64 };
-                let actual = instance.as_isize();
-
-                assert_eq!(expected, actual);
-            }
-        }
-
-        #[test]
-        fn TEST_RANGE_OF_VALUES_IN_Box() {
-
-            const VALUES : &[isize] = &[
-                // insert list:
-                0,
-                1,
-                2,
-                4,
-                8,
-                16,
-                32,
-                64,
-                128,
-                256,
-                u32::MAX as isize,
-            ];
-
-            for &value in VALUES {
-                let expected = value;
-                let instance = Box::new(CustomType { value: value as u64 });
-                let actual = instance.as_isize();
+                let actual = instance.to_u64();
 
                 assert_eq!(expected, actual);
             }
@@ -130,7 +114,7 @@ mod tests {
     }
 
 
-    #[cfg(feature = "implement-AsISize-for-built_ins")]
+    #[cfg(feature = "implement-ToU64-for-built_ins")]
     mod TEST_BUILTIN_TYPES {
         #![allow(non_snake_case)]
 
@@ -138,9 +122,9 @@ mod tests {
 
 
         #[test]
-        fn TEST_RANGE_OF_VALUES() {
+        fn TEST_RANGE_OF_u64_VALUES() {
 
-            const VALUES : &[isize] = &[
+            const VALUES : &[u64] = &[
                 // insert list:
                 0,
                 1,
@@ -150,23 +134,23 @@ mod tests {
                 16,
                 32,
                 64,
-                128,
+                64,
                 256,
-                isize::MAX,
+                u64::MAX,
             ];
 
             for &value in VALUES {
                 let expected = value;
-                let actual = value.as_isize();
+                let actual = value.to_u64();
 
                 assert_eq!(expected, actual);
             }
         }
 
         #[test]
-        fn TEST_RANGE_OF_VALUES_REF() {
+        fn TEST_RANGE_OF_u16_VALUES_REF() {
 
-            const VALUES : &[isize] = &[
+            const VALUES : &[u16] = &[
                 // insert list:
                 0,
                 1,
@@ -176,23 +160,23 @@ mod tests {
                 16,
                 32,
                 64,
-                128,
+                64,
                 256,
-                isize::MAX,
+                u16::MAX,
             ];
 
             for &value in VALUES {
-                let expected = value;
-                let actual = (&value).as_isize();
+                let expected = value as u64;
+                let actual = (&value).to_u64();
 
                 assert_eq!(expected, actual);
             }
         }
 
         #[test]
-        fn TEST_RANGE_OF_VALUES_IN_Box() {
+        fn TEST_RANGE_OF_u32_VALUES_REF() {
 
-            const VALUES : &[isize] = &[
+            const VALUES : &[u32] = &[
                 // insert list:
                 0,
                 1,
@@ -202,24 +186,76 @@ mod tests {
                 16,
                 32,
                 64,
-                128,
+                64,
                 256,
-                isize::MAX,
+                u32::MAX,
+            ];
+
+            for &value in VALUES {
+                let expected = value as u64;
+                let actual = (&value).to_u64();
+
+                assert_eq!(expected, actual);
+            }
+        }
+
+        #[test]
+        fn TEST_RANGE_OF_u64_VALUES_REF() {
+
+            const VALUES : &[u64] = &[
+                // insert list:
+                0,
+                1,
+                2,
+                4,
+                8,
+                16,
+                32,
+                64,
+                64,
+                256,
+                u64::MAX,
+            ];
+
+            for &value in VALUES {
+                let expected = value;
+                let actual = (&value).to_u64();
+
+                assert_eq!(expected, actual);
+            }
+        }
+
+        #[test]
+        fn TEST_RANGE_OF_u64_VALUES_IN_Box() {
+
+            const VALUES : &[u64] = &[
+                // insert list:
+                0,
+                1,
+                2,
+                4,
+                8,
+                16,
+                32,
+                64,
+                64,
+                256,
+                u64::MAX,
             ];
 
             for &value in VALUES {
                 let expected = value;
                 let instance = Box::new(value);
-                let actual = instance.as_isize();
+                let actual = instance.to_u64();
 
                 assert_eq!(expected, actual);
             }
         }
 
         #[test]
-        fn TEST_RANGE_OF_VALUES_IN_REF_Box() {
+        fn TEST_RANGE_OF_u64_VALUES_IN_REF_Box() {
 
-            const VALUES : &[isize] = &[
+            const VALUES : &[u64] = &[
                 // insert list:
                 0,
                 1,
@@ -229,24 +265,24 @@ mod tests {
                 16,
                 32,
                 64,
-                128,
+                64,
                 256,
-                isize::MAX,
+                u64::MAX,
             ];
 
             for &value in VALUES {
                 let expected = value;
                 let instance = Box::new(value);
-                let actual = (&instance).as_isize();
+                let actual = (&instance).to_u64();
 
                 assert_eq!(expected, actual);
             }
         }
 
         #[test]
-        fn TEST_RANGE_OF_VALUES_IN_Rc() {
+        fn TEST_RANGE_OF_u64_VALUES_IN_Rc() {
 
-            const VALUES : &[isize] = &[
+            const VALUES : &[u64] = &[
                 // insert list:
                 0,
                 1,
@@ -256,24 +292,24 @@ mod tests {
                 16,
                 32,
                 64,
-                128,
+                64,
                 256,
-                isize::MAX,
+                u64::MAX,
             ];
 
             for &value in VALUES {
                 let expected = value;
                 let instance = std_rc::Rc::new(value);
-                let actual = instance.as_isize();
+                let actual = instance.to_u64();
 
                 assert_eq!(expected, actual);
             }
         }
 
         #[test]
-        fn TEST_RANGE_OF_VALUES_IN_REF_Rc() {
+        fn TEST_RANGE_OF_u64_VALUES_IN_REF_Rc() {
 
-            const VALUES : &[isize] = &[
+            const VALUES : &[u64] = &[
                 // insert list:
                 0,
                 1,
@@ -283,15 +319,15 @@ mod tests {
                 16,
                 32,
                 64,
-                128,
+                64,
                 256,
-                isize::MAX,
+                u64::MAX,
             ];
 
             for &value in VALUES {
                 let expected = value;
                 let instance = std_rc::Rc::new(value);
-                let actual = (&instance).as_isize();
+                let actual = (&instance).to_u64();
 
                 assert_eq!(expected, actual);
             }
@@ -299,6 +335,6 @@ mod tests {
     }
 }
 
-
 // ///////////////////////////// end of file //////////////////////////// //
+
 

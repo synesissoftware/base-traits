@@ -1,7 +1,7 @@
 // src/traits/to_usize.rs : `ToUSize`
 
 /// Trait defining instance method `to_usize() : usize` that provides a
-/// potentially expensive conversion into `usize`.
+/// no-cost or low-cost conversion into `usize`.
 ///
 /// It is expected that the implementing type "is-a" `usize` in a logical
 /// manner.
@@ -125,7 +125,9 @@ mod tests {
                 0,
                 1,
                 2, 4, 8, 16, 32, 64, 128, 256,
+                u16::MAX as usize,
                 u32::MAX as usize,
+                u64::MAX as usize,
             ];
 
             for &value in VALUES {

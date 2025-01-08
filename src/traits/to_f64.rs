@@ -1,7 +1,7 @@
 // src/traits/to_f64.rs : `ToF64`
 
 /// Trait defining instance method `to_f64() : f64` that provides a
-/// potentially expensive conversion into `f64`.
+/// no-cost or low-cost conversion into `f64`.
 ///
 /// It is expected that the implementing type "is-a" `f64` in a logical
 /// manner.
