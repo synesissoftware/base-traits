@@ -19,6 +19,7 @@
 /// - [`i32`] - if architecture is 32+ bits;
 /// - [`i64`] - if architecture is 64+ bits;
 /// - [`i128`] - if architecture is 128+ bits;
+/// - [`u8`] - if architecture is 16+ bits;
 /// - [`u16`] - if architecture is 32+ bits;
 /// - [`u32`] - if architecture is 64+ bits;
 /// - [`u64`] - if architecture is 128+ bits;
