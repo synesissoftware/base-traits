@@ -85,10 +85,14 @@ default = [
 	"implement-Len-for-standard_path_types",
 	# ToF64
 	"implement-ToF64-for-built_ins",
+	# ToI64
+	"implement-ToI64-for-built_ins",
 	# ToI128
 	"implement-ToI128-for-built_ins",
 	# ToISize
 	"implement-ToISize-for-built_ins",
+	# ToU64
+	"implement-ToU64-for-built_ins",
 	# ToU128
 	"implement-ToU128-for-built_ins",
 	# ToUSize
@@ -183,6 +187,10 @@ implement-Len-for-standard_process_types = []
 
 implement-ToF64-for-built_ins = []
 
+# ToI64
+
+implement-ToI64-for-built_ins = []
+
 # ToI128
 
 implement-ToI128-for-built_ins = []
@@ -190,6 +198,10 @@ implement-ToI128-for-built_ins = []
 # ToISize
 
 implement-ToISize-for-built_ins = []
+
+# ToU64
+
+implement-ToU64-for-built_ins = []
 
 # ToU128
 
