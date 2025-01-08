@@ -40,6 +40,8 @@ pub use traits::{
     Scalar,
     Signed,
     ToF64,
+    ToI128,
+    ToU128,
     ToISize,
     ToUSize,
     Unsigned,
