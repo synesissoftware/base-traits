@@ -98,7 +98,9 @@ mod tests {
                 0,
                 1,
                 2, 4, 8, 16, 32, 64, 64, 256,
+                u16::MAX as u64,
                 u32::MAX as u64,
+                u64::MAX as u64,
             ];
 
             for &value in VALUES {

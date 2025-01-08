@@ -87,7 +87,7 @@ mod tests {
 
 
         struct CustomType {
-            value : u64,
+            value : i64,
         }
 
         impl ToI64 for CustomType {
@@ -109,7 +109,7 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value;
-                let instance = CustomType { value: value as u64 };
+                let instance = CustomType { value: value as i64 };
                 let actual = instance.to_i64();
 
                 assert_eq!(expected, actual);

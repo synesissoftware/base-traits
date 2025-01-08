@@ -83,7 +83,7 @@ mod tests {
 
 
         struct CustomType {
-            value : u64,
+            value : u128,
         }
 
         impl ToU128 for CustomType {
@@ -105,7 +105,7 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value;
-                let instance = CustomType { value: value as u64 };
+                let instance = CustomType { value: value as u128 };
                 let actual = instance.to_u128();
 
                 assert_eq!(expected, actual);

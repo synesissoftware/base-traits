@@ -125,7 +125,9 @@ mod tests {
                 0,
                 1,
                 2, 4, 8, 16, 32, 64, 128, 256,
+                u16::MAX as usize,
                 u32::MAX as usize,
+                u64::MAX as usize,
             ];
 
             for &value in VALUES {
