@@ -19,7 +19,7 @@ keywords = [
 license = "BSD-3-Clause"
 name = "base-traits"
 readme = "README.md"
-version = "0.0.10"
+version = "0.0.11"
 
 
 # ##########################################################
