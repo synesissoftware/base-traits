@@ -65,6 +65,7 @@ mod impl_for_built_ins {
     }
 
     implement_ToI128_!(i8);
+    implement_ToI128_!(u8);
     implement_ToI128_!(i16);
     implement_ToI128_!(u16);
     implement_ToI128_!(i32);
