@@ -83,6 +83,14 @@ The following crate features are defined:
 | `"implement-Len-for-standard_path_types"`           | Causes `Len` to be implemented for standard path types `Path`, `PathBuf` | Yes | |
 | `"implement-Len-for-standard_process_types"`        | Causes `Len` to be implemented for standard process types `CommandArgs`, `CommandEnvs` | **No** | |
 | `"implement-ToF64-for-built_ins"`                   | Causes `ToF64` to be implemented for built-in types `i8`, ..., `i128`, `u8`, ..., `u128`, `isize`, `usize`, `f32`, `f64` | Yes | |
+| `"implement-ToI128-for-built_ins"`                  | Causes `ToI128` to be implemented for built-in type `i8`, `i16`, `i32`, `i64`, `i128`, `u8`, `u16`, `u32`, `u64` | Yes | |
+| `"implement-ToI16-for-built_ins"`                   | Causes `ToI16` to be implemented for built-in types `i8`, `i16`, `u8` | Yes | |
+| `"implement-ToI32-for-built_ins"`                   | Causes `ToI32` to be implemented for built-in type `i8`, `i16`, `i32`, `u8`, `u16` | Yes | |
+| `"implement-ToI64-for-built_ins"`                   | Causes `ToI64` to be implemented for built-in type `i8`, `i16`, `i32`, `i64`, `u8`, `u16`, `u32` | Yes | |
+| `"implement-ToU128-for-built_ins"`                  | Causes `ToU128` to be implemented for built-in type `u8`, `u16`, `u32`, `u64`, `u128` | Yes | |
+| `"implement-ToU16-for-built_ins"`                   | Causes `ToU16` to be implemented for built-in type `u8`, `u16` | Yes | |
+| `"implement-ToU32-for-built_ins"`                   | Causes `ToU32` to be implemented for built-in type `u8`, `u16`, `u32` | Yes | |
+| `"implement-ToU64-for-built_ins"`                   | Causes `ToU64` to be implemented for built-in type `u8`, `u16`, `u32`, `u64` | Yes | |
 | `"implement-ToISize-for-built_ins"`                 | Causes `ToISize` to be implemented for built-in types `isize`, `i8`, and all numeric types that, dependent on architecture, that can be represented in `isize` without loss | Yes | |
 | `"implement-ToUSize-for-built_ins"`                 | Causes `ToUSize` to be implemented for built-in types `usize`, `u8`, and all unsigned numeric types that, dependent on architecture, that can be represented in `usize` without loss | Yes | |
 | `"implement-Zero-for-built_ins"`                    | Causes `Zero` to be implemented for built-in types `i8`, ..., `i128`, `u8`, ..., `u128`, `isize`, `usize`, `f32`, `f64`, `char` | Yes | |

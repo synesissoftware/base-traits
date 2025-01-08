@@ -1,94 +1,69 @@
-// src/traits/to_usize.rs : `ToUSize`
+// src/traits/to_u128.rs : `ToU128`
 
-/// Trait defining instance method `to_usize() : usize` that provides a
-/// no-cost or low-cost conversion into `usize`.
+/// Trait defining instance method `to_u128() : u128` that provides a
+/// no-cost or low-cost conversion into `u128`.
 ///
-/// It is expected that the implementing type "is-a" `usize` in a logical
+/// It is expected that the implementing type "is-a" `u128` in a logical
 /// manner.
 ///
 /// # Additional Implementations on Foreign Types
 ///
 /// ## Built-in Types
 ///
-/// If the feature `"implement-ToUSize-for-built_ins"`
+/// If the feature `"implement-ToU128-for-built_ins"`
 /// is defined (as it is by `"default"`), then this is also implemented
 /// for the following type(s):
-/// - [`usize`];
 /// - [`u8`];
-/// - [`u16`] - if architecture is 16+ bits;
-/// - [`u32`] - if architecture is 32+ bits;
-/// - [`u64`] - if architecture is 64+ bits;
-/// - [`u128`] - if architecture is 128+ bits;
-pub trait ToUSize {
-    fn to_usize(&self) -> usize;
+/// - [`u16`];
+/// - [`u32`];
+/// - [`u64`];
+/// - [`u128`];
+pub trait ToU128 {
+    fn to_u128(&self) -> u128;
 }
 
 
-impl<T : ToUSize + ?Sized> ToUSize for Box<T> {
-    fn to_usize(&self) -> usize {
-        (**self).to_usize()
+impl<T : ToU128 + ?Sized> ToU128 for Box<T> {
+    fn to_u128(&self) -> u128 {
+        (**self).to_u128()
     }
 }
 
-impl<T : ToUSize + ?Sized> ToUSize for std::rc::Rc<T> {
-    fn to_usize(&self) -> usize {
-        (**self).to_usize()
+impl<T : ToU128 + ?Sized> ToU128 for std::rc::Rc<T> {
+    fn to_u128(&self) -> u128 {
+        (**self).to_u128()
     }
 }
 
 
-#[cfg(feature = "implement-ToUSize-for-built_ins")]
+#[cfg(feature = "implement-ToU128-for-built_ins")]
 #[rustfmt::skip]
 mod impl_for_built_ins {
     #![allow(non_snake_case)]
-    #![allow(unexpected_cfgs)]
 
 
-    impl super::ToUSize for usize {
+    impl super::ToU128 for u128 {
         #[inline]
-        fn to_usize(&self) -> usize {
+        fn to_u128(&self) -> u128 {
             *self
         }
     }
 
-    macro_rules! implement_ToUSize_ {
+    macro_rules! implement_ToU128_ {
         ($type:tt) => {
-            impl super::ToUSize for $type {
+            impl super::ToU128 for $type {
                 #[inline]
-                fn to_usize(&self) -> usize {
-                    *self as usize
+                fn to_u128(&self) -> u128 {
+                    *self as u128
                 }
             }
         };
     }
 
-    implement_ToUSize_!(u8);
-
-    #[cfg(any(
-        target_pointer_width = "16",
-        target_pointer_width = "32",
-        target_pointer_width = "64",
-        target_pointer_width = "128",
-    ))]
-    implement_ToUSize_!(u16);
-
-    #[cfg(any(
-        target_pointer_width = "32",
-        target_pointer_width = "64",
-        target_pointer_width = "128",
-    ))]
-    implement_ToUSize_!(u32);
-
-    #[cfg(any(
-        target_pointer_width = "64",
-        target_pointer_width = "128",
-    ))]
-    implement_ToUSize_!(u64);
-
-    #[cfg(any(
-        target_pointer_width = "128",
-    ))]
-    implement_ToUSize_!(u128);
+    implement_ToU128_!(u8);
+    implement_ToU128_!(u16);
+    implement_ToU128_!(u32);
+    implement_ToU128_!(u64);
 }
 
 
@@ -96,7 +71,7 @@ mod impl_for_built_ins {
 mod tests {
     #![allow(non_snake_case)]
 
-    use super::ToUSize;
+    use super::ToU128;
 
     use std::rc as std_rc;
 
@@ -104,36 +79,34 @@ mod tests {
     mod TEST_CUSTOM_TYPE {
         #![allow(non_snake_case)]
 
-        use super::ToUSize;
+        use super::ToU128;
 
 
         struct CustomType {
-            value : u64,
+            value : u128,
         }
 
-        impl ToUSize for CustomType {
-            fn to_usize(&self) -> usize {
-                self.value as usize
+        impl ToU128 for CustomType {
+            fn to_u128(&self) -> u128 {
+                self.value as u128
             }
         }
 
         #[test]
         fn TEST_RANGE_OF_VALUES() {
 
-            const VALUES : &[usize] = &[
+            const VALUES : &[u128] = &[
                 // insert list:
                 0,
                 1,
                 2, 4, 8, 16, 32, 64, 128, 256,
-                u16::MAX as usize,
-                u32::MAX as usize,
-                u64::MAX as usize,
+                u32::MAX as u128,
             ];
 
             for &value in VALUES {
                 let expected = value;
-                let instance = CustomType { value: value as u64 };
-                let actual = instance.to_usize();
+                let instance = CustomType { value: value as u128 };
+                let actual = instance.to_u128();
 
                 assert_eq!(expected, actual);
             }
@@ -141,18 +114,17 @@ mod tests {
     }
 
 
-    #[cfg(feature = "implement-ToUSize-for-built_ins")]
+    #[cfg(feature = "implement-ToU128-for-built_ins")]
     mod TEST_BUILTIN_TYPES {
         #![allow(non_snake_case)]
-        #![allow(unexpected_cfgs)]
 
         use super::*;
 
 
         #[test]
-        fn TEST_RANGE_OF_usize_VALUES() {
+        fn TEST_RANGE_OF_u128_VALUES() {
 
-            const VALUES : &[usize] = &[
+            const VALUES : &[u128] = &[
                 // insert list:
                 0,
                 1,
@@ -164,23 +136,17 @@ mod tests {
                 64,
                 128,
                 256,
-                usize::MAX,
+                u128::MAX,
             ];
 
             for &value in VALUES {
                 let expected = value;
-                let actual = value.to_usize();
+                let actual = value.to_u128();
 
                 assert_eq!(expected, actual);
             }
         }
 
-        #[cfg(any(
-            target_pointer_width = "16",
-            target_pointer_width = "32",
-            target_pointer_width = "64",
-            target_pointer_width = "128",
-        ))]
         #[test]
         fn TEST_RANGE_OF_u16_VALUES_REF() {
 
@@ -200,18 +166,13 @@ mod tests {
             ];
 
             for &value in VALUES {
-                let expected = value as usize;
-                let actual = (&value).to_usize();
+                let expected = value as u128;
+                let actual = (&value).to_u128();
 
                 assert_eq!(expected, actual);
             }
         }
 
-        #[cfg(any(
-            target_pointer_width = "32",
-            target_pointer_width = "64",
-            target_pointer_width = "128",
-        ))]
         #[test]
         fn TEST_RANGE_OF_u32_VALUES_REF() {
 
@@ -231,17 +192,17 @@ mod tests {
             ];
 
             for &value in VALUES {
-                let expected = value as usize;
-                let actual = (&value).to_usize();
+                let expected = value as u128;
+                let actual = (&value).to_u128();
 
                 assert_eq!(expected, actual);
             }
         }
 
         #[test]
-        fn TEST_RANGE_OF_usize_VALUES_REF() {
+        fn TEST_RANGE_OF_u128_VALUES_REF() {
 
-            const VALUES : &[usize] = &[
+            const VALUES : &[u128] = &[
                 // insert list:
                 0,
                 1,
@@ -253,21 +214,21 @@ mod tests {
                 64,
                 128,
                 256,
-                usize::MAX,
+                u128::MAX,
             ];
 
             for &value in VALUES {
                 let expected = value;
-                let actual = (&value).to_usize();
+                let actual = (&value).to_u128();
 
                 assert_eq!(expected, actual);
             }
         }
 
         #[test]
-        fn TEST_RANGE_OF_usize_VALUES_IN_Box() {
+        fn TEST_RANGE_OF_u128_VALUES_IN_Box() {
 
-            const VALUES : &[usize] = &[
+            const VALUES : &[u128] = &[
                 // insert list:
                 0,
                 1,
@@ -279,49 +240,22 @@ mod tests {
                 64,
                 128,
                 256,
-                usize::MAX,
-            ];
-
-            for &value in VALUES {
-                let expected = value;
-                let instance = Box::new(value);
-                let actual = instance.to_usize();
-
-                assert_eq!(expected, actual);
-            }
-        }
-
-        #[test]
-        fn TEST_RANGE_OF_usize_VALUES_IN_REF_Box() {
-
-            const VALUES : &[usize] = &[
-                // insert list:
-                0,
-                1,
-                2,
-                4,
-                8,
-                16,
-                32,
-                64,
-                128,
-                256,
-                usize::MAX,
+                u128::MAX,
             ];
 
             for &value in VALUES {
                 let expected = value;
                 let instance = Box::new(value);
-                let actual = (&instance).to_usize();
+                let actual = instance.to_u128();
 
                 assert_eq!(expected, actual);
             }
         }
 
         #[test]
-        fn TEST_RANGE_OF_usize_VALUES_IN_Rc() {
+        fn TEST_RANGE_OF_u128_VALUES_IN_REF_Box() {
 
-            const VALUES : &[usize] = &[
+            const VALUES : &[u128] = &[
                 // insert list:
                 0,
                 1,
@@ -333,22 +267,22 @@ mod tests {
                 64,
                 128,
                 256,
-                usize::MAX,
+                u128::MAX,
             ];
 
             for &value in VALUES {
                 let expected = value;
-                let instance = std_rc::Rc::new(value);
-                let actual = instance.to_usize();
+                let instance = Box::new(value);
+                let actual = (&instance).to_u128();
 
                 assert_eq!(expected, actual);
             }
         }
 
         #[test]
-        fn TEST_RANGE_OF_usize_VALUES_IN_REF_Rc() {
+        fn TEST_RANGE_OF_u128_VALUES_IN_Rc() {
 
-            const VALUES : &[usize] = &[
+            const VALUES : &[u128] = &[
                 // insert list:
                 0,
                 1,
@@ -360,13 +294,40 @@ mod tests {
                 64,
                 128,
                 256,
-                usize::MAX,
+                u128::MAX,
             ];
 
             for &value in VALUES {
                 let expected = value;
                 let instance = std_rc::Rc::new(value);
-                let actual = (&instance).to_usize();
+                let actual = instance.to_u128();
+
+                assert_eq!(expected, actual);
+            }
+        }
+
+        #[test]
+        fn TEST_RANGE_OF_u128_VALUES_IN_REF_Rc() {
+
+            const VALUES : &[u128] = &[
+                // insert list:
+                0,
+                1,
+                2,
+                4,
+                8,
+                16,
+                32,
+                64,
+                128,
+                256,
+                u128::MAX,
+            ];
+
+            for &value in VALUES {
+                let expected = value;
+                let instance = std_rc::Rc::new(value);
+                let actual = (&instance).to_u128();
 
                 assert_eq!(expected, actual);
             }

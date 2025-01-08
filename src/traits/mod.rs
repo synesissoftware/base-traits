@@ -33,7 +33,15 @@ declare_and_publish!(real, Real);
 declare_and_publish!(scalar, Scalar);
 declare_and_publish!(signed, Signed);
 declare_and_publish!(to_f64, ToF64);
+declare_and_publish!(to_i16, ToI16);
+declare_and_publish!(to_i32, ToI32);
+declare_and_publish!(to_i64, ToI64);
+declare_and_publish!(to_i128, ToI128);
 declare_and_publish!(to_isize, ToISize);
+declare_and_publish!(to_u16, ToU16);
+declare_and_publish!(to_u32, ToU32);
+declare_and_publish!(to_u64, ToU64);
+declare_and_publish!(to_u128, ToU128);
 declare_and_publish!(to_usize, ToUSize);
 declare_and_publish!(unsigned, Unsigned);
 declare_and_publish!(zero, Zero);
@@ -43,3 +51,4 @@ pub(crate) use sealed::Sealed;
 
 
 // ///////////////////////////// end of file //////////////////////////// //
+
