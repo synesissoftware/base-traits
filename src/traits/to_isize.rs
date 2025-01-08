@@ -1,7 +1,7 @@
 // src/traits/to_isize.rs : `ToISize`
 
 /// Trait defining instance method `to_isize() : isize` that provides a
-/// potentially expensive conversion into `isize`.
+/// no-cost or low-cost conversion into `isize`.
 ///
 /// It is expected that the implementing type "is-a" `isize` in a logical
 /// manner.

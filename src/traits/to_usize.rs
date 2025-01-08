@@ -1,7 +1,7 @@
 // src/traits/to_usize.rs : `ToUSize`
 
 /// Trait defining instance method `to_usize() : usize` that provides a
-/// potentially expensive conversion into `usize`.
+/// no-cost or low-cost conversion into `usize`.
 ///
 /// It is expected that the implementing type "is-a" `usize` in a logical
 /// manner.
