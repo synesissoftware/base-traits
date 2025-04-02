@@ -19,7 +19,7 @@ keywords = [
 license = "BSD-3-Clause"
 name = "base-traits"
 readme = "README.md"
-version = "0.0.11"
+version = "0.0.12"
 
 
 # ##########################################################
@@ -108,6 +108,17 @@ default = [
 	# Zero
 	"implement-Zero-for-built_ins",
 ]
+
+
+# General features:
+#
+# - "null-feature" - a feature that has no effect (and, thus, is useful for simplifying driver scripts);
+
+null-feature = []
+
+
+# Crate-specific features:
+#
 
 experimental-exact_size_is_empty = []
 
