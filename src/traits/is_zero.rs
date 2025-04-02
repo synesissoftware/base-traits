@@ -44,12 +44,14 @@ pub trait IsZero {
 }
 
 
+#[cfg(all(not(test), not(feature = "nostd")))]
 impl<T : IsZero + ?Sized> IsZero for Box<T> {
     fn is_zero(&self) -> bool {
         (**self).is_zero()
     }
 }
 
+#[cfg(all(not(test), not(feature = "nostd")))]
 impl<T : IsZero + ?Sized> IsZero for std::rc::Rc<T> {
     fn is_zero(&self) -> bool {
         (**self).is_zero()
@@ -116,7 +118,7 @@ mod impl_for_std_num_types {
 }
 
 
-#[cfg(feature = "implement-IsZero-for-standard_process_types")]
+#[cfg(all(not(feature = "nostd"), feature = "implement-IsZero-for-standard_process_types"))]
 mod impl_for_std_process_types {
     #![allow(non_snake_case)]
 
@@ -139,7 +141,7 @@ mod impl_for_std_process_types {
 }
 
 
-#[cfg(feature = "implement-IsZero-for-standard_time_types")]
+#[cfg(all(not(feature = "nostd"), feature = "implement-IsZero-for-standard_time_types"))]
 mod impl_for_std_time_types {
     #![allow(non_snake_case)]
 

@@ -5,6 +5,7 @@
 // crate-level feature definitions
 
 #![cfg_attr(feature = "experimental-exact_size_is_empty", feature(exact_size_is_empty))]
+#![cfg_attr(all(not(test), feature = "nostd"), no_std)]
 
 
 // /////////////////////////////////////////////////////////

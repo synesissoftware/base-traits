@@ -18,12 +18,14 @@ pub trait IsNAN {
 }
 
 
+#[cfg(all(not(test), not(feature = "nostd")))]
 impl<T : IsNAN + ?Sized> IsNAN for Box<T> {
     fn is_nan(&self) -> bool {
         (**self).is_nan()
     }
 }
 
+#[cfg(all(not(test), not(feature = "nostd")))]
 impl<T : IsNAN + ?Sized> IsNAN for std::rc::Rc<T> {
     fn is_nan(&self) -> bool {
         (**self).is_nan()

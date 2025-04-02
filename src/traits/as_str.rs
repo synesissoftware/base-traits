@@ -23,12 +23,14 @@ pub trait AsStr {
 }
 
 
+#[cfg(all(not(test), not(feature = "nostd")))]
 impl<T : AsStr + ?Sized> AsStr for Box<T> {
     fn as_str(&self) -> &str {
         (**self).as_str()
     }
 }
 
+#[cfg(all(not(test), not(feature = "nostd")))]
 impl<T : AsStr + ?Sized> AsStr for std::rc::Rc<T> {
     fn as_str(&self) -> &str {
         (**self).as_str()
@@ -54,7 +56,7 @@ mod impl_for_built_ins {
     }
 }
 
-#[cfg(feature = "implement-AsStr-for-standard_collection_types")]
+#[cfg(all(not(feature = "nostd"), feature = "implement-AsStr-for-standard_collection_types"))]
 mod impl_for_std_coll_types {
 
     impl super::AsStr for String {

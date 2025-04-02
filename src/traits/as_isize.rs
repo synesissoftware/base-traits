@@ -19,12 +19,14 @@ pub trait AsISize {
 }
 
 
+#[cfg(all(not(test), not(feature = "nostd")))]
 impl<T : AsISize + ?Sized> AsISize for Box<T> {
     fn as_isize(&self) -> isize {
         (**self).as_isize()
     }
 }
 
+#[cfg(all(not(test), not(feature = "nostd")))]
 impl<T : AsISize + ?Sized> AsISize for std::rc::Rc<T> {
     fn as_isize(&self) -> isize {
         (**self).as_isize()

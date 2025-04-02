@@ -19,7 +19,7 @@ keywords = [
 license = "BSD-3-Clause"
 name = "base-traits"
 readme = "README.md"
-version = "0.0.12"
+version = "0.0.13"
 
 
 # ##########################################################
@@ -119,6 +119,8 @@ null-feature = []
 
 # Crate-specific features:
 #
+# - "experimental-exact_size_is_empty" - enables crate feature exact_size_is_empty;
+# - "nostd" - remove all dependencies to std crate;
 
 experimental-exact_size_is_empty = []
 
@@ -249,6 +251,10 @@ implement-ToUSize-for-built_ins = []
 # Zero
 
 implement-Zero-for-built_ins = []
+
+
+nostd = []
+
 
 
 # ##########################################################

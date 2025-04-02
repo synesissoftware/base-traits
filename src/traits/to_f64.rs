@@ -32,12 +32,14 @@ pub trait ToF64 {
 }
 
 
+#[cfg(all(not(test), not(feature = "nostd")))]
 impl<T : ToF64 + ?Sized> ToF64 for Box<T> {
     fn to_f64(&self) -> f64 {
         (**self).to_f64()
     }
 }
 
+#[cfg(all(not(test), not(feature = "nostd")))]
 impl<T : ToF64 + ?Sized> ToF64 for std::rc::Rc<T> {
     fn to_f64(&self) -> f64 {
         (**self).to_f64()

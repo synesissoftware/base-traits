@@ -18,12 +18,14 @@ pub trait IsInfinity {
 }
 
 
+#[cfg(all(not(test), not(feature = "nostd")))]
 impl<T : IsInfinity + ?Sized> IsInfinity for Box<T> {
     fn is_infinity(&self) -> bool {
         (**self).is_infinity()
     }
 }
 
+#[cfg(all(not(test), not(feature = "nostd")))]
 impl<T : IsInfinity + ?Sized> IsInfinity for std::rc::Rc<T> {
     fn is_infinity(&self) -> bool {
         (**self).is_infinity()
