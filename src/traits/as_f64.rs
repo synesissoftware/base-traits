@@ -19,12 +19,14 @@ pub trait AsF64 {
 }
 
 
+#[cfg(all(not(test), not(feature = "nostd")))]
 impl<T : AsF64 + ?Sized> AsF64 for Box<T> {
     fn as_f64(&self) -> f64 {
         (**self).as_f64()
     }
 }
 
+#[cfg(all(not(test), not(feature = "nostd")))]
 impl<T : AsF64 + ?Sized> AsF64 for std::rc::Rc<T> {
     fn as_f64(&self) -> f64 {
         (**self).as_f64()

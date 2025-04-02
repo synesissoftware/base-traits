@@ -58,12 +58,14 @@ pub trait Len {
 }
 
 
+#[cfg(all(not(test), not(feature = "nostd")))]
 impl<T : Len + ?Sized> Len for Box<T> {
     fn len(&self) -> usize {
         (**self).len()
     }
 }
 
+#[cfg(all(not(test), not(feature = "nostd")))]
 impl<T : Len + ?Sized> Len for std::rc::Rc<T> {
     fn len(&self) -> usize {
         (**self).len()
@@ -134,7 +136,7 @@ mod impl_for_built_ins {
 }
 
 
-#[cfg(feature = "implement-Len-for-standard_collection_types")]
+#[cfg(all(not(feature = "nostd"), feature = "implement-Len-for-standard_collection_types"))]
 mod impl_for_std_coll_types {
     use std::collections as std_collections;
 
@@ -267,7 +269,7 @@ mod impl_for_std_coll_types {
 }
 
 
-#[cfg(feature = "implement-Len-for-standard_ffi_types")]
+#[cfg(all(not(feature = "nostd"), feature = "implement-Len-for-standard_ffi_types"))]
 mod impl_for_std_ffi_types {
     #![allow(non_snake_case)]
 
@@ -316,7 +318,7 @@ mod impl_for_std_ffi_types {
 }
 
 
-#[cfg(feature = "implement-Len-for-standard_path_types")]
+#[cfg(all(not(feature = "nostd"), feature = "implement-Len-for-standard_path_types"))]
 mod impl_for_std_path_types {
     use std::path as std_path;
 
@@ -345,7 +347,7 @@ mod impl_for_std_path_types {
 }
 
 
-#[cfg(feature = "implement-Len-for-standard_process_types")]
+#[cfg(all(not(feature = "nostd"), feature = "implement-Len-for-standard_process_types"))]
 mod impl_for_std_process_types {
     #![allow(non_snake_case)]
 

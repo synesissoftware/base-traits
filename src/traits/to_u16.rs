@@ -20,12 +20,14 @@ pub trait ToU16 {
 }
 
 
+#[cfg(all(not(test), not(feature = "nostd")))]
 impl<T : ToU16 + ?Sized> ToU16 for Box<T> {
     fn to_u16(&self) -> u16 {
         (**self).to_u16()
     }
 }
 
+#[cfg(all(not(test), not(feature = "nostd")))]
 impl<T : ToU16 + ?Sized> ToU16 for std::rc::Rc<T> {
     fn to_u16(&self) -> u16 {
         (**self).to_u16()

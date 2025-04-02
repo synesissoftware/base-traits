@@ -75,12 +75,14 @@ pub trait IsEmpty {
 }
 
 
+#[cfg(all(not(test), not(feature = "nostd")))]
 impl<T : IsEmpty + ?Sized> IsEmpty for Box<T> {
     fn is_empty(&self) -> bool {
         (**self).is_empty()
     }
 }
 
+#[cfg(all(not(test), not(feature = "nostd")))]
 impl<T : IsEmpty + ?Sized> IsEmpty for std::rc::Rc<T> {
     fn is_empty(&self) -> bool {
         (**self).is_empty()
@@ -158,7 +160,7 @@ mod impl_for_built_ins {
 }
 
 
-#[cfg(feature = "implement-IsEmpty-for-standard_collection_types")]
+#[cfg(all(not(feature = "nostd"), feature = "implement-IsEmpty-for-standard_collection_types"))]
 mod impl_for_std_coll_types {
     use std::collections as std_collections;
 
@@ -301,7 +303,7 @@ mod impl_for_std_coll_types {
 }
 
 
-#[cfg(feature = "implement-IsEmpty-for-standard_ffi_types")]
+#[cfg(all(not(feature = "nostd"), feature = "implement-IsEmpty-for-standard_ffi_types"))]
 mod impl_for_std_ffi_types {
     #![allow(non_snake_case)]
 
@@ -353,7 +355,7 @@ mod impl_for_std_ffi_types {
 }
 
 
-#[cfg(feature = "implement-IsEmpty-for-standard_path_types")]
+#[cfg(all(not(feature = "nostd"), feature = "implement-IsEmpty-for-standard_path_types"))]
 mod impl_for_std_path_types {
     use std::path as std_path;
 
@@ -382,7 +384,7 @@ mod impl_for_std_path_types {
 }
 
 
-#[cfg(feature = "implement-IsEmpty-for-standard_process_types")]
+#[cfg(all(not(feature = "nostd"), feature = "implement-IsEmpty-for-standard_process_types"))]
 mod impl_for_std_process_types {
     #![allow(non_snake_case)]
 
@@ -431,7 +433,7 @@ mod impl_for_std_process_types {
 }
 
 
-#[cfg(feature = "implement-IsEmpty-for-standard_range_types")]
+#[cfg(all(not(feature = "nostd"), feature = "implement-IsEmpty-for-standard_range_types"))]
 mod impl_for_std_range_types {
     #![allow(non_snake_case)]
 
@@ -507,7 +509,7 @@ mod impl_for_std_range_types {
 }
 
 
-#[cfg(feature = "implement-IsEmpty-for-standard_time_types")]
+#[cfg(all(not(feature = "nostd"), feature = "implement-IsEmpty-for-standard_time_types"))]
 mod impl_for_std_time_types {
     #![allow(non_snake_case)]
 

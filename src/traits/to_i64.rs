@@ -25,12 +25,14 @@ pub trait ToI64 {
 }
 
 
+#[cfg(all(not(test), not(feature = "nostd")))]
 impl<T : ToI64 + ?Sized> ToI64 for Box<T> {
     fn to_i64(&self) -> i64 {
         (**self).to_i64()
     }
 }
 
+#[cfg(all(not(test), not(feature = "nostd")))]
 impl<T : ToI64 + ?Sized> ToI64 for std::rc::Rc<T> {
     fn to_i64(&self) -> i64 {
         (**self).to_i64()

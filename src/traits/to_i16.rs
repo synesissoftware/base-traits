@@ -21,12 +21,14 @@ pub trait ToI16 {
 }
 
 
+#[cfg(all(not(test), not(feature = "nostd")))]
 impl<T : ToI16 + ?Sized> ToI16 for Box<T> {
     fn to_i16(&self) -> i16 {
         (**self).to_i16()
     }
 }
 
+#[cfg(all(not(test), not(feature = "nostd")))]
 impl<T : ToI16 + ?Sized> ToI16 for std::rc::Rc<T> {
     fn to_i16(&self) -> i16 {
         (**self).to_i16()

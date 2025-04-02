@@ -23,12 +23,14 @@ pub trait ToU128 {
 }
 
 
+#[cfg(all(not(test), not(feature = "nostd")))]
 impl<T : ToU128 + ?Sized> ToU128 for Box<T> {
     fn to_u128(&self) -> u128 {
         (**self).to_u128()
     }
 }
 
+#[cfg(all(not(test), not(feature = "nostd")))]
 impl<T : ToU128 + ?Sized> ToU128 for std::rc::Rc<T> {
     fn to_u128(&self) -> u128 {
         (**self).to_u128()

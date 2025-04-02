@@ -23,12 +23,14 @@ pub trait ToI32 {
 }
 
 
+#[cfg(all(not(test), not(feature = "nostd")))]
 impl<T : ToI32 + ?Sized> ToI32 for Box<T> {
     fn to_i32(&self) -> i32 {
         (**self).to_i32()
     }
 }
 
+#[cfg(all(not(test), not(feature = "nostd")))]
 impl<T : ToI32 + ?Sized> ToI32 for std::rc::Rc<T> {
     fn to_i32(&self) -> i32 {
         (**self).to_i32()

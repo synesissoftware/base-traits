@@ -24,12 +24,14 @@ pub trait ToUSize {
 }
 
 
+#[cfg(all(not(test), not(feature = "nostd")))]
 impl<T : ToUSize + ?Sized> ToUSize for Box<T> {
     fn to_usize(&self) -> usize {
         (**self).to_usize()
     }
 }
 
+#[cfg(all(not(test), not(feature = "nostd")))]
 impl<T : ToUSize + ?Sized> ToUSize for std::rc::Rc<T> {
     fn to_usize(&self) -> usize {
         (**self).to_usize()
