@@ -169,7 +169,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value as u128;
-                let actual = (&value).to_u128();
+                let value = &value;
+                let actual = value.to_u128();
 
                 assert_eq!(expected, actual);
             }
@@ -195,7 +196,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value as u128;
-                let actual = (&value).to_u128();
+                let value = &value;
+                let actual = value.to_u128();
 
                 assert_eq!(expected, actual);
             }
@@ -221,7 +223,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value;
-                let actual = (&value).to_u128();
+                let value = &value;
+                let actual = value.to_u128();
 
                 assert_eq!(expected, actual);
             }

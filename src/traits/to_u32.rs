@@ -166,7 +166,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value as u32;
-                let actual = (&value).to_u32();
+                let value = &value;
+                let actual = value.to_u32();
 
                 assert_eq!(expected, actual);
             }
@@ -192,7 +193,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value;
-                let actual = (&value).to_u32();
+                let value = &value;
+                let actual = value.to_u32();
 
                 assert_eq!(expected, actual);
             }

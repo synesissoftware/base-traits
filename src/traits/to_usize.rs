@@ -203,7 +203,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value as usize;
-                let actual = (&value).to_usize();
+                let value = &value;
+                let actual = value.to_usize();
 
                 assert_eq!(expected, actual);
             }
@@ -234,7 +235,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value as usize;
-                let actual = (&value).to_usize();
+                let value = &value;
+                let actual = value.to_usize();
 
                 assert_eq!(expected, actual);
             }
@@ -260,7 +262,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value;
-                let actual = (&value).to_usize();
+                let value = &value;
+                let actual = value.to_usize();
 
                 assert_eq!(expected, actual);
             }

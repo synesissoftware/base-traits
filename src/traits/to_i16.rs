@@ -164,7 +164,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value as i16;
-                let actual = (&value).to_i16();
+                let value = &value;
+                let actual = value.to_i16();
 
                 assert_eq!(expected, actual);
             }

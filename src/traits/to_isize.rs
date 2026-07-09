@@ -220,7 +220,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value as isize;
-                let actual = (&value).to_isize();
+                let value = &value;
+                let actual = value.to_isize();
 
                 assert_eq!(expected, actual);
             }
@@ -252,7 +253,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value as isize;
-                let actual = (&value).to_isize();
+                let value = &value;
+                let actual = value.to_isize();
 
                 assert_eq!(expected, actual);
             }
@@ -283,7 +285,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value as isize;
-                let actual = (&value).to_isize();
+                let value = &value;
+                let actual = value.to_isize();
 
                 assert_eq!(expected, actual);
             }
@@ -309,7 +312,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value;
-                let actual = (&value).to_isize();
+                let value = &value;
+                let actual = value.to_isize();
 
                 assert_eq!(expected, actual);
             }

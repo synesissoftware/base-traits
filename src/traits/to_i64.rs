@@ -173,7 +173,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value as i64;
-                let actual = (&value).to_i64();
+                let value = &value;
+                let actual = value.to_i64();
 
                 assert_eq!(expected, actual);
             }
@@ -199,7 +200,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value as i64;
-                let actual = (&value).to_i64();
+                let value = &value;
+                let actual = value.to_i64();
 
                 assert_eq!(expected, actual);
             }
@@ -225,7 +227,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value as i64;
-                let actual = (&value).to_i64();
+                let value = &value;
+                let actual = value.to_i64();
 
                 assert_eq!(expected, actual);
             }
@@ -251,7 +254,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value;
-                let actual = (&value).to_i64();
+                let value = &value;
+                let actual = value.to_i64();
 
                 assert_eq!(expected, actual);
             }
