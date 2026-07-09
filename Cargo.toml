@@ -11,6 +11,7 @@ categories = [
 	"rust-patterns",
 ]
 description = "base traits (for Rust)"
+documentation = "https://docs.rs/base-traits"
 edition = "2021"
 homepage = "https://github.com/synesissoftware/base-traits"
 keywords = [
@@ -19,6 +20,8 @@ keywords = [
 license = "BSD-3-Clause"
 name = "base-traits"
 readme = "README.md"
+repository = "https://github.com/synesissoftware/base-traits"
+rust-version = "1.74"
 version = "0.0.14"
 
 

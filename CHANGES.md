@@ -12,6 +12,7 @@
 * updated **LICENSE** copyright year;
 * renamed **.rustfmt.toml** => **rustfmt.toml**;
 * canonicalised **.gitattributes** and **.gitignore**;
+* added CI (GitHub Actions);
 * various other boilerplate fixes;
 
 
