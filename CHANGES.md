@@ -1,8 +1,9 @@
 # base-traits Changes <!-- omit in toc -->
 
 
-## 0.0.14 - 10th July 2026
+## 0.1.0 - 10th July 2026
 
+* first minor release;
 * fixed `Box`/`Rc` trait implementations being excluded under `cargo test` (incorrect `cfg` gating introduced with `"nostd"`);
 * enhanced **README.md** (badges; dependency / afferent project sections);
 * added **CHANGES.md**;
@@ -15,6 +16,7 @@
 * added CI (GitHub Actions);
 * various other boilerplate fixes;
 * added **`[build-dependencies]`** **bt-rs** and **build.rs** (`rustc_1_79_or_newer` cfg);
+* improved `declare_and_publish!()`;
 
 
 ## 0.0.13 - 2nd April 2025
