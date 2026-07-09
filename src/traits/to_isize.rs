@@ -102,6 +102,7 @@ mod impl_for_built_ins {
         implement_ToISize_!(i64);
     }
 
+    #[allow(clippy::non_minimal_cfg)]
     #[cfg(any(
         target_pointer_width = "128",
     ))]

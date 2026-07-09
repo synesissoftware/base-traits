@@ -87,6 +87,7 @@ mod impl_for_built_ins {
     ))]
     implement_ToUSize_!(u64);
 
+    #[allow(clippy::non_minimal_cfg)]
     #[cfg(any(
         target_pointer_width = "128",
     ))]
