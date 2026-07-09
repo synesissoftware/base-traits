@@ -1188,7 +1188,7 @@ mod tests {
             fn TEST_EMPTY() {
                 let p = Path::new("");
 
-                assert!(p.is_empty());
+                assert!(IsEmpty::is_empty(&p));
 
                 let ie = as_IsEmpty(&p);
 
@@ -1199,7 +1199,7 @@ mod tests {
             fn TEST_NOTEMPTY() {
                 let p = Path::new("./foo/bar.txt");
 
-                assert!(!p.is_empty());
+                assert!(!IsEmpty::is_empty(&p));
 
                 let ie = as_IsEmpty(&p);
 
@@ -1218,7 +1218,7 @@ mod tests {
             fn TEST_EMPTY() {
                 let p = PathBuf::new();
 
-                assert!(p.is_empty());
+                assert!(IsEmpty::is_empty(&p));
 
                 let ie = as_IsEmpty(&p);
 
