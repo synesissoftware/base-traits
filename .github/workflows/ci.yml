@@ -5,6 +5,7 @@ on:
     branches:
       - master
       - dev
+      - boilerplate
   pull_request:
 
 env:
