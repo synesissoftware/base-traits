@@ -284,6 +284,8 @@ mod impl_for_std_ffi_types {
 
         #[inline]
         pub(super) fn get_len_CStr_(cstr : &std_ffi::CStr) -> usize {
+            #![allow(clippy::incompatible_msrv)]
+
             #[cfg(rustc_1_79_or_newer)]
             {
                 cstr.count_bytes()
@@ -296,6 +298,8 @@ mod impl_for_std_ffi_types {
 
         #[inline]
         pub(super) fn get_len_CString_(cstring : &std_ffi::CString) -> usize {
+            #![allow(clippy::incompatible_msrv)]
+
             #[cfg(rustc_1_79_or_newer)]
             {
                 cstring.count_bytes()
