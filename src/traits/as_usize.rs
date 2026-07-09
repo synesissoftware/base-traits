@@ -236,8 +236,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value;
-                let instance = Box::new(value);
-                let actual = (&instance).as_usize();
+                let instance = &Box::new(value);
+                let actual = instance.as_usize();
 
                 assert_eq!(expected, actual);
             }
@@ -290,8 +290,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value;
-                let instance = std_rc::Rc::new(value);
-                let actual = (&instance).as_usize();
+                let instance = &std_rc::Rc::new(value);
+                let actual = instance.as_usize();
 
                 assert_eq!(expected, actual);
             }
