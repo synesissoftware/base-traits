@@ -75,14 +75,14 @@ pub trait IsEmpty {
 }
 
 
-#[cfg(all(not(test), not(feature = "nostd")))]
+#[cfg(any(test, not(feature = "nostd")))]
 impl<T : IsEmpty + ?Sized> IsEmpty for Box<T> {
     fn is_empty(&self) -> bool {
         (**self).is_empty()
     }
 }
 
-#[cfg(all(not(test), not(feature = "nostd")))]
+#[cfg(any(test, not(feature = "nostd")))]
 impl<T : IsEmpty + ?Sized> IsEmpty for std::rc::Rc<T> {
     fn is_empty(&self) -> bool {
         (**self).is_empty()
@@ -1188,7 +1188,7 @@ mod tests {
             fn TEST_EMPTY() {
                 let p = Path::new("");
 
-                assert!(p.is_empty());
+                assert!(IsEmpty::is_empty(&p));
 
                 let ie = as_IsEmpty(&p);
 
@@ -1199,7 +1199,7 @@ mod tests {
             fn TEST_NOTEMPTY() {
                 let p = Path::new("./foo/bar.txt");
 
-                assert!(!p.is_empty());
+                assert!(!IsEmpty::is_empty(&p));
 
                 let ie = as_IsEmpty(&p);
 
@@ -1218,7 +1218,7 @@ mod tests {
             fn TEST_EMPTY() {
                 let p = PathBuf::new();
 
-                assert!(p.is_empty());
+                assert!(IsEmpty::is_empty(&p));
 
                 let ie = as_IsEmpty(&p);
 

@@ -1,3 +1,5 @@
+// src/traits/is_default.rs : `ToF64`
+
 use base_traits::ToF64;
 
 /// Trivial implementation of a price type using exact types (integers)
@@ -33,7 +35,7 @@ where
         let n = values.len() as f64;
         let sum : f64 = values.iter().sum();
         let mean = sum / n;
-        let ss : f64 = values.iter().map(|v| (v - mean)).map(|v| v * v).sum();
+        let ss : f64 = values.iter().map(|v| v - mean).map(|v| v * v).sum();
         let var = ss / n;
         let stddev = var.sqrt();
 

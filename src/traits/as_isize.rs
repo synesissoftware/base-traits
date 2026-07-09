@@ -19,14 +19,14 @@ pub trait AsISize {
 }
 
 
-#[cfg(all(not(test), not(feature = "nostd")))]
+#[cfg(any(test, not(feature = "nostd")))]
 impl<T : AsISize + ?Sized> AsISize for Box<T> {
     fn as_isize(&self) -> isize {
         (**self).as_isize()
     }
 }
 
-#[cfg(all(not(test), not(feature = "nostd")))]
+#[cfg(any(test, not(feature = "nostd")))]
 impl<T : AsISize + ?Sized> AsISize for std::rc::Rc<T> {
     fn as_isize(&self) -> isize {
         (**self).as_isize()
@@ -185,7 +185,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value;
-                let actual = (&value).as_isize();
+                let value = &value;
+                let actual = value.as_isize();
 
                 assert_eq!(expected, actual);
             }
@@ -238,8 +239,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value;
-                let instance = Box::new(value);
-                let actual = (&instance).as_isize();
+                let instance = &Box::new(value);
+                let actual = instance.as_isize();
 
                 assert_eq!(expected, actual);
             }
@@ -292,8 +293,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value;
-                let instance = std_rc::Rc::new(value);
-                let actual = (&instance).as_isize();
+                let instance = &std_rc::Rc::new(value);
+                let actual = instance.as_isize();
 
                 assert_eq!(expected, actual);
             }

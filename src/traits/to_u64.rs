@@ -22,14 +22,14 @@ pub trait ToU64 {
 }
 
 
-#[cfg(all(not(test), not(feature = "nostd")))]
+#[cfg(any(test, not(feature = "nostd")))]
 impl<T : ToU64 + ?Sized> ToU64 for Box<T> {
     fn to_u64(&self) -> u64 {
         (**self).to_u64()
     }
 }
 
-#[cfg(all(not(test), not(feature = "nostd")))]
+#[cfg(any(test, not(feature = "nostd")))]
 impl<T : ToU64 + ?Sized> ToU64 for std::rc::Rc<T> {
     fn to_u64(&self) -> u64 {
         (**self).to_u64()
@@ -77,6 +77,7 @@ mod tests {
 
 
     mod TEST_CUSTOM_TYPE {
+        #![allow(clippy::redundant_field_names)]
         #![allow(non_snake_case)]
 
         use super::ToU64;
@@ -88,7 +89,7 @@ mod tests {
 
         impl ToU64 for CustomType {
             fn to_u64(&self) -> u64 {
-                self.value as u64
+                self.value
             }
         }
 
@@ -102,12 +103,12 @@ mod tests {
                 2, 4, 8, 16, 32, 64, 64, 256,
                 u16::MAX as u64,
                 u32::MAX as u64,
-                u64::MAX as u64,
+                u64::MAX,
             ];
 
             for &value in VALUES {
                 let expected = value;
-                let instance = CustomType { value: value as u64 };
+                let instance = CustomType { value: value };
                 let actual = instance.to_u64();
 
                 assert_eq!(expected, actual);
@@ -169,7 +170,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value as u64;
-                let actual = (&value).to_u64();
+                let value = &value;
+                let actual = value.to_u64();
 
                 assert_eq!(expected, actual);
             }
@@ -195,7 +197,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value as u64;
-                let actual = (&value).to_u64();
+                let value = &value;
+                let actual = value.to_u64();
 
                 assert_eq!(expected, actual);
             }
@@ -221,7 +224,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value;
-                let actual = (&value).to_u64();
+                let value = &value;
+                let actual = value.to_u64();
 
                 assert_eq!(expected, actual);
             }
@@ -274,8 +278,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value;
-                let instance = Box::new(value);
-                let actual = (&instance).to_u64();
+                let instance = &Box::new(value);
+                let actual = instance.to_u64();
 
                 assert_eq!(expected, actual);
             }
@@ -328,8 +332,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value;
-                let instance = std_rc::Rc::new(value);
-                let actual = (&instance).to_u64();
+                let instance = &std_rc::Rc::new(value);
+                let actual = instance.to_u64();
 
                 assert_eq!(expected, actual);
             }

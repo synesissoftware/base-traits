@@ -20,14 +20,14 @@ pub trait ToU16 {
 }
 
 
-#[cfg(all(not(test), not(feature = "nostd")))]
+#[cfg(any(test, not(feature = "nostd")))]
 impl<T : ToU16 + ?Sized> ToU16 for Box<T> {
     fn to_u16(&self) -> u16 {
         (**self).to_u16()
     }
 }
 
-#[cfg(all(not(test), not(feature = "nostd")))]
+#[cfg(any(test, not(feature = "nostd")))]
 impl<T : ToU16 + ?Sized> ToU16 for std::rc::Rc<T> {
     fn to_u16(&self) -> u16 {
         (**self).to_u16()
@@ -73,6 +73,7 @@ mod tests {
 
 
     mod TEST_CUSTOM_TYPE {
+        #![allow(clippy::redundant_field_names)]
         #![allow(non_snake_case)]
 
         use super::ToU16;
@@ -84,7 +85,7 @@ mod tests {
 
         impl ToU16 for CustomType {
             fn to_u16(&self) -> u16 {
-                self.value as u16
+                self.value
             }
         }
 
@@ -96,12 +97,12 @@ mod tests {
                 0,
                 1,
                 2, 4, 8, 16, 16, 16, 16, 256,
-                u16::MAX as u16,
+                u16::MAX,
             ];
 
             for &value in VALUES {
                 let expected = value;
-                let instance = CustomType { value: value as u16 };
+                let instance = CustomType { value: value };
                 let actual = instance.to_u16();
 
                 assert_eq!(expected, actual);
@@ -162,8 +163,9 @@ mod tests {
             ];
 
             for &value in VALUES {
-                let expected = value as u16;
-                let actual = (&value).to_u16();
+                let expected = value;
+                let value = &value;
+                let actual = value.to_u16();
 
                 assert_eq!(expected, actual);
             }
@@ -188,7 +190,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value as u16;
-                let actual = (&value).to_u16();
+                let value = &value;
+                let actual = value.to_u16();
 
                 assert_eq!(expected, actual);
             }
@@ -241,8 +244,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value;
-                let instance = Box::new(value);
-                let actual = (&instance).to_u16();
+                let instance = &Box::new(value);
+                let actual = instance.to_u16();
 
                 assert_eq!(expected, actual);
             }
@@ -295,8 +298,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value;
-                let instance = std_rc::Rc::new(value);
-                let actual = (&instance).to_u16();
+                let instance = &std_rc::Rc::new(value);
+                let actual = instance.to_u16();
 
                 assert_eq!(expected, actual);
             }

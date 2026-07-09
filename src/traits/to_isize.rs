@@ -28,14 +28,14 @@ pub trait ToISize {
 }
 
 
-#[cfg(all(not(test), not(feature = "nostd")))]
+#[cfg(any(test, not(feature = "nostd")))]
 impl<T : ToISize + ?Sized> ToISize for Box<T> {
     fn to_isize(&self) -> isize {
         (**self).to_isize()
     }
 }
 
-#[cfg(all(not(test), not(feature = "nostd")))]
+#[cfg(any(test, not(feature = "nostd")))]
 impl<T : ToISize + ?Sized> ToISize for std::rc::Rc<T> {
     fn to_isize(&self) -> isize {
         (**self).to_isize()
@@ -102,6 +102,7 @@ mod impl_for_built_ins {
         implement_ToISize_!(i64);
     }
 
+    #[allow(clippy::non_minimal_cfg)]
     #[cfg(any(
         target_pointer_width = "128",
     ))]
@@ -220,7 +221,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value as isize;
-                let actual = (&value).to_isize();
+                let value = &value;
+                let actual = value.to_isize();
 
                 assert_eq!(expected, actual);
             }
@@ -252,7 +254,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value as isize;
-                let actual = (&value).to_isize();
+                let value = &value;
+                let actual = value.to_isize();
 
                 assert_eq!(expected, actual);
             }
@@ -283,7 +286,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value as isize;
-                let actual = (&value).to_isize();
+                let value = &value;
+                let actual = value.to_isize();
 
                 assert_eq!(expected, actual);
             }
@@ -309,7 +313,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value;
-                let actual = (&value).to_isize();
+                let value = &value;
+                let actual = value.to_isize();
 
                 assert_eq!(expected, actual);
             }
@@ -362,8 +367,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value;
-                let instance = Box::new(value);
-                let actual = (&instance).to_isize();
+                let instance = &Box::new(value);
+                let actual = instance.to_isize();
 
                 assert_eq!(expected, actual);
             }
@@ -416,8 +421,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value;
-                let instance = std_rc::Rc::new(value);
-                let actual = (&instance).to_isize();
+                let instance = &std_rc::Rc::new(value);
+                let actual = instance.to_isize();
 
                 assert_eq!(expected, actual);
             }

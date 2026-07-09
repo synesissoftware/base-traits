@@ -24,14 +24,14 @@ pub trait ToUSize {
 }
 
 
-#[cfg(all(not(test), not(feature = "nostd")))]
+#[cfg(any(test, not(feature = "nostd")))]
 impl<T : ToUSize + ?Sized> ToUSize for Box<T> {
     fn to_usize(&self) -> usize {
         (**self).to_usize()
     }
 }
 
-#[cfg(all(not(test), not(feature = "nostd")))]
+#[cfg(any(test, not(feature = "nostd")))]
 impl<T : ToUSize + ?Sized> ToUSize for std::rc::Rc<T> {
     fn to_usize(&self) -> usize {
         (**self).to_usize()
@@ -87,6 +87,7 @@ mod impl_for_built_ins {
     ))]
     implement_ToUSize_!(u64);
 
+    #[allow(clippy::non_minimal_cfg)]
     #[cfg(any(
         target_pointer_width = "128",
     ))]
@@ -203,7 +204,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value as usize;
-                let actual = (&value).to_usize();
+                let value = &value;
+                let actual = value.to_usize();
 
                 assert_eq!(expected, actual);
             }
@@ -234,7 +236,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value as usize;
-                let actual = (&value).to_usize();
+                let value = &value;
+                let actual = value.to_usize();
 
                 assert_eq!(expected, actual);
             }
@@ -260,7 +263,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value;
-                let actual = (&value).to_usize();
+                let value = &value;
+                let actual = value.to_usize();
 
                 assert_eq!(expected, actual);
             }
@@ -313,8 +317,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value;
-                let instance = Box::new(value);
-                let actual = (&instance).to_usize();
+                let instance = &Box::new(value);
+                let actual = instance.to_usize();
 
                 assert_eq!(expected, actual);
             }
@@ -367,8 +371,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value;
-                let instance = std_rc::Rc::new(value);
-                let actual = (&instance).to_usize();
+                let instance = &std_rc::Rc::new(value);
+                let actual = instance.to_usize();
 
                 assert_eq!(expected, actual);
             }

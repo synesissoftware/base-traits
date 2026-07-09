@@ -58,14 +58,14 @@ pub trait Len {
 }
 
 
-#[cfg(all(not(test), not(feature = "nostd")))]
+#[cfg(any(test, not(feature = "nostd")))]
 impl<T : Len + ?Sized> Len for Box<T> {
     fn len(&self) -> usize {
         (**self).len()
     }
 }
 
-#[cfg(all(not(test), not(feature = "nostd")))]
+#[cfg(any(test, not(feature = "nostd")))]
 impl<T : Len + ?Sized> Len for std::rc::Rc<T> {
     fn len(&self) -> usize {
         (**self).len()
@@ -284,12 +284,30 @@ mod impl_for_std_ffi_types {
 
         #[inline]
         pub(super) fn get_len_CStr_(cstr : &std_ffi::CStr) -> usize {
-            cstr.count_bytes()
+            #![allow(clippy::incompatible_msrv)]
+
+            #[cfg(rustc_1_79_or_newer)]
+            {
+                cstr.count_bytes()
+            }
+            #[cfg(not(rustc_1_79_or_newer))]
+            {
+                cstr.to_bytes_with_nul().len() - 1
+            }
         }
 
         #[inline]
         pub(super) fn get_len_CString_(cstring : &std_ffi::CString) -> usize {
-            cstring.count_bytes()
+            #![allow(clippy::incompatible_msrv)]
+
+            #[cfg(rustc_1_79_or_newer)]
+            {
+                cstring.count_bytes()
+            }
+            #[cfg(not(rustc_1_79_or_newer))]
+            {
+                cstring.to_bytes_with_nul().len() - 1
+            }
         }
     }
 

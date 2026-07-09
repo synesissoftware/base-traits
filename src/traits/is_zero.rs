@@ -44,14 +44,14 @@ pub trait IsZero {
 }
 
 
-#[cfg(all(not(test), not(feature = "nostd")))]
+#[cfg(any(test, not(feature = "nostd")))]
 impl<T : IsZero + ?Sized> IsZero for Box<T> {
     fn is_zero(&self) -> bool {
         (**self).is_zero()
     }
 }
 
-#[cfg(all(not(test), not(feature = "nostd")))]
+#[cfg(any(test, not(feature = "nostd")))]
 impl<T : IsZero + ?Sized> IsZero for std::rc::Rc<T> {
     fn is_zero(&self) -> bool {
         (**self).is_zero()

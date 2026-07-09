@@ -21,14 +21,14 @@ pub trait ToI16 {
 }
 
 
-#[cfg(all(not(test), not(feature = "nostd")))]
+#[cfg(any(test, not(feature = "nostd")))]
 impl<T : ToI16 + ?Sized> ToI16 for Box<T> {
     fn to_i16(&self) -> i16 {
         (**self).to_i16()
     }
 }
 
-#[cfg(all(not(test), not(feature = "nostd")))]
+#[cfg(any(test, not(feature = "nostd")))]
 impl<T : ToI16 + ?Sized> ToI16 for std::rc::Rc<T> {
     fn to_i16(&self) -> i16 {
         (**self).to_i16()
@@ -75,6 +75,7 @@ mod tests {
 
 
     mod TEST_CUSTOM_TYPE {
+        #![allow(clippy::redundant_field_names)]
         #![allow(non_snake_case)]
 
         use super::ToI16;
@@ -86,7 +87,7 @@ mod tests {
 
         impl ToI16 for CustomType {
             fn to_i16(&self) -> i16 {
-                self.value as i16
+                self.value
             }
         }
 
@@ -102,7 +103,7 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value;
-                let instance = CustomType { value: value as i16 };
+                let instance = CustomType { value: value };
                 let actual = instance.to_i16();
 
                 assert_eq!(expected, actual);
@@ -163,8 +164,9 @@ mod tests {
             ];
 
             for &value in VALUES {
-                let expected = value as i16;
-                let actual = (&value).to_i16();
+                let expected = value;
+                let value = &value;
+                let actual = value.to_i16();
 
                 assert_eq!(expected, actual);
             }
@@ -217,8 +219,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value;
-                let instance = Box::new(value);
-                let actual = (&instance).to_i16();
+                let instance = &Box::new(value);
+                let actual = instance.to_i16();
 
                 assert_eq!(expected, actual);
             }
@@ -271,8 +273,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value;
-                let instance = std_rc::Rc::new(value);
-                let actual = (&instance).to_i16();
+                let instance = &std_rc::Rc::new(value);
+                let actual = instance.to_i16();
 
                 assert_eq!(expected, actual);
             }

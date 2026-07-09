@@ -21,14 +21,14 @@ pub trait ToU32 {
 }
 
 
-#[cfg(all(not(test), not(feature = "nostd")))]
+#[cfg(any(test, not(feature = "nostd")))]
 impl<T : ToU32 + ?Sized> ToU32 for Box<T> {
     fn to_u32(&self) -> u32 {
         (**self).to_u32()
     }
 }
 
-#[cfg(all(not(test), not(feature = "nostd")))]
+#[cfg(any(test, not(feature = "nostd")))]
 impl<T : ToU32 + ?Sized> ToU32 for std::rc::Rc<T> {
     fn to_u32(&self) -> u32 {
         (**self).to_u32()
@@ -75,6 +75,7 @@ mod tests {
 
 
     mod TEST_CUSTOM_TYPE {
+        #![allow(clippy::redundant_field_names)]
         #![allow(non_snake_case)]
 
         use super::ToU32;
@@ -86,7 +87,7 @@ mod tests {
 
         impl ToU32 for CustomType {
             fn to_u32(&self) -> u32 {
-                self.value as u32
+                self.value
             }
         }
 
@@ -99,12 +100,12 @@ mod tests {
                 1,
                 2, 4, 8, 16, 32, 32, 32, 256,
                 u16::MAX as u32,
-                u32::MAX as u32,
+                u32::MAX,
             ];
 
             for &value in VALUES {
                 let expected = value;
-                let instance = CustomType { value: value as u32 };
+                let instance = CustomType { value: value };
                 let actual = instance.to_u32();
 
                 assert_eq!(expected, actual);
@@ -166,7 +167,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value as u32;
-                let actual = (&value).to_u32();
+                let value = &value;
+                let actual = value.to_u32();
 
                 assert_eq!(expected, actual);
             }
@@ -192,7 +194,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value;
-                let actual = (&value).to_u32();
+                let value = &value;
+                let actual = value.to_u32();
 
                 assert_eq!(expected, actual);
             }
@@ -245,8 +248,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value;
-                let instance = Box::new(value);
-                let actual = (&instance).to_u32();
+                let instance = &Box::new(value);
+                let actual = instance.to_u32();
 
                 assert_eq!(expected, actual);
             }
@@ -299,8 +302,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value;
-                let instance = std_rc::Rc::new(value);
-                let actual = (&instance).to_u32();
+                let instance = &std_rc::Rc::new(value);
+                let actual = instance.to_u32();
 
                 assert_eq!(expected, actual);
             }

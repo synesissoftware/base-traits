@@ -19,14 +19,14 @@ pub trait AsUSize {
 }
 
 
-#[cfg(all(not(test), not(feature = "nostd")))]
+#[cfg(any(test, not(feature = "nostd")))]
 impl<T : AsUSize + ?Sized> AsUSize for Box<T> {
     fn as_usize(&self) -> usize {
         (**self).as_usize()
     }
 }
 
-#[cfg(all(not(test), not(feature = "nostd")))]
+#[cfg(any(test, not(feature = "nostd")))]
 impl<T : AsUSize + ?Sized> AsUSize for std::rc::Rc<T> {
     fn as_usize(&self) -> usize {
         (**self).as_usize()
@@ -183,7 +183,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value;
-                let actual = (&value).as_usize();
+                let value = &value;
+                let actual = value.as_usize();
 
                 assert_eq!(expected, actual);
             }
@@ -236,8 +237,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value;
-                let instance = Box::new(value);
-                let actual = (&instance).as_usize();
+                let instance = &Box::new(value);
+                let actual = instance.as_usize();
 
                 assert_eq!(expected, actual);
             }
@@ -290,8 +291,8 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value;
-                let instance = std_rc::Rc::new(value);
-                let actual = (&instance).as_usize();
+                let instance = &std_rc::Rc::new(value);
+                let actual = instance.as_usize();
 
                 assert_eq!(expected, actual);
             }
