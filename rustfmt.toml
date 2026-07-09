@@ -1,7 +1,13 @@
 
 # rustfmt.toml for base-traits
 #
-# configured for cargo-fmt 1.81.0
+# Requires nightly rustfmt with unstable features enabled, e.g.:
+#
+#   ./scripts/fmt
+#
+# Or:
+#
+#   RUSTFMT="$(rustup which --toolchain nightly rustfmt)" cargo fmt -- --unstable-features
 
 # array_width=60 # deprecated
 # attr_fn_like_width=70 # deprecated
@@ -12,11 +18,11 @@ brace_style="SameLineWhere"
 # chain_width=60 # deprecated
 color="Auto"
 combine_control_expr=false
-comment_width=100
+comment_width=76
 condense_wildcard_suffixes=false
 control_brace_style="AlwaysSameLine"
 disable_all_formatting=false
-edition="2018"
+edition="2021"
 empty_item_single_line=false
 enum_discrim_align_threshold=0
 error_on_line_overflow=false
@@ -60,6 +66,7 @@ reorder_modules=true
 # report_fixme="Always"
 # report_todo="Never"
 # required_version="????"
+short_array_element_width_threshold=1
 # single_line_if_else_max_width=0 # deprecated
 show_parse_errors=true
 skip_children=false
@@ -74,7 +81,7 @@ tab_spaces=4 # Q: do we want to move to 2??
 trailing_comma="Vertical"
 trailing_semicolon=true
 type_punctuation_density="Wide"
-# unstable_features=false
+unstable_features=true
 use_field_init_shorthand=true
 use_small_heuristics="Default"
 use_try_shorthand=true
