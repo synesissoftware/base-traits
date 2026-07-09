@@ -2,6 +2,14 @@
 
 base traits, for Rust
 
+![Language](https://img.shields.io/badge/Rust-000000?style=flat&logo=rust&logoColor=white)
+[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
+[![Crates.io](https://img.shields.io/crates/v/base-traits.svg)](https://crates.io/crates/base-traits)
+[![GitHub release](https://img.shields.io/github/v/release/synesissoftware/base-traits.svg)](https://github.com/synesissoftware/base-traits/releases/latest)
+![MSRV](https://img.shields.io/badge/MSRV-1.74-lightgrey)
+[![CI](https://github.com/synesissoftware/base-traits/actions/workflows/ci.yml/badge.svg)](https://github.com/synesissoftware/base-traits/actions/workflows/ci.yml)
+[![docs.rs](https://docs.rs/base-traits/badge.svg)](https://docs.rs/base-traits)
+
 
 ## Introduction
 
@@ -15,19 +23,22 @@ This crate defines general-purpose `trait`s that:
 - [Introduction](#introduction)
 - [Installation](#installation)
 - [Components](#components)
-	- [Enumerations](#enumerations)
-	- [Features](#features)
-	- [Functions](#functions)
-	- [Macros](#macros)
-	- [Structures](#structures)
-	- [Traits](#traits)
+  - [Enumerations](#enumerations)
+  - [Features](#features)
+  - [Functions](#functions)
+  - [Macros](#macros)
+  - [Structures](#structures)
+  - [Traits](#traits)
 - [Examples](#examples)
 - [Project Information](#project-information)
-	- [Where to get help](#where-to-get-help)
-	- [Contribution guidelines](#contribution-guidelines)
-	- [Dependencies](#dependencies)
-	- [Related projects](#related-projects)
-	- [License](#license)
+  - [Where to get help](#where-to-get-help)
+  - [Contribution guidelines](#contribution-guidelines)
+  - [Dependencies](#dependencies)
+    - [Efferent (fan-out)](#efferent-fan-out)
+    - [Development Dependencies](#development-dependencies)
+    - [Afferent (fan-in)](#afferent-fan-in)
+  - [Related projects](#related-projects)
+  - [License](#license)
 
 
 ## Installation
@@ -244,14 +255,30 @@ Defect reports, feature requests, and pull requests are welcome on https://githu
 
 ### Dependencies
 
+
+#### Efferent (fan-out)
+
 There are no dependencies on other crates.
+
+
+#### Development Dependencies
+
+There are no development dependencies on other crates.
+
+
+#### Afferent (fan-in)
+
+Projects that depend on **base-traits**:
+
+* [**collect-rs**](https://github.com/synesissoftware/collect-rs);
+* [**Diagnosticism.Rust**](https://github.com/synesissoftware/Diagnosticism.Rust);
+* [**shwild.Rust**](https://github.com/synesissoftware/shwild.Rust);
+* [**test_help-rs**](https://github.com/synesissoftware/test_help-rs);
+* [**to-be.Rust**](https://github.com/synesissoftware/to-be.Rust);
 
 
 ### Related projects
 
-* [**Diagnosticism.Rust**](https://github.com/synesissoftware/Diagnosticism.Rust);
-* [**shwild.Rust**](https://github.com/synesissoftware/shwild.Rust);
-* [**test_help-rs**](https://github.com/synesissoftware/test_help-rs);
 
 
 ### License
