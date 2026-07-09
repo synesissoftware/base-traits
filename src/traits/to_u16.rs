@@ -162,7 +162,7 @@ mod tests {
             ];
 
             for &value in VALUES {
-                let expected = value as u16;
+                let expected = value;
                 let value = &value;
                 let actual = value.to_u16();
 
