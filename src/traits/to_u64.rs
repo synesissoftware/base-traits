@@ -88,7 +88,7 @@ mod tests {
 
         impl ToU64 for CustomType {
             fn to_u64(&self) -> u64 {
-                self.value as u64
+                self.value
             }
         }
 

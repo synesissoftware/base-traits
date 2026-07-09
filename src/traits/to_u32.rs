@@ -86,7 +86,7 @@ mod tests {
 
         impl ToU32 for CustomType {
             fn to_u32(&self) -> u32 {
-                self.value as u32
+                self.value
             }
         }
 

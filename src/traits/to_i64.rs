@@ -94,7 +94,7 @@ mod tests {
 
         impl ToI64 for CustomType {
             fn to_i64(&self) -> i64 {
-                self.value as i64
+                self.value
             }
         }
 

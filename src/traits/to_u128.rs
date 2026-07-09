@@ -90,7 +90,7 @@ mod tests {
 
         impl ToU128 for CustomType {
             fn to_u128(&self) -> u128 {
-                self.value as u128
+                self.value
             }
         }
 

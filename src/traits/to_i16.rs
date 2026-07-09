@@ -86,7 +86,7 @@ mod tests {
 
         impl ToI16 for CustomType {
             fn to_i16(&self) -> i16 {
-                self.value as i16
+                self.value
             }
         }
 
