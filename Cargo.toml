@@ -265,6 +265,11 @@ nostd = []
 
 [dependencies]
 
+[build-dependencies]
+
+bt-rs = { version = "0.0.1", default-features = false, features = [
+] }
+
 
 [dev-dependencies]
 

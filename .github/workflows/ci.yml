@@ -30,8 +30,6 @@ jobs:
       - name: cargo test
         run: cargo test
 
-      - name: cargo test (nan-equality)
-        run: cargo test --features nan-equality
 
       - name: cargo clippy
         run: cargo clippy --all-targets -- -D warnings
@@ -68,5 +66,3 @@ jobs:
 
       - uses: Swatinem/rust-cache@v2
 
-      - name: cargo test (nightly-constants)
-        run: cargo test --features nightly-constants

@@ -284,12 +284,26 @@ mod impl_for_std_ffi_types {
 
         #[inline]
         pub(super) fn get_len_CStr_(cstr : &std_ffi::CStr) -> usize {
-            cstr.count_bytes()
+            #[cfg(rustc_1_79_or_newer)]
+            {
+                cstr.count_bytes()
+            }
+            #[cfg(not(rustc_1_79_or_newer))]
+            {
+                cstr.to_bytes_with_nul().len() - 1
+            }
         }
 
         #[inline]
         pub(super) fn get_len_CString_(cstring : &std_ffi::CString) -> usize {
-            cstring.count_bytes()
+            #[cfg(rustc_1_79_or_newer)]
+            {
+                cstring.count_bytes()
+            }
+            #[cfg(not(rustc_1_79_or_newer))]
+            {
+                cstring.to_bytes_with_nul().len() - 1
+            }
         }
     }
 

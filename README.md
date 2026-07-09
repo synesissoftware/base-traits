@@ -35,6 +35,7 @@ This crate defines general-purpose `trait`s that:
   - [Contribution guidelines](#contribution-guidelines)
   - [Dependencies](#dependencies)
     - [Efferent (fan-out)](#efferent-fan-out)
+    - [Build Dependencies](#build-dependencies)
     - [Development Dependencies](#development-dependencies)
     - [Afferent (fan-in)](#afferent-fan-in)
   - [Related projects](#related-projects)
@@ -258,7 +259,16 @@ Defect reports, feature requests, and pull requests are welcome on https://githu
 
 #### Efferent (fan-out)
 
+Libraries upon which **test_help-rs** depends:
+
 There are no dependencies on other crates.
+
+
+#### Build Dependencies
+
+Libraries used only when building **base-traits** (not required by downstream consumers):
+
+* [**bt-rs**](https://github.com/synesissoftware/bt-rs) — [`rustc::compiler_version()`](https://docs.rs/bt-rs/latest/bt_rs/rustc/fn.compiler_version.html) in **build.rs** to detect Rust 1.79+ and set the `rustc_1_79_or_newer` cfg for use of `CStr#count_bytes()`;
 
 
 #### Development Dependencies

@@ -14,6 +14,7 @@
 * canonicalised **.gitattributes** and **.gitignore**;
 * added CI (GitHub Actions);
 * various other boilerplate fixes;
+* added **`[build-dependencies]`** **bt-rs** and **build.rs** (`rustc_1_79_or_newer` cfg);
 
 
 ## 0.0.13 - 2nd April 2025

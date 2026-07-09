@@ -5,3 +5,12 @@ version = 3
 [[package]]
 name = "base-traits"
 version = "0.0.14"
+dependencies = [
+ "bt-rs",
+]
+
+[[package]]
+name = "bt-rs"
+version = "0.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a4985bd0bdfcd2a13bdeaa1798240f2168998107a7939a39384c4c7608392a26"
