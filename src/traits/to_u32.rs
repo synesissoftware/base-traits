@@ -99,7 +99,7 @@ mod tests {
                 1,
                 2, 4, 8, 16, 32, 32, 32, 256,
                 u16::MAX as u32,
-                u32::MAX as u32,
+                u32::MAX,
             ];
 
             for &value in VALUES {

@@ -96,7 +96,7 @@ mod tests {
                 0,
                 1,
                 2, 4, 8, 16, 16, 16, 16, 256,
-                u16::MAX as u16,
+                u16::MAX,
             ];
 
             for &value in VALUES {
