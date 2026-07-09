@@ -3,9 +3,16 @@
 
 ## 0.0.14 - 9th July 2026
 
-* added **CHANGES.md**;
-* added **TODO.md**;
 * fixed `Box`/`Rc` trait implementations being excluded under `cargo test` (incorrect `cfg` gating introduced with `"nostd"`);
+* enhanced **README.md** (badges; dependency / afferent project sections);
+* added **CHANGES.md**;
+* added **EXAMPLES.md**;
+* added **NEWS.md**;
+* added **TODO.md**;
+* updated **LICENSE** copyright year;
+* renamed **.rustfmt.toml** => **rustfmt.toml**;
+* canonicalised **.gitattributes** and **.gitignore**;
+* various other boilerplate fixes;
 
 
 ## 0.0.13 - 2nd April 2025
