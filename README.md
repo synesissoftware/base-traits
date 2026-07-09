@@ -259,7 +259,7 @@ Defect reports, feature requests, and pull requests are welcome on https://githu
 
 #### Efferent (fan-out)
 
-Libraries upon which **test_help-rs** depends:
+Libraries upon which **base-traits** depends:
 
 There are no dependencies on other crates.
 
