@@ -1,14 +1,6 @@
 // traits/mod.rs
 
-macro_rules! declare_and_publish {
-    ($mod_name:ident, $($type_name:ident),*) => {
-        mod $mod_name;
-
-        pub use $mod_name::{
-            $($type_name),*
-        };
-    };
-}
+use crate::macros::declare_and_publish;
 
 declare_and_publish!(as_f64, AsF64);
 declare_and_publish!(as_i128, AsI128);
@@ -46,8 +38,7 @@ declare_and_publish!(to_usize, ToUSize);
 declare_and_publish!(unsigned, Unsigned);
 declare_and_publish!(zero, Zero);
 
-mod sealed;
-pub(crate) use sealed::Sealed;
+declare_and_publish!(crate sealed, Sealed);
 
 
 // ///////////////////////////// end of file //////////////////////////// //

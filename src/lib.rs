@@ -15,9 +15,9 @@
 // /////////////////////////////////////////////////////////
 // imports
 
-mod traits;
+pub(crate) mod macros;
 
-pub use traits::{
+macros::declare_and_publish!(pub traits,
     AsF64,
     AsI128,
     AsI32,
@@ -53,10 +53,11 @@ pub use traits::{
     ToUSize,
     Unsigned,
     Zero,
-};
+);
 
 mod private {
-    #[allow(unused_imports)]
+    #![allow(unused_imports)]
+
     pub(crate) use super::traits::Sealed;
 }
 
