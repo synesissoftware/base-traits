@@ -35,8 +35,9 @@ This crate defines general-purpose `trait`s that:
   - [Contribution guidelines](#contribution-guidelines)
   - [Dependencies](#dependencies)
     - [Efferent (fan-out)](#efferent-fan-out)
-    - [Build Dependencies](#build-dependencies)
-    - [Development Dependencies](#development-dependencies)
+      - [Runtime Dependencies](#runtime-dependencies)
+      - [Build Dependencies](#build-dependencies)
+      - [Development Dependencies](#development-dependencies)
     - [Afferent (fan-in)](#afferent-fan-in)
   - [Related projects](#related-projects)
   - [License](#license)
@@ -261,17 +262,20 @@ Defect reports, feature requests, and pull requests are welcome on https://githu
 
 Libraries upon which **base-traits** depends:
 
-There are no dependencies on other crates.
+
+##### Runtime Dependencies
+
+There are no runtime dependencies (aka "normal dependencies") on other crates.
 
 
-#### Build Dependencies
+##### Build Dependencies
 
 Libraries used only when building **base-traits** (not required by downstream consumers):
 
 * [**bt-rs**](https://github.com/synesissoftware/bt-rs) — [`rustc::compiler_version()`](https://docs.rs/bt-rs/latest/bt_rs/rustc/fn.compiler_version.html) in **build.rs** to detect Rust 1.79+ and set the `rustc_1_79_or_newer` cfg for use of `CStr#count_bytes()`;
 
 
-#### Development Dependencies
+##### Development Dependencies
 
 There are no development dependencies on other crates.
 
