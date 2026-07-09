@@ -5,7 +5,7 @@ use base_traits::ToF64;
 #[derive(Debug)]
 struct Price {
     dollars : u32,
-    cents : u8,
+    cents :   u8,
 }
 
 impl ToF64 for Price {
@@ -26,7 +26,7 @@ where
     F : ToF64 + 'a,
     I : Iterator<Item = &'a F>,
 {
-    let values = i.map(|v| v.to_f64()).collect::<Vec::<_>>();
+    let values = i.map(|v| v.to_f64()).collect::<Vec<_>>();
 
     if values.is_empty() {
         None
@@ -34,7 +34,7 @@ where
         let n = values.len() as f64;
         let sum : f64 = values.iter().sum();
         let mean = sum / n;
-        let ss : f64 = values.iter().map(|v| (v - mean)).map(|v| v*v).sum();
+        let ss : f64 = values.iter().map(|v| v - mean).map(|v| v * v).sum();
         let var = ss / n;
         let stddev = var.sqrt();
 

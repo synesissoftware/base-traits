@@ -19,12 +19,14 @@ pub trait AsISize {
 }
 
 
+#[cfg(any(test, not(feature = "nostd")))]
 impl<T : AsISize + ?Sized> AsISize for Box<T> {
     fn as_isize(&self) -> isize {
         (**self).as_isize()
     }
 }
 
+#[cfg(any(test, not(feature = "nostd")))]
 impl<T : AsISize + ?Sized> AsISize for std::rc::Rc<T> {
     fn as_isize(&self) -> isize {
         (**self).as_isize()
@@ -87,7 +89,9 @@ mod tests {
                 64,
                 128,
                 256,
+                u16::MAX as isize,
                 u32::MAX as isize,
+                u64::MAX as isize,
             ];
 
             for &value in VALUES {

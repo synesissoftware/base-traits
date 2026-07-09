@@ -19,7 +19,7 @@ keywords = [
 license = "BSD-3-Clause"
 name = "base-traits"
 readme = "README.md"
-version = "0.0.8"
+version = "0.0.14"
 
 
 # ##########################################################
@@ -42,11 +42,23 @@ path = "examples/price-to_f64.rs"
 default = [
 	# AsF64
 	"implement-AsF64-for-built_ins",
+	# AsI128
+	"implement-AsI128-for-built_ins",
+	# AsI32
+	"implement-AsI32-for-built_ins",
+	# AsI64
+	"implement-AsI64-for-built_ins",
 	# AsISize
 	"implement-AsISize-for-built_ins",
 	# AsStr
 	"implement-AsStr-for-built_ins",
 	"implement-AsStr-for-standard_collection_types",
+	# AsU128
+	"implement-AsU128-for-built_ins",
+	# AsU32
+	"implement-AsU32-for-built_ins",
+	# AsU64
+	"implement-AsU64-for-built_ins",
 	# AsUSize
 	"implement-AsUSize-for-built_ins",
 	# Infinity
@@ -73,19 +85,60 @@ default = [
 	"implement-Len-for-standard_path_types",
 	# ToF64
 	"implement-ToF64-for-built_ins",
+	# ToI16
+	"implement-ToI16-for-built_ins",
+	# ToI32
+	"implement-ToI32-for-built_ins",
+	# ToI64
+	"implement-ToI64-for-built_ins",
+	# ToI128
+	"implement-ToI128-for-built_ins",
 	# ToISize
 	"implement-ToISize-for-built_ins",
+	# ToU16
+	"implement-ToU16-for-built_ins",
+	# ToU32
+	"implement-ToU32-for-built_ins",
+	# ToU64
+	"implement-ToU64-for-built_ins",
+	# ToU128
+	"implement-ToU128-for-built_ins",
 	# ToUSize
 	"implement-ToUSize-for-built_ins",
 	# Zero
 	"implement-Zero-for-built_ins",
 ]
 
+
+# General features:
+#
+# - "null-feature" - a feature that has no effect (and, thus, is useful for simplifying driver scripts);
+
+null-feature = []
+
+
+# Crate-specific features:
+#
+# - "experimental-exact_size_is_empty" - enables crate feature exact_size_is_empty;
+# - "nostd" - remove all dependencies to std crate;
+
 experimental-exact_size_is_empty = []
 
 # AsF64
 
 implement-AsF64-for-built_ins = []
+
+# AsI128
+
+implement-AsI128-for-built_ins = []
+
+# AsI32
+
+implement-AsI32-for-built_ins = []
+
+# AsI64
+
+implement-AsI64-for-built_ins = []
 
 # AsISize
 
@@ -95,6 +148,18 @@ implement-AsISize-for-built_ins = []
 
 implement-AsStr-for-built_ins = []
 implement-AsStr-for-standard_collection_types = []
+
+# AsU128
+
+implement-AsU128-for-built_ins = []
+
+# AsU32
+
+implement-AsU32-for-built_ins = []
+
+# AsU64
+
+implement-AsU64-for-built_ins = []
 
 # AsUSize
 
@@ -143,9 +208,41 @@ implement-Len-for-standard_process_types = []
 
 implement-ToF64-for-built_ins = []
 
+# ToI16
+
+implement-ToI16-for-built_ins = []
+
+# ToI32
+
+implement-ToI32-for-built_ins = []
+
+# ToI64
+
+implement-ToI64-for-built_ins = []
+
+# ToI128
+
+implement-ToI128-for-built_ins = []
+
 # ToISize
 
 implement-ToISize-for-built_ins = []
+
+# ToU16
+
+implement-ToU16-for-built_ins = []
+
+# ToU32
+
+implement-ToU32-for-built_ins = []
+
+# ToU64
+
+implement-ToU64-for-built_ins = []
+
+# ToU128
+
+implement-ToU128-for-built_ins = []
 
 # ToUSize
 
@@ -154,6 +251,10 @@ implement-ToUSize-for-built_ins = []
 # Zero
 
 implement-Zero-for-built_ins = []
+
+
+nostd = []
+
 
 
 # ##########################################################
