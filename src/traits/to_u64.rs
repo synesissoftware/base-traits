@@ -107,7 +107,7 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value;
-                let instance = CustomType { value: value as u64 };
+                let instance = CustomType { value: value };
                 let actual = instance.to_u64();
 
                 assert_eq!(expected, actual);

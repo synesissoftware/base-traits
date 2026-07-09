@@ -102,7 +102,7 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value;
-                let instance = CustomType { value: value as i16 };
+                let instance = CustomType { value: value };
                 let actual = instance.to_i16();
 
                 assert_eq!(expected, actual);
