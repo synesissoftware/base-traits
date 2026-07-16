@@ -34,7 +34,7 @@ pub trait Zero {
 mod impl_for_built_ins {
     #![allow(non_snake_case)]
 
-    macro_rules! implement_IsZero_ {
+    macro_rules! implement_Zero_ {
         ($type:tt, $zero_value:expr) => {
             impl super::Zero for $type {
                 #[inline]
@@ -45,25 +45,25 @@ mod impl_for_built_ins {
         };
     }
 
-    implement_IsZero_!(i8, 0);
-    implement_IsZero_!(i16, 0);
-    implement_IsZero_!(i32, 0);
-    implement_IsZero_!(i64, 0);
-    implement_IsZero_!(i128, 0);
+    implement_Zero_!(i8, 0);
+    implement_Zero_!(i16, 0);
+    implement_Zero_!(i32, 0);
+    implement_Zero_!(i64, 0);
+    implement_Zero_!(i128, 0);
 
-    implement_IsZero_!(u8, 0);
-    implement_IsZero_!(u16, 0);
-    implement_IsZero_!(u32, 0);
-    implement_IsZero_!(u64, 0);
-    implement_IsZero_!(u128, 0);
+    implement_Zero_!(u8, 0);
+    implement_Zero_!(u16, 0);
+    implement_Zero_!(u32, 0);
+    implement_Zero_!(u64, 0);
+    implement_Zero_!(u128, 0);
 
-    implement_IsZero_!(isize, 0);
-    implement_IsZero_!(usize, 0);
+    implement_Zero_!(isize, 0);
+    implement_Zero_!(usize, 0);
 
-    implement_IsZero_!(f32, 0.0);
-    implement_IsZero_!(f64, 0.0);
+    implement_Zero_!(f32, 0.0);
+    implement_Zero_!(f64, 0.0);
 
-    implement_IsZero_!(char, '\0');
+    implement_Zero_!(char, '\0');
 }
 
 
