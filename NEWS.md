@@ -3,7 +3,7 @@
 
 | Date                  | News Item                                 |
 | --------------------- | ----------------------------------------- |
-| 9th July 2026         | base-traits 0.0.14 released               |
+| 10th July 2026        | base-traits 0.1.0 released                |
 | 2nd April 2025        | base-traits 0.0.13 released               |
 | 2nd April 2025        | base-traits 0.0.12 released               |
 | 8th January 2025      | base-traits 0.0.11 released               |

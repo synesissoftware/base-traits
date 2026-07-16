@@ -1,6 +1,11 @@
 # base-traits Changes <!-- omit in toc -->
 
 
+## 0.1.1 - 15th July 2026
+
+* fixed wrong line in NEWS.md;
+
+
 ## 0.1.0 - 10th July 2026
 
 * first minor release;
