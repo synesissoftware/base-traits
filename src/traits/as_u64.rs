@@ -43,7 +43,6 @@ mod tests {
     #[cfg(feature = "implement-AsU64-for-built_ins")]
     #[test]
     fn TEST_u64_AsU64() {
-
         {
             let v : u64 = 12345678;
             let actual = v.as_u64();
@@ -62,4 +61,3 @@ mod tests {
 
 
 // ///////////////////////////// end of file //////////////////////////// //
-

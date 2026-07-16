@@ -140,12 +140,18 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_VALUES() {
-
             const VALUES : &[isize] = &[
                 // insert list:
                 0,
                 1,
-                2, 4, 8, 16, 32, 64, 128, 256,
+                2,
+                4,
+                8,
+                16,
+                32,
+                64,
+                128,
+                256,
                 u16::MAX as isize,
                 u32::MAX as isize,
                 u64::MAX as isize,
@@ -172,7 +178,6 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_isize_VALUES() {
-
             const VALUES : &[isize] = &[
                 // insert list:
                 0,
@@ -203,7 +208,6 @@ mod tests {
         ))]
         #[test]
         fn TEST_RANGE_OF_i16_VALUES_REF() {
-
             const VALUES : &[i16] = &[
                 // insert list:
                 0,
@@ -236,7 +240,6 @@ mod tests {
         ))]
         #[test]
         fn TEST_RANGE_OF_u16_VALUES_REF() {
-
             const VALUES : &[u16] = &[
                 // insert list:
                 0,
@@ -268,7 +271,6 @@ mod tests {
         ))]
         #[test]
         fn TEST_RANGE_OF_u32_VALUES_REF() {
-
             const VALUES : &[u32] = &[
                 // insert list:
                 0,
@@ -295,7 +297,6 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_isize_VALUES_REF() {
-
             const VALUES : &[isize] = &[
                 // insert list:
                 0,
@@ -322,7 +323,6 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_isize_VALUES_IN_Box() {
-
             const VALUES : &[isize] = &[
                 // insert list:
                 0,
@@ -349,7 +349,6 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_isize_VALUES_IN_REF_Box() {
-
             const VALUES : &[isize] = &[
                 // insert list:
                 0,
@@ -376,7 +375,6 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_isize_VALUES_IN_Rc() {
-
             const VALUES : &[isize] = &[
                 // insert list:
                 0,
@@ -403,7 +401,6 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_isize_VALUES_IN_REF_Rc() {
-
             const VALUES : &[isize] = &[
                 // insert list:
                 0,
@@ -432,4 +429,3 @@ mod tests {
 
 
 // ///////////////////////////// end of file //////////////////////////// //
-

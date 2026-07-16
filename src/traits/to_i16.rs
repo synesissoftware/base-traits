@@ -93,12 +93,18 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_VALUES() {
-
             const VALUES : &[i16] = &[
                 // insert list:
                 0,
                 1,
-                2, 4, 8, 16, 16, 16, 16, 256,
+                2,
+                4,
+                8,
+                16,
+                16,
+                16,
+                16,
+                256,
             ];
 
             for &value in VALUES {
@@ -121,7 +127,6 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_i16_VALUES() {
-
             const VALUES : &[i16] = &[
                 // insert list:
                 0,
@@ -147,7 +152,6 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_i16_VALUES_REF() {
-
             const VALUES : &[i16] = &[
                 // insert list:
                 0,
@@ -174,7 +178,6 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_i16_VALUES_IN_Box() {
-
             const VALUES : &[i16] = &[
                 // insert list:
                 0,
@@ -201,7 +204,6 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_i16_VALUES_IN_REF_Box() {
-
             const VALUES : &[i16] = &[
                 // insert list:
                 0,
@@ -228,7 +230,6 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_i16_VALUES_IN_Rc() {
-
             const VALUES : &[i16] = &[
                 // insert list:
                 0,
@@ -255,7 +256,6 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_i16_VALUES_IN_REF_Rc() {
-
             const VALUES : &[i16] = &[
                 // insert list:
                 0,
@@ -284,4 +284,3 @@ mod tests {
 
 
 // ///////////////////////////// end of file //////////////////////////// //
-

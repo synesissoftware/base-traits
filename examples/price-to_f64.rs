@@ -15,7 +15,6 @@ impl ToF64 for Price {
     }
 }
 
-
 /// Trivial implementation for calculation of mean and std-deviation
 fn calc_mean_and_stddev<'a, F, I>(
     i : I
@@ -42,7 +41,6 @@ where
         Some((mean, stddev))
     }
 }
-
 
 fn main() {
     {
@@ -74,3 +72,4 @@ fn main() {
     }
 }
 
+// ///////////////////////////// end of file //////////////////////////// //

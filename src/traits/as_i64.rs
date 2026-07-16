@@ -43,7 +43,6 @@ mod tests {
     #[cfg(feature = "implement-AsI64-for-built_ins")]
     #[test]
     fn TEST_i64_AsI64() {
-
         {
             let v : i64 = 12345678;
             let actual = v.as_i64();
@@ -62,4 +61,3 @@ mod tests {
 
 
 // ///////////////////////////// end of file //////////////////////////// //
-

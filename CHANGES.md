@@ -5,6 +5,7 @@
 
 * fixed wrong line in NEWS.md;
 * fixing (internal) macro name;
+* fixing rust fmt application;
 
 
 ## 0.1.0 - 10th July 2026

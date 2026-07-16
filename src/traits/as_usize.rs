@@ -76,7 +76,6 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_VALUES() {
-
             const VALUES : &[usize] = &[
                 // insert list:
                 0,
@@ -103,7 +102,6 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_VALUES_IN_Box() {
-
             const VALUES : &[usize] = &[
                 // insert list:
                 0,
@@ -139,7 +137,6 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_VALUES() {
-
             const VALUES : &[usize] = &[
                 // insert list:
                 0,
@@ -165,7 +162,6 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_VALUES_REF() {
-
             const VALUES : &[usize] = &[
                 // insert list:
                 0,
@@ -192,7 +188,6 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_VALUES_IN_Box() {
-
             const VALUES : &[usize] = &[
                 // insert list:
                 0,
@@ -219,7 +214,6 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_VALUES_IN_REF_Box() {
-
             const VALUES : &[usize] = &[
                 // insert list:
                 0,
@@ -246,7 +240,6 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_VALUES_IN_Rc() {
-
             const VALUES : &[usize] = &[
                 // insert list:
                 0,
@@ -273,7 +266,6 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_VALUES_IN_REF_Rc() {
-
             const VALUES : &[usize] = &[
                 // insert list:
                 0,
@@ -302,4 +294,3 @@ mod tests {
 
 
 // ///////////////////////////// end of file //////////////////////////// //
-
