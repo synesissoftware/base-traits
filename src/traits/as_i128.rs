@@ -43,7 +43,6 @@ mod tests {
     #[cfg(feature = "implement-AsI128-for-built_ins")]
     #[test]
     fn TEST_i128_AsI128() {
-
         {
             let v : i128 = 12345678;
             let actual = v.as_i128();
@@ -62,4 +61,3 @@ mod tests {
 
 
 // ///////////////////////////// end of file //////////////////////////// //
-

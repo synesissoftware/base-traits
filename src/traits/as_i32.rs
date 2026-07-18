@@ -43,7 +43,6 @@ mod tests {
     #[cfg(feature = "implement-AsI32-for-built_ins")]
     #[test]
     fn TEST_i32_AsI32() {
-
         {
             let v : i32 = 12345678;
             let actual = v.as_i32();
@@ -62,4 +61,3 @@ mod tests {
 
 
 // ///////////////////////////// end of file //////////////////////////// //
-
