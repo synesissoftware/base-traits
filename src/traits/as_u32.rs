@@ -43,7 +43,6 @@ mod tests {
     #[cfg(feature = "implement-AsU32-for-built_ins")]
     #[test]
     fn TEST_u32_AsU32() {
-
         {
             let v : u32 = 12345678;
             let actual = v.as_u32();
@@ -62,4 +61,3 @@ mod tests {
 
 
 // ///////////////////////////// end of file //////////////////////////// //
-

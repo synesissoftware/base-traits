@@ -96,12 +96,18 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_VALUES() {
-
             const VALUES : &[i32] = &[
                 // insert list:
                 0,
                 1,
-                2, 4, 8, 16, 32, 32, 32, 256,
+                2,
+                4,
+                8,
+                16,
+                32,
+                32,
+                32,
+                256,
                 u32::MAX as i32,
             ];
 
@@ -125,7 +131,6 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_i32_VALUES() {
-
             const VALUES : &[i32] = &[
                 // insert list:
                 0,
@@ -151,7 +156,6 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_i16_VALUES_REF() {
-
             const VALUES : &[i16] = &[
                 // insert list:
                 0,
@@ -178,7 +182,6 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_u16_VALUES_REF() {
-
             const VALUES : &[u16] = &[
                 // insert list:
                 0,
@@ -205,7 +208,6 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_i32_VALUES_REF() {
-
             const VALUES : &[i32] = &[
                 // insert list:
                 0,
@@ -232,7 +234,6 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_i32_VALUES_IN_Box() {
-
             const VALUES : &[i32] = &[
                 // insert list:
                 0,
@@ -259,7 +260,6 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_i32_VALUES_IN_REF_Box() {
-
             const VALUES : &[i32] = &[
                 // insert list:
                 0,
@@ -286,7 +286,6 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_i32_VALUES_IN_Rc() {
-
             const VALUES : &[i32] = &[
                 // insert list:
                 0,
@@ -313,7 +312,6 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_i32_VALUES_IN_REF_Rc() {
-
             const VALUES : &[i32] = &[
                 // insert list:
                 0,
@@ -342,4 +340,3 @@ mod tests {
 
 
 // ///////////////////////////// end of file //////////////////////////// //
-

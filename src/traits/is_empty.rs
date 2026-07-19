@@ -1244,7 +1244,6 @@ mod tests {
     #[cfg(feature = "implement-IsEmpty-for-standard_process_types")]
     mod TEST_PROCESS_TYPES {
         #![allow(non_snake_case)]
-
     }
 
 
@@ -1368,9 +1367,7 @@ mod tests {
 
         use super::*;
 
-        use std::time::{
-            Duration,
-        };
+        use std::time::Duration;
 
 
         mod TEST_Duration {
@@ -1406,4 +1403,3 @@ mod tests {
 
 
 // ///////////////////////////// end of file //////////////////////////// //
-

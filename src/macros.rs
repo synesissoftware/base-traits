@@ -104,5 +104,4 @@ macro_rules! declare_and_publish {
 pub(crate) use declare_and_publish;
 pub(crate) use declare_and_publish_impl_;
 
-
 // ///////////////////////////// end of file //////////////////////////// //

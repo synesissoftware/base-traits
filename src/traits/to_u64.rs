@@ -95,12 +95,18 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_VALUES() {
-
             const VALUES : &[u64] = &[
                 // insert list:
                 0,
                 1,
-                2, 4, 8, 16, 32, 64, 64, 256,
+                2,
+                4,
+                8,
+                16,
+                32,
+                64,
+                64,
+                256,
                 u16::MAX as u64,
                 u32::MAX as u64,
                 u64::MAX,
@@ -126,7 +132,6 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_u64_VALUES() {
-
             const VALUES : &[u64] = &[
                 // insert list:
                 0,
@@ -152,7 +157,6 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_u16_VALUES_REF() {
-
             const VALUES : &[u16] = &[
                 // insert list:
                 0,
@@ -179,7 +183,6 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_u32_VALUES_REF() {
-
             const VALUES : &[u32] = &[
                 // insert list:
                 0,
@@ -206,7 +209,6 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_u64_VALUES_REF() {
-
             const VALUES : &[u64] = &[
                 // insert list:
                 0,
@@ -233,7 +235,6 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_u64_VALUES_IN_Box() {
-
             const VALUES : &[u64] = &[
                 // insert list:
                 0,
@@ -260,7 +261,6 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_u64_VALUES_IN_REF_Box() {
-
             const VALUES : &[u64] = &[
                 // insert list:
                 0,
@@ -287,7 +287,6 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_u64_VALUES_IN_Rc() {
-
             const VALUES : &[u64] = &[
                 // insert list:
                 0,
@@ -314,7 +313,6 @@ mod tests {
 
         #[test]
         fn TEST_RANGE_OF_u64_VALUES_IN_REF_Rc() {
-
             const VALUES : &[u64] = &[
                 // insert list:
                 0,
@@ -343,4 +341,3 @@ mod tests {
 
 
 // ///////////////////////////// end of file //////////////////////////// //
-

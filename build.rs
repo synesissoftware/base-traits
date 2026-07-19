@@ -2,7 +2,6 @@
 
 use bt_rs::rustc;
 
-
 fn main() {
     println!("cargo:rustc-check-cfg=cfg(rustc_1_79_or_newer)");
 
@@ -12,6 +11,5 @@ fn main() {
         println!("cargo:rustc-cfg=rustc_1_79_or_newer");
     }
 }
-
 
 // ///////////////////////////// end of file //////////////////////////// //

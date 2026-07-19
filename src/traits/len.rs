@@ -1063,10 +1063,8 @@ mod tests {
     #[cfg(feature = "implement-Len-for-standard_process_types")]
     mod TEST_PROCESS_TYPES {
         #![allow(non_snake_case)]
-
     }
 }
 
 
 // ///////////////////////////// end of file //////////////////////////// //
-

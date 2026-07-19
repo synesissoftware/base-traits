@@ -1,6 +1,13 @@
 # base-traits Changes <!-- omit in toc -->
 
 
+## 0.1.1 - 15th July 2026
+
+* fixed wrong line in NEWS.md;
+* fixing (internal) macro name;
+* fixing rust fmt application;
+
+
 ## 0.1.0 - 10th July 2026
 
 * first minor release;

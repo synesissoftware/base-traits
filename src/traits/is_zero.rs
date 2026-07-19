@@ -104,7 +104,6 @@ mod impl_for_std_num_types {
     use std::num as std_num;
      */
 
-
     // NonZero<T>
 
     /*
@@ -127,13 +126,10 @@ mod impl_for_std_process_types {
 
     // ExitStatus
 
-    impl super::IsZero for std_process::ExitStatus
-    {
+    impl super::IsZero for std_process::ExitStatus {
         fn is_zero(&self) -> bool {
             match self.code() {
-                Some(ec) => {
-                    0 == ec
-                },
+                Some(ec) => 0 == ec,
                 None => false,
             }
         }
@@ -148,7 +144,7 @@ mod impl_for_std_time_types {
     use std::time as std_time;
 
 
-    mod isolate_{
+    mod isolate_ {
         #![allow(non_snake_case)]
 
         use std::time as std_time;
@@ -329,7 +325,6 @@ mod tests {
 
             #[test]
             fn TEST_ZERO() {
-
                 {
                     let c = '\0';
 
@@ -480,7 +475,6 @@ mod tests {
     #[cfg(feature = "implement-IsZero-for-standard_process_types")]
     mod TEST_PROCESS_TYPES {
         #![allow(non_snake_case)]
-
     }
 
 
@@ -490,9 +484,7 @@ mod tests {
 
         use super::*;
 
-        use std::time::{
-            Duration,
-        };
+        use std::time::Duration;
 
 
         mod TEST_Duration {
@@ -528,4 +520,3 @@ mod tests {
 
 
 // ///////////////////////////// end of file //////////////////////////// //
-
