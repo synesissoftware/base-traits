@@ -55,7 +55,7 @@ default = [
 	"implement-AsISize-for-built_ins",
 	# AsStr
 	"implement-AsStr-for-built_ins",
-	"implement-AsStr-for-standard_collection_types",
+	"implement-AsStr-for-String",
 	# AsU128
 	"implement-AsU128-for-built_ins",
 	# AsU32
@@ -150,7 +150,11 @@ implement-AsISize-for-built_ins = []
 # AsStr
 
 implement-AsStr-for-built_ins = []
-implement-AsStr-for-standard_collection_types = []
+implement-AsStr-for-standard_collection_types = [
+	"implement-AsStr-for-String",
+]
+
+implement-AsStr-for-String = []
 
 # AsU128
 
