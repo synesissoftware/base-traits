@@ -7,6 +7,7 @@
   * `"implement-AsStr-for-standard_collection_types"` into `"implement-AsStr-for-String"`;
   * `"implement-IsEmpty-for-standard_collection_types"` into `"implement-IsEmpty-for-String"`;
   * `"implement-Len-for-standard_collection_types"` into `"implement-Len-for-String"`;
+* added feature `"full"`;
 
 
 ## 0.1.1 - 15th July 2026
