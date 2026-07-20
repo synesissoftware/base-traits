@@ -83,6 +83,7 @@ mod tests {
 
     use super::ToI128;
 
+    #[allow(unused_imports)]
     use std::rc as std_rc;
 
 

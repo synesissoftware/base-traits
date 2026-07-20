@@ -79,6 +79,7 @@ mod tests {
 
     use super::ToI64;
 
+    #[allow(unused_imports)]
     use std::rc as std_rc;
 
 

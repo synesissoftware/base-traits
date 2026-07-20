@@ -69,6 +69,7 @@ mod tests {
 
     use super::ToU16;
 
+    #[allow(unused_imports)]
     use std::rc as std_rc;
 
 

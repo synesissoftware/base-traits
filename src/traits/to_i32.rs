@@ -75,6 +75,7 @@ mod tests {
 
     use super::ToI32;
 
+    #[allow(unused_imports)]
     use std::rc as std_rc;
 
 

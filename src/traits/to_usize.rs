@@ -101,6 +101,7 @@ mod tests {
 
     use super::ToUSize;
 
+    #[allow(unused_imports)]
     use std::rc as std_rc;
 
 
