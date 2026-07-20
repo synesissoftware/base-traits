@@ -25,7 +25,7 @@
 /// - [`std::collections::HashMap`];
 /// - [`std::collections::HashSet`];
 /// - [`std::collections::LinkedList`];
-/// - [`String`];
+/// - [`String`] - individually enabled by `"implement-Len-for-String"`;
 /// - [`Vec`];
 /// - [`std::collections::VecDeque`];
 ///
@@ -48,8 +48,8 @@
 /// ## Standard Process Types
 ///
 /// If the feature `"implement-Len-for-standard_process_types"`
-/// is defined (as it is by `"default"`), then this is also implemented
-/// for the following types:
+/// is defined (which is NOT by `"default"`, but is by `"full"`), then this
+/// is also implemented for the following types:
 /// - [`std::process::CommandArgs`];
 /// - [`std::process::CommandEnvs`];
 #[allow(clippy::len_without_is_empty)]
@@ -177,12 +177,6 @@ mod impl_for_std_coll_types {
             coll.len()
         }
 
-        // NOTE: parameter type is `&str`, not `&String`
-        #[inline]
-        pub(super) fn get_len_String_(s : &str) -> usize {
-            s.len()
-        }
-
         #[inline]
         pub(super) fn get_len_Vec_<T>(coll : &[T]) -> usize {
             coll.len()
@@ -243,14 +237,6 @@ mod impl_for_std_coll_types {
         }
     }
 
-    // String
-
-    impl super::Len for String {
-        fn len(&self) -> usize {
-            isolate_::get_len_String_(self)
-        }
-    }
-
     // Vec<>
 
     impl<T> super::Len for Vec<T> {
@@ -264,6 +250,31 @@ mod impl_for_std_coll_types {
     impl<T> super::Len for std_collections::VecDeque<T> {
         fn len(&self) -> usize {
             isolate_::get_len_VecDeque_(self)
+        }
+    }
+}
+
+
+#[cfg(all(not(feature = "nostd"), feature = "implement-Len-for-String"))]
+mod impl_for_std_coll_types_string {
+
+    mod isolate_ {
+        #![allow(non_snake_case)]
+
+
+        // NOTE: parameter type is `&str`, not `&String`
+        #[inline]
+        pub(super) fn get_len_String_(s : &str) -> usize {
+            s.len()
+        }
+    }
+
+
+    // String
+
+    impl super::Len for String {
+        fn len(&self) -> usize {
+            isolate_::get_len_String_(self)
         }
     }
 }
@@ -414,7 +425,10 @@ mod tests {
 
     use super::Len;
 
-    #[cfg(feature = "implement-Len-for-standard_collection_types")]
+    #[cfg(any(
+        feature = "implement-Len-for-standard_collection_types",
+        feature = "implement-Len-for-String",
+    ))]
     use std::rc::Rc;
 
 
@@ -564,12 +578,16 @@ mod tests {
     }
 
 
-    #[cfg(feature = "implement-Len-for-standard_collection_types")]
+    #[cfg(any(
+        feature = "implement-Len-for-standard_collection_types",
+        feature = "implement-Len-for-String",
+    ))]
     mod TEST_STANDARD_TYPES {
         #![allow(non_snake_case)]
 
         use super::*;
 
+        #[cfg(feature = "implement-Len-for-standard_collection_types")]
         use std::collections::{
             BTreeMap,
             BTreeSet,
@@ -581,6 +599,7 @@ mod tests {
         };
 
 
+        #[cfg(feature = "implement-Len-for-standard_collection_types")]
         mod TEST_BTreeMapTU {
             #![allow(non_snake_case)]
 
@@ -611,6 +630,7 @@ mod tests {
         }
 
 
+        #[cfg(feature = "implement-Len-for-standard_collection_types")]
         mod TEST_BTreeSetT {
             #![allow(non_snake_case)]
 
@@ -641,6 +661,7 @@ mod tests {
         }
 
 
+        #[cfg(feature = "implement-Len-for-standard_collection_types")]
         mod TEST_BinaryHeapT {
             #![allow(non_snake_case)]
 
@@ -671,6 +692,7 @@ mod tests {
         }
 
 
+        #[cfg(feature = "implement-Len-for-standard_collection_types")]
         mod TEST_HashMapTU {
             #![allow(non_snake_case)]
 
@@ -701,6 +723,7 @@ mod tests {
         }
 
 
+        #[cfg(feature = "implement-Len-for-standard_collection_types")]
         mod TEST_HashSetT {
             #![allow(non_snake_case)]
 
@@ -731,6 +754,7 @@ mod tests {
         }
 
 
+        #[cfg(feature = "implement-Len-for-standard_collection_types")]
         mod TEST_LinkedListT {
             #![allow(non_snake_case)]
 
@@ -761,6 +785,7 @@ mod tests {
         }
 
 
+        #[cfg(feature = "implement-Len-for-String")]
         mod TEST_String {
             #![allow(non_snake_case)]
 
@@ -791,6 +816,7 @@ mod tests {
         }
 
 
+        #[cfg(feature = "implement-Len-for-String")]
         mod TEST_String_IN_Box {
             #![allow(non_snake_case)]
 
@@ -821,6 +847,7 @@ mod tests {
         }
 
 
+        #[cfg(feature = "implement-Len-for-String")]
         mod TEST_String_IN_Rc {
             #![allow(non_snake_case)]
 
@@ -851,6 +878,7 @@ mod tests {
         }
 
 
+        #[cfg(feature = "implement-Len-for-standard_collection_types")]
         mod TEST_VecT {
             #![allow(non_snake_case)]
 
@@ -881,6 +909,7 @@ mod tests {
         }
 
 
+        #[cfg(feature = "implement-Len-for-standard_collection_types")]
         mod TEST_VecDequeT {
             #![allow(non_snake_case)]
 

@@ -1,11 +1,20 @@
 # base-traits Changes <!-- omit in toc -->
 
 
-## 0.1.3 - 21st July 2026
+## 0.1.3 - 20th July 2026
 
 * ensuring **--no-default-features** works;
 * warning suppression (when '--no-default-traits' specified);
 * various formatting mods;
+
+
+## 0.1.2 - 20th July 2026
+
+* individuated features:
+  * `"implement-AsStr-for-standard_collection_types"` into `"implement-AsStr-for-String"`;
+  * `"implement-IsEmpty-for-standard_collection_types"` into `"implement-IsEmpty-for-String"`;
+  * `"implement-Len-for-standard_collection_types"` into `"implement-Len-for-String"`;
+* added feature `"full"`;
 
 
 ## 0.1.1 - 15th July 2026

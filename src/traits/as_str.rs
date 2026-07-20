@@ -17,7 +17,7 @@
 /// If the feature `"implement-AsStr-for-standard_collection_types"`
 /// is defined (as it is by `"default"`), then this is also implemented
 /// for the following type(s):
-/// - [`String`];
+/// - [`String`] - individually enabled by `"implement-AsStr-for-String"`;
 pub trait AsStr {
     fn as_str(&self) -> &str;
 }
@@ -56,7 +56,7 @@ mod impl_for_built_ins {
     }
 }
 
-#[cfg(all(not(feature = "nostd"), feature = "implement-AsStr-for-standard_collection_types"))]
+#[cfg(all(not(feature = "nostd"), feature = "implement-AsStr-for-String"))]
 mod impl_for_std_coll_types {
 
     impl super::AsStr for String {
