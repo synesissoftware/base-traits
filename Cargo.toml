@@ -22,7 +22,7 @@ name = "base-traits"
 readme = "README.md"
 repository = "https://github.com/synesissoftware/base-traits"
 rust-version = "1.74"
-version = "0.1.1"
+version = "0.1.2"
 
 
 # ##########################################################
@@ -55,7 +55,7 @@ default = [
 	"implement-AsISize-for-built_ins",
 	# AsStr
 	"implement-AsStr-for-built_ins",
-	"implement-AsStr-for-standard_collection_types",
+	"implement-AsStr-for-String",
 	# AsU128
 	"implement-AsU128-for-built_ins",
 	# AsU32
@@ -86,6 +86,79 @@ default = [
 	"implement-Len-for-standard_collection_types",
 	"implement-Len-for-standard_ffi_types",
 	"implement-Len-for-standard_path_types",
+	# ToF64
+	"implement-ToF64-for-built_ins",
+	# ToI16
+	"implement-ToI16-for-built_ins",
+	# ToI32
+	"implement-ToI32-for-built_ins",
+	# ToI64
+	"implement-ToI64-for-built_ins",
+	# ToI128
+	"implement-ToI128-for-built_ins",
+	# ToISize
+	"implement-ToISize-for-built_ins",
+	# ToU16
+	"implement-ToU16-for-built_ins",
+	# ToU32
+	"implement-ToU32-for-built_ins",
+	# ToU64
+	"implement-ToU64-for-built_ins",
+	# ToU128
+	"implement-ToU128-for-built_ins",
+	# ToUSize
+	"implement-ToUSize-for-built_ins",
+	# Zero
+	"implement-Zero-for-built_ins",
+]
+
+full = [
+	# AsF64
+	"implement-AsF64-for-built_ins",
+	# AsI128
+	"implement-AsI128-for-built_ins",
+	# AsI32
+	"implement-AsI32-for-built_ins",
+	# AsI64
+	"implement-AsI64-for-built_ins",
+	# AsISize
+	"implement-AsISize-for-built_ins",
+	# AsStr
+	"implement-AsStr-for-built_ins",
+	"implement-AsStr-for-standard_collection_types",
+	# AsU128
+	"implement-AsU128-for-built_ins",
+	# AsU32
+	"implement-AsU32-for-built_ins",
+	# AsU64
+	"implement-AsU64-for-built_ins",
+	# AsUSize
+	"implement-AsUSize-for-built_ins",
+	# Infinity
+	"implement-Infinity-for-built_ins",
+	# IsEmpty
+	"implement-IsEmpty-for-built_ins",
+	"implement-IsEmpty-for-standard_collection_types",
+	"implement-IsEmpty-for-standard_ffi_types",
+	"implement-IsEmpty-for-standard_path_types",
+	"implement-IsEmpty-for-standard_process_types",
+	"implement-IsEmpty-for-standard_range_types",
+	"implement-IsEmpty-for-standard_time_types",
+	# IsInfinity:
+	"implement-IsInfinity-for-built_ins",
+	# IsNAN:
+	"implement-IsNAN-for-built_ins",
+	# IsZero
+	"implement-IsZero-for-built_ins",
+	"implement-IsZero-for-standard_num_types",
+	"implement-IsZero-for-standard_process_types",
+	"implement-IsZero-for-standard_time_types",
+	# Len
+	"implement-Len-for-built_ins",
+	"implement-Len-for-standard_collection_types",
+	"implement-Len-for-standard_ffi_types",
+	"implement-Len-for-standard_path_types",
+	"implement-Len-for-standard_process_types",
 	# ToF64
 	"implement-ToF64-for-built_ins",
 	# ToI16
@@ -150,7 +223,11 @@ implement-AsISize-for-built_ins = []
 # AsStr
 
 implement-AsStr-for-built_ins = []
-implement-AsStr-for-standard_collection_types = []
+
+implement-AsStr-for-String = []
+implement-AsStr-for-standard_collection_types = [
+	"implement-AsStr-for-String",
+]
 
 # AsU128
 
@@ -175,13 +252,22 @@ implement-Infinity-for-built_ins = []
 # IsEmpty:
 
 implement-IsEmpty-for-built_ins = []
-implement-IsEmpty-for-standard_collection_types = []
+
+implement-IsEmpty-for-String = []
+implement-IsEmpty-for-standard_collection_types = [
+	"implement-IsEmpty-for-String",
+]
+
 implement-IsEmpty-for-standard_ffi_types = []
+
 implement-IsEmpty-for-standard_path_types = []
+
 implement-IsEmpty-for-standard_process_types = [
 	"experimental-exact_size_is_empty",
 ]
+
 implement-IsEmpty-for-standard_range_types = []
+
 implement-IsEmpty-for-standard_time_types = []
 
 # IsInfinity:
@@ -195,16 +281,26 @@ implement-IsNAN-for-built_ins = []
 # IsZero
 
 implement-IsZero-for-built_ins = []
+
 implement-IsZero-for-standard_num_types = []
+
 implement-IsZero-for-standard_process_types = []
+
 implement-IsZero-for-standard_time_types = []
 
 # Len:
 
 implement-Len-for-built_ins = []
-implement-Len-for-standard_collection_types = []
+
+implement-Len-for-String = []
+implement-Len-for-standard_collection_types = [
+	"implement-Len-for-String",
+]
+
 implement-Len-for-standard_ffi_types = []
+
 implement-Len-for-standard_path_types = []
+
 implement-Len-for-standard_process_types = []
 
 # ToF64

@@ -25,7 +25,7 @@
 /// - [`std::collections::HashMap`];
 /// - [`std::collections::HashSet`];
 /// - [`std::collections::LinkedList`];
-/// - [`String`];
+/// - [`String`] - individually enabled by `"implement-IsEmpty-for-String"`;
 /// - [`Vec`];
 /// - [`std::collections::VecDeque`];
 ///
@@ -48,8 +48,8 @@
 /// ## Standard Process Types
 ///
 /// If the feature `"implement-IsEmpty-for-standard_process_types"`
-/// is defined (as it is by `"default"`), then this is also implemented
-/// for the following types:
+/// is defined (which is NOT by `"default"`, but is by `"full"`), then this
+/// is also implemented for the following types:
 /// - [`std::process::CommandArgs`];
 /// - [`std::process::CommandEnvs`];
 ///
@@ -67,8 +67,8 @@
 /// ## Standard Time Types
 ///
 /// If the feature `"implement-IsEmpty-for-standard_time_types"`
-/// is defined (which is NOT by `"default"`), then this is also implemented
-/// for the following types:
+/// is defined (which is NOT by `"default"`, but is by `"full"`), then this
+/// is also implemented for the following types:
 /// - [`std::time::Duration`];
 pub trait IsEmpty {
     fn is_empty(&self) -> bool;
@@ -201,12 +201,6 @@ mod impl_for_std_coll_types {
             coll.is_empty()
         }
 
-        // NOTE: parameter type is `&str`, not `&String`
-        #[inline]
-        pub(super) fn get_is_empty_String_(s : &str) -> bool {
-            s.is_empty()
-        }
-
         // NOTE: parameter type is `&[T]`, not `&Vec<T>`
         #[inline]
         pub(super) fn get_is_empty_Vec_<T>(coll : &[T]) -> bool {
@@ -274,15 +268,6 @@ mod impl_for_std_coll_types {
         }
     }
 
-    // String
-
-    impl super::IsEmpty for String {
-        #[inline]
-        fn is_empty(&self) -> bool {
-            isolate_::get_is_empty_String_(self)
-        }
-    }
-
     // Vec<>
 
     impl<T> super::IsEmpty for Vec<T> {
@@ -298,6 +283,32 @@ mod impl_for_std_coll_types {
         #[inline]
         fn is_empty(&self) -> bool {
             isolate_::get_is_empty_VecDeque_(self)
+        }
+    }
+}
+
+
+#[cfg(all(not(feature = "nostd"), feature = "implement-IsEmpty-for-String"))]
+mod impl_for_std_coll_types_string {
+
+    mod isolate_ {
+        #![allow(non_snake_case)]
+
+
+        // NOTE: parameter type is `&str`, not `&String`
+        #[inline]
+        pub(super) fn get_is_empty_String_(s : &str) -> bool {
+            s.is_empty()
+        }
+    }
+
+
+    // String
+
+    impl super::IsEmpty for String {
+        #[inline]
+        fn is_empty(&self) -> bool {
+            isolate_::get_is_empty_String_(self)
         }
     }
 }
@@ -733,7 +744,7 @@ mod tests {
 
             #[test]
             fn TEST_NONEMPTY() {
-                let ar : [i64; 1] = [ 0 ];
+                let ar : [i64; 1] = [0];
 
                 assert!(!ar.is_empty());
 
@@ -775,12 +786,16 @@ mod tests {
     }
 
 
-    #[cfg(feature = "implement-IsEmpty-for-standard_collection_types")]
+    #[cfg(any(
+        feature = "implement-IsEmpty-for-standard_collection_types",
+        feature = "implement-IsEmpty-for-String",
+    ))]
     mod TEST_STANDARD_TYPES {
         #![allow(non_snake_case)]
 
         use super::*;
 
+        #[cfg(feature = "implement-IsEmpty-for-standard_collection_types")]
         use std::collections::{
             BTreeMap,
             BTreeSet,
@@ -792,6 +807,7 @@ mod tests {
         };
 
 
+        #[cfg(feature = "implement-IsEmpty-for-standard_collection_types")]
         mod TEST_BTreeMapTU {
             #![allow(non_snake_case)]
 
@@ -811,7 +827,7 @@ mod tests {
 
             #[test]
             fn TEST_NONEMPTY() {
-                let v = BTreeMap::from_iter(vec![ (0, 0) ]);
+                let v = BTreeMap::from_iter(vec![(0, 0)]);
 
                 assert!(!v.is_empty());
 
@@ -822,6 +838,7 @@ mod tests {
         }
 
 
+        #[cfg(feature = "implement-IsEmpty-for-standard_collection_types")]
         mod TEST_BTreeSetT {
             #![allow(non_snake_case)]
 
@@ -841,7 +858,7 @@ mod tests {
 
             #[test]
             fn TEST_NONEMPTY() {
-                let v = BTreeSet::from_iter(vec![ 0 ]);
+                let v = BTreeSet::from_iter(vec![0]);
 
                 assert!(!v.is_empty());
 
@@ -852,6 +869,7 @@ mod tests {
         }
 
 
+        #[cfg(feature = "implement-IsEmpty-for-standard_collection_types")]
         mod TEST_BinaryHeapT {
             #![allow(non_snake_case)]
 
@@ -871,7 +889,7 @@ mod tests {
 
             #[test]
             fn TEST_NONEMPTY() {
-                let v = BinaryHeap::from_iter(vec![ 0 ]);
+                let v = BinaryHeap::from_iter(vec![0]);
 
                 assert!(!v.is_empty());
 
@@ -882,6 +900,7 @@ mod tests {
         }
 
 
+        #[cfg(feature = "implement-IsEmpty-for-standard_collection_types")]
         mod TEST_HashMapTU {
             #![allow(non_snake_case)]
 
@@ -901,7 +920,7 @@ mod tests {
 
             #[test]
             fn TEST_NONEMPTY() {
-                let v = HashMap::from_iter(vec![ (0, 0) ]);
+                let v = HashMap::from_iter(vec![(0, 0)]);
 
                 assert!(!v.is_empty());
 
@@ -912,6 +931,7 @@ mod tests {
         }
 
 
+        #[cfg(feature = "implement-IsEmpty-for-standard_collection_types")]
         mod TEST_HashSetT {
             #![allow(non_snake_case)]
 
@@ -931,7 +951,7 @@ mod tests {
 
             #[test]
             fn TEST_NONEMPTY() {
-                let v = HashSet::from_iter(vec![ 0 ]);
+                let v = HashSet::from_iter(vec![0]);
 
                 assert!(!v.is_empty());
 
@@ -942,6 +962,7 @@ mod tests {
         }
 
 
+        #[cfg(feature = "implement-IsEmpty-for-standard_collection_types")]
         mod TEST_LinkedListT {
             #![allow(non_snake_case)]
 
@@ -961,7 +982,7 @@ mod tests {
 
             #[test]
             fn TEST_NONEMPTY() {
-                let v = LinkedList::from_iter(vec![ 0 ]);
+                let v = LinkedList::from_iter(vec![0]);
 
                 assert!(!v.is_empty());
 
@@ -972,6 +993,7 @@ mod tests {
         }
 
 
+        #[cfg(feature = "implement-IsEmpty-for-String")]
         mod TEST_String {
             #![allow(non_snake_case)]
 
@@ -1002,6 +1024,7 @@ mod tests {
         }
 
 
+        #[cfg(feature = "implement-IsEmpty-for-String")]
         mod TEST_String_IN_Box {
             #![allow(non_snake_case)]
 
@@ -1032,6 +1055,7 @@ mod tests {
         }
 
 
+        #[cfg(feature = "implement-IsEmpty-for-standard_collection_types")]
         mod TEST_VecT {
             #![allow(non_snake_case)]
 
@@ -1051,7 +1075,7 @@ mod tests {
 
             #[test]
             fn TEST_NONEMPTY() {
-                let v : Vec<i32> = vec![ 0 ];
+                let v : Vec<i32> = vec![0];
 
                 assert!(!v.is_empty());
 
@@ -1062,6 +1086,7 @@ mod tests {
         }
 
 
+        #[cfg(feature = "implement-IsEmpty-for-standard_collection_types")]
         mod TEST_VecDequeT {
             #![allow(non_snake_case)]
 
@@ -1081,7 +1106,7 @@ mod tests {
 
             #[test]
             fn TEST_NONEMPTY() {
-                let v = VecDeque::from_iter(vec![ 0 ]);
+                let v = VecDeque::from_iter(vec![0]);
 
                 assert!(!v.is_empty());
 
