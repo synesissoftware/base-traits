@@ -4,6 +4,8 @@
 ## 0.1.3 - 21st July 2026
 
 * ensuring **--no-default-features** works;
+* warning suppression (when '--no-default-traits' specified);
+* various formatting mods;
 
 
 ## 0.1.1 - 15th July 2026
