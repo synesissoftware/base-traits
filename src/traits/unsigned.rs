@@ -1,7 +1,6 @@
 // src/traits/unsigned.rs : `Unsigned`
 
-pub trait Unsigned {
-}
+pub trait Unsigned {}
 
 
 mod impl_for_built_ins {
@@ -10,13 +9,19 @@ mod impl_for_built_ins {
     use super::Unsigned;
 
 
-    impl Unsigned for u8 {}
-    impl Unsigned for u16 {}
-    impl Unsigned for u32 {}
-    impl Unsigned for u64 {}
-    impl Unsigned for u128 {}
+    impl Unsigned for u8 {
+    }
+    impl Unsigned for u16 {
+    }
+    impl Unsigned for u32 {
+    }
+    impl Unsigned for u64 {
+    }
+    impl Unsigned for u128 {
+    }
 
-    impl Unsigned for usize {}
+    impl Unsigned for usize {
+    }
 }
 
 

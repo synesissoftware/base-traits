@@ -37,6 +37,7 @@ mod impl_for_built_ins {
 mod tests {
     #![allow(non_snake_case)]
 
+    #[allow(unused_imports)]
     use super::AsU32;
 
 

@@ -7,7 +7,7 @@
 #
 # Or:
 #
-#   RUSTFMT="$(rustup which --toolchain nightly rustfmt)" cargo fmt -- --unstable-features
+#   RUSTFMT_BIN="$(rustup which --toolchain nightly rustfmt)" && find . -name "*.rs" -print0 | xargs -0 -I {} "$RUSTFMT_BIN" {} --edition 2024 --config-path ./rustfmt.toml
 
 edition="2024"
 style_edition="2024"

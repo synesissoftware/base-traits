@@ -54,6 +54,7 @@ mod tests {
 
     use super::AsISize;
 
+    #[allow(unused_imports)]
     use std::rc as std_rc;
 
 
