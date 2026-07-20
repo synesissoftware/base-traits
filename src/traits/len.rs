@@ -536,7 +536,7 @@ mod tests {
 
             #[test]
             fn TEST_NONEMPTY() {
-                let ar : [i64; 1] = [ 0 ];
+                let ar : [i64; 1] = [0];
 
                 assert_ne!(0, ar.len());
 
@@ -580,7 +580,7 @@ mod tests {
 
     #[cfg(any(
         feature = "implement-Len-for-standard_collection_types",
-         feature = "implement-Len-for-String",
+        feature = "implement-Len-for-String",
     ))]
     mod TEST_STANDARD_TYPES {
         #![allow(non_snake_case)]
@@ -619,7 +619,7 @@ mod tests {
 
             #[test]
             fn TEST_NONEMPTY() {
-                let v = BTreeMap::from_iter(vec![ (0, 0) ]);
+                let v = BTreeMap::from_iter(vec![(0, 0)]);
 
                 assert_ne!(0, v.len());
 
@@ -650,7 +650,7 @@ mod tests {
 
             #[test]
             fn TEST_NONEMPTY() {
-                let v = BTreeSet::from_iter(vec![ 0 ]);
+                let v = BTreeSet::from_iter(vec![0]);
 
                 assert_ne!(0, v.len());
 
@@ -681,7 +681,7 @@ mod tests {
 
             #[test]
             fn TEST_NONEMPTY() {
-                let v = BinaryHeap::from_iter(vec![ 0 ]);
+                let v = BinaryHeap::from_iter(vec![0]);
 
                 assert_ne!(0, v.len());
 
@@ -712,7 +712,7 @@ mod tests {
 
             #[test]
             fn TEST_NONEMPTY() {
-                let v = HashMap::from_iter(vec![ (0, 0) ]);
+                let v = HashMap::from_iter(vec![(0, 0)]);
 
                 assert_ne!(0, v.len());
 
@@ -743,7 +743,7 @@ mod tests {
 
             #[test]
             fn TEST_NONEMPTY() {
-                let v = HashSet::from_iter(vec![ 0 ]);
+                let v = HashSet::from_iter(vec![0]);
 
                 assert_ne!(0, v.len());
 
@@ -774,7 +774,7 @@ mod tests {
 
             #[test]
             fn TEST_NONEMPTY() {
-                let v = LinkedList::from_iter(vec![ 0 ]);
+                let v = LinkedList::from_iter(vec![0]);
 
                 assert_ne!(0, v.len());
 
@@ -898,7 +898,7 @@ mod tests {
 
             #[test]
             fn TEST_NONEMPTY() {
-                let v : Vec<i32> = vec![ 0 ];
+                let v : Vec<i32> = vec![0];
 
                 assert_ne!(0, v.len());
 
@@ -929,7 +929,7 @@ mod tests {
 
             #[test]
             fn TEST_NONEMPTY() {
-                let v = VecDeque::from_iter(vec![ 0 ]);
+                let v = VecDeque::from_iter(vec![0]);
 
                 assert_ne!(0, v.len());
 

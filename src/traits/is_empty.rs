@@ -744,7 +744,7 @@ mod tests {
 
             #[test]
             fn TEST_NONEMPTY() {
-                let ar : [i64; 1] = [ 0 ];
+                let ar : [i64; 1] = [0];
 
                 assert!(!ar.is_empty());
 
@@ -788,8 +788,8 @@ mod tests {
 
     #[cfg(any(
         feature = "implement-IsEmpty-for-standard_collection_types",
-         feature = "implement-IsEmpty-for-String",
-        ))]
+        feature = "implement-IsEmpty-for-String",
+    ))]
     mod TEST_STANDARD_TYPES {
         #![allow(non_snake_case)]
 
@@ -827,7 +827,7 @@ mod tests {
 
             #[test]
             fn TEST_NONEMPTY() {
-                let v = BTreeMap::from_iter(vec![ (0, 0) ]);
+                let v = BTreeMap::from_iter(vec![(0, 0)]);
 
                 assert!(!v.is_empty());
 
@@ -858,7 +858,7 @@ mod tests {
 
             #[test]
             fn TEST_NONEMPTY() {
-                let v = BTreeSet::from_iter(vec![ 0 ]);
+                let v = BTreeSet::from_iter(vec![0]);
 
                 assert!(!v.is_empty());
 
@@ -889,7 +889,7 @@ mod tests {
 
             #[test]
             fn TEST_NONEMPTY() {
-                let v = BinaryHeap::from_iter(vec![ 0 ]);
+                let v = BinaryHeap::from_iter(vec![0]);
 
                 assert!(!v.is_empty());
 
@@ -920,7 +920,7 @@ mod tests {
 
             #[test]
             fn TEST_NONEMPTY() {
-                let v = HashMap::from_iter(vec![ (0, 0) ]);
+                let v = HashMap::from_iter(vec![(0, 0)]);
 
                 assert!(!v.is_empty());
 
@@ -951,7 +951,7 @@ mod tests {
 
             #[test]
             fn TEST_NONEMPTY() {
-                let v = HashSet::from_iter(vec![ 0 ]);
+                let v = HashSet::from_iter(vec![0]);
 
                 assert!(!v.is_empty());
 
@@ -982,7 +982,7 @@ mod tests {
 
             #[test]
             fn TEST_NONEMPTY() {
-                let v = LinkedList::from_iter(vec![ 0 ]);
+                let v = LinkedList::from_iter(vec![0]);
 
                 assert!(!v.is_empty());
 
@@ -1075,7 +1075,7 @@ mod tests {
 
             #[test]
             fn TEST_NONEMPTY() {
-                let v : Vec<i32> = vec![ 0 ];
+                let v : Vec<i32> = vec![0];
 
                 assert!(!v.is_empty());
 
@@ -1106,7 +1106,7 @@ mod tests {
 
             #[test]
             fn TEST_NONEMPTY() {
-                let v = VecDeque::from_iter(vec![ 0 ]);
+                let v = VecDeque::from_iter(vec![0]);
 
                 assert!(!v.is_empty());
 
