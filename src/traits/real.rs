@@ -1,7 +1,6 @@
 // src/traits/real.rs : `Real`
 
-pub trait Real {
-}
+pub trait Real {}
 
 
 mod impl_for_built_ins {
@@ -10,8 +9,10 @@ mod impl_for_built_ins {
     use super::Real;
 
 
-    impl Real for f32 {}
-    impl Real for f64 {}
+    impl Real for f32 {
+    }
+    impl Real for f64 {
+    }
 }
 
 
