@@ -48,8 +48,8 @@
 /// ## Standard Process Types
 ///
 /// If the feature `"implement-IsEmpty-for-standard_process_types"`
-/// is defined (as it is by `"default"`), then this is also implemented
-/// for the following types:
+/// is defined (which is NOT by `"default"`, but is by `"full"`), then this
+/// is also implemented for the following types:
 /// - [`std::process::CommandArgs`];
 /// - [`std::process::CommandEnvs`];
 ///
@@ -67,8 +67,8 @@
 /// ## Standard Time Types
 ///
 /// If the feature `"implement-IsEmpty-for-standard_time_types"`
-/// is defined (which is NOT by `"default"`), then this is also implemented
-/// for the following types:
+/// is defined (which is NOT by `"default"`, but is by `"full"`), then this
+/// is also implemented for the following types:
 /// - [`std::time::Duration`];
 pub trait IsEmpty {
     fn is_empty(&self) -> bool;

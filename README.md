@@ -63,53 +63,55 @@ None defined at this time.
 
 The following crate features are defined:
 
-| Name                                              | Effect                                | Is `"default"`? | Dependent feature(s)                  |
-| ------------------------------------------------- | ------------------------------------- | --------------- | ------------------------------------- |
-| `experimental-exact_size_is_empty`                | Causes the experimental feature `exact_size_is_empty` to be enabled | **No** | |
-| `implement-AsF64-for-built_ins`                   | Causes `AsF64` to be implemented for built-in type `f64` | Yes | |
-| `implement-AsI128-for-built_ins`                  | Causes `AsI128` to be implemented for built-in type `i128` | Yes | |
-| `implement-AsI32-for-built_ins`                   | Causes `AsI32` to be implemented for built-in type `i32` | Yes | |
-| `implement-AsI64-for-built_ins`                   | Causes `AsI64` to be implemented for built-in type `i64` | Yes | |
-| `implement-AsISize-for-built_ins`                 | Causes `AsISize` to be implemented for built-in type `isize` | Yes | |
-| `implement-AsStr-for-built_ins`                   | Causes `AsStr` to be implemented for built-in type `str` | Yes | |
-| `implement-AsStr-for-standard_collection_types`   | Causes `AsStr` to be implemented for standard collection type `String` | No | |
-| `implement-AsStr-for-String`                      | Causes `AsStr` to be implemented for standard collection type `String` | Yes | `implement-AsStr-for-String` |
-| `implement-AsU128-for-built_ins`                  | Causes `AsU128` to be implemented for built-in type `u128` | Yes | |
-| `implement-AsU32-for-built_ins`                   | Causes `AsU32` to be implemented for built-in type `u32` | Yes | |
-| `implement-AsU64-for-built_ins`                   | Causes `AsU64` to be implemented for built-in type `u64` | Yes | |
-| `implement-AsUSize-for-built_ins`                 | Causes `AsUSize` to be implemented for built-in type `usize` | Yes | |
-| `implement-Infinity-for-built_ins`                | Causes `Infinity` to be implemented for built-in types `f32`, `f64` | Yes | |
-| `implement-IsEmpty-for-built_ins`                 | Causes `IsEmpty` to be implemented for built-in types `str`, `[T; N]`, `[T]` | Yes | |
-| `implement-IsEmpty-for-standard_collection_types` | Causes `IsEmpty` to be implemented for standard collection types `BTreeMap`, `BTreeSet`, ..., `Vec`, `VecDeque`, and `String` | No | `implement-IsEmpty-for-String` |
-| `implement-IsEmpty-for-String`                    | Causes `IsEmpty` to be implemented for standard collection type `String` | Yes | |
-| `implement-IsEmpty-for-standard_ffi_types`        | Causes `IsEmpty` to be implemented for standard FFI types `CStr`, `CString` | Yes | |
-| `implement-IsEmpty-for-standard_path_types`       | Causes `IsEmpty` to be implemented for standard path types `Path`, `PathBuf` | Yes | |
-| `implement-IsEmpty-for-standard_process_types`    | Causes `IsEmpty` to be implemented for standard process types `CommandArgs`, `CommandEnvs` | **No** | `experimental-exact_size_is_empty` |
-| `implement-IsEmpty-for-standard_range_types`      | Causes `IsEmpty` to be implemented for standard range types `Range`, `RangeFrom`, etc. | Yes | |
-| `implement-IsEmpty-for-standard_time_types`       | Causes `IsEmpty` to be implemented for standard time type `Duration` | **No**  | |
-| `implement-IsInfinity-for-built_ins`              | Causes `IsInfinity` to be implemented for built-in types `f32`, `f64` | Yes | |
-| `implement-IsNAN-for-built_ins`                   | Causes `IsNAN` to be implemented for built-in types `f32`, `f64` | Yes | |
-| `implement-IsZero-for-built_ins`                  | Causes `IsZero` to be implemented for built-in types `i8`, ..., `i128`, `u8`, ..., `u128`, `isize`, `usize`, `f32`, `f64`, `char` | Yes | |
-| `implement-IsZero-for-standard_process_types`     | Causes `IsZero` to be implemented for standard process type `ExitStatus` | Yes | |
-| `implement-IsZero-for-standard_time_types`        | Causes `IsZero` to be implemented for standard time type `Duration` | Yes | |
-| `implement-Len-for-built_ins`                     | Causes `Len` to be implemented for built-in types `str`, `[T; N]`, `[T]` | Yes | |
-| `implement-Len-for-standard_collection_types`     | Causes `Len` to be implemented for standard collection types `BTreeMap`, `BTreeSet`, ..., `Vec`, `VecDeque`, and `String` | No | `implement-Len-for-String` |
-| `implement-Len-for-String`                        | Causes `Len` to be implemented for standard collection type `String` | Yes | |
-| `implement-Len-for-standard_ffi_types`            | Causes `Len` to be implemented for standard FFI types `CStr`, `CString` | Yes | |
-| `implement-Len-for-standard_path_types`           | Causes `Len` to be implemented for standard path types `Path`, `PathBuf` | Yes | |
-| `implement-Len-for-standard_process_types`        | Causes `Len` to be implemented for standard process types `CommandArgs`, `CommandEnvs` | **No** | |
-| `implement-ToF64-for-built_ins`                   | Causes `ToF64` to be implemented for built-in types `i8`, ..., `i128`, `u8`, ..., `u128`, `isize`, `usize`, `f32`, `f64` | Yes | |
-| `implement-ToI128-for-built_ins`                  | Causes `ToI128` to be implemented for built-in type `i8`, `i16`, `i32`, `i64`, `i128`, `u8`, `u16`, `u32`, `u64` | Yes | |
-| `implement-ToI16-for-built_ins`                   | Causes `ToI16` to be implemented for built-in types `i8`, `i16`, `u8` | Yes | |
-| `implement-ToI32-for-built_ins`                   | Causes `ToI32` to be implemented for built-in type `i8`, `i16`, `i32`, `u8`, `u16` | Yes | |
-| `implement-ToI64-for-built_ins`                   | Causes `ToI64` to be implemented for built-in type `i8`, `i16`, `i32`, `i64`, `u8`, `u16`, `u32` | Yes | |
-| `implement-ToU128-for-built_ins`                  | Causes `ToU128` to be implemented for built-in type `u8`, `u16`, `u32`, `u64`, `u128` | Yes | |
-| `implement-ToU16-for-built_ins`                   | Causes `ToU16` to be implemented for built-in type `u8`, `u16` | Yes | |
-| `implement-ToU32-for-built_ins`                   | Causes `ToU32` to be implemented for built-in type `u8`, `u16`, `u32` | Yes | |
-| `implement-ToU64-for-built_ins`                   | Causes `ToU64` to be implemented for built-in type `u8`, `u16`, `u32`, `u64` | Yes | |
-| `implement-ToISize-for-built_ins`                 | Causes `ToISize` to be implemented for built-in types `isize`, `i8`, and all numeric types that, dependent on architecture, that can be represented in `isize` without loss | Yes | |
-| `implement-ToUSize-for-built_ins`                 | Causes `ToUSize` to be implemented for built-in types `usize`, `u8`, and all unsigned numeric types that, dependent on architecture, that can be represented in `usize` without loss | Yes | |
-| `implement-Zero-for-built_ins`                    | Causes `Zero` to be implemented for built-in types `i8`, ..., `i128`, `u8`, ..., `u128`, `isize`, `usize`, `f32`, `f64`, `char` | Yes | |
+| Name                                              | Effect                                | Is `"default"`? | Is `"full"`? | Dependent feature(s)                  |
+| ------------------------------------------------- | ------------------------------------- | --------------- | ------------ | ------------------------------------- |
+| `experimental-exact_size_is_empty`                | Causes the experimental feature `exact_size_is_empty` to be enabled | **No** | Yes (via `implement-IsEmpty-for-standard_process_types`) | |
+| `full`                                            | Enables the broader set of foreign-type implementations (including process/time IsEmpty and process Len) | **No** | Yes | (see `Cargo.toml`) |
+| `implement-AsF64-for-built_ins`                   | Causes `AsF64` to be implemented for built-in type `f64` | Yes | Yes | |
+| `implement-AsI128-for-built_ins`                  | Causes `AsI128` to be implemented for built-in type `i128` | Yes | Yes | |
+| `implement-AsI32-for-built_ins`                   | Causes `AsI32` to be implemented for built-in type `i32` | Yes | Yes | |
+| `implement-AsI64-for-built_ins`                   | Causes `AsI64` to be implemented for built-in type `i64` | Yes | Yes | |
+| `implement-AsISize-for-built_ins`                 | Causes `AsISize` to be implemented for built-in type `isize` | Yes | Yes | |
+| `implement-AsStr-for-built_ins`                   | Causes `AsStr` to be implemented for built-in type `str` | Yes | Yes | |
+| `implement-AsStr-for-String`                      | Causes `AsStr` to be implemented for standard collection type `String` | Yes | Yes (via `implement-AsStr-for-standard_collection_types`) | |
+| `implement-AsStr-for-standard_collection_types`   | Causes `AsStr` to be implemented for standard collection type `String` | **No** | Yes | `implement-AsStr-for-String` |
+| `implement-AsU128-for-built_ins`                  | Causes `AsU128` to be implemented for built-in type `u128` | Yes | Yes | |
+| `implement-AsU32-for-built_ins`                   | Causes `AsU32` to be implemented for built-in type `u32` | Yes | Yes | |
+| `implement-AsU64-for-built_ins`                   | Causes `AsU64` to be implemented for built-in type `u64` | Yes | Yes | |
+| `implement-AsUSize-for-built_ins`                 | Causes `AsUSize` to be implemented for built-in type `usize` | Yes | Yes | |
+| `implement-Infinity-for-built_ins`                | Causes `Infinity` to be implemented for built-in types `f32`, `f64` | Yes | Yes | |
+| `implement-IsEmpty-for-built_ins`                 | Causes `IsEmpty` to be implemented for built-in types `str`, `[T; N]`, `[T]` | Yes | Yes | |
+| `implement-IsEmpty-for-String`                    | Causes `IsEmpty` to be implemented for standard collection type `String` | Yes (via `implement-IsEmpty-for-standard_collection_types`) | Yes (via `implement-IsEmpty-for-standard_collection_types`) | |
+| `implement-IsEmpty-for-standard_collection_types` | Causes `IsEmpty` to be implemented for standard collection types `BTreeMap`, `BTreeSet`, ..., `Vec`, `VecDeque`, and `String` | Yes | Yes | `implement-IsEmpty-for-String` |
+| `implement-IsEmpty-for-standard_ffi_types`        | Causes `IsEmpty` to be implemented for standard FFI types `CStr`, `CString` | Yes | Yes | |
+| `implement-IsEmpty-for-standard_path_types`       | Causes `IsEmpty` to be implemented for standard path types `Path`, `PathBuf` | Yes | Yes | |
+| `implement-IsEmpty-for-standard_process_types`    | Causes `IsEmpty` to be implemented for standard process types `CommandArgs`, `CommandEnvs` | **No** | Yes | `experimental-exact_size_is_empty` |
+| `implement-IsEmpty-for-standard_range_types`      | Causes `IsEmpty` to be implemented for standard range types `Range`, `RangeFrom`, etc. | Yes | Yes | |
+| `implement-IsEmpty-for-standard_time_types`       | Causes `IsEmpty` to be implemented for standard time type `Duration` | **No** | Yes | |
+| `implement-IsInfinity-for-built_ins`              | Causes `IsInfinity` to be implemented for built-in types `f32`, `f64` | Yes | Yes | |
+| `implement-IsNAN-for-built_ins`                   | Causes `IsNAN` to be implemented for built-in types `f32`, `f64` | Yes | Yes | |
+| `implement-IsZero-for-built_ins`                  | Causes `IsZero` to be implemented for built-in types `i8`, ..., `i128`, `u8`, ..., `u128`, `isize`, `usize`, `f32`, `f64`, `char` | Yes | Yes | |
+| `implement-IsZero-for-standard_num_types`         | Reserved for `IsZero` implementations on standard numeric wrapper types | Yes | Yes | |
+| `implement-IsZero-for-standard_process_types`     | Causes `IsZero` to be implemented for standard process type `ExitStatus` | Yes | Yes | |
+| `implement-IsZero-for-standard_time_types`        | Causes `IsZero` to be implemented for standard time type `Duration` | Yes | Yes | |
+| `implement-Len-for-built_ins`                     | Causes `Len` to be implemented for built-in types `str`, `[T; N]`, `[T]` | Yes | Yes | |
+| `implement-Len-for-String`                        | Causes `Len` to be implemented for standard collection type `String` | Yes (via `implement-Len-for-standard_collection_types`) | Yes (via `implement-Len-for-standard_collection_types`) | |
+| `implement-Len-for-standard_collection_types`     | Causes `Len` to be implemented for standard collection types `BTreeMap`, `BTreeSet`, ..., `Vec`, `VecDeque`, and `String` | Yes | Yes | `implement-Len-for-String` |
+| `implement-Len-for-standard_ffi_types`            | Causes `Len` to be implemented for standard FFI types `CStr`, `CString` | Yes | Yes | |
+| `implement-Len-for-standard_path_types`           | Causes `Len` to be implemented for standard path types `Path`, `PathBuf` | Yes | Yes | |
+| `implement-Len-for-standard_process_types`        | Causes `Len` to be implemented for standard process types `CommandArgs`, `CommandEnvs` | **No** | Yes | |
+| `implement-ToF64-for-built_ins`                   | Causes `ToF64` to be implemented for built-in types `i8`, ..., `i128`, `u8`, ..., `u128`, `isize`, `usize`, `f32`, `f64` | Yes | Yes | |
+| `implement-ToI128-for-built_ins`                  | Causes `ToI128` to be implemented for built-in type `i8`, `i16`, `i32`, `i64`, `i128`, `u8`, `u16`, `u32`, `u64` | Yes | Yes | |
+| `implement-ToI16-for-built_ins`                   | Causes `ToI16` to be implemented for built-in types `i8`, `i16`, `u8` | Yes | Yes | |
+| `implement-ToI32-for-built_ins`                   | Causes `ToI32` to be implemented for built-in type `i8`, `i16`, `i32`, `u8`, `u16` | Yes | Yes | |
+| `implement-ToI64-for-built_ins`                   | Causes `ToI64` to be implemented for built-in type `i8`, `i16`, `i32`, `i64`, `u8`, `u16`, `u32` | Yes | Yes | |
+| `implement-ToU128-for-built_ins`                  | Causes `ToU128` to be implemented for built-in type `u8`, `u16`, `u32`, `u64`, `u128` | Yes | Yes | |
+| `implement-ToU16-for-built_ins`                   | Causes `ToU16` to be implemented for built-in type `u8`, `u16` | Yes | Yes | |
+| `implement-ToU32-for-built_ins`                   | Causes `ToU32` to be implemented for built-in type `u8`, `u16`, `u32` | Yes | Yes | |
+| `implement-ToU64-for-built_ins`                   | Causes `ToU64` to be implemented for built-in type `u8`, `u16`, `u32`, `u64` | Yes | Yes | |
+| `implement-ToISize-for-built_ins`                 | Causes `ToISize` to be implemented for built-in types `isize`, `i8`, and all numeric types that, dependent on architecture, that can be represented in `isize` without loss | Yes | Yes | |
+| `implement-ToUSize-for-built_ins`                 | Causes `ToUSize` to be implemented for built-in types `usize`, `u8`, and all unsigned numeric types that, dependent on architecture, that can be represented in `usize` without loss | Yes | Yes | |
+| `implement-Zero-for-built_ins`                    | Causes `Zero` to be implemented for built-in types `i8`, ..., `i128`, `u8`, ..., `u128`, `isize`, `usize`, `f32`, `f64`, `char` | Yes | Yes | |
 
 
 ### Functions

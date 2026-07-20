@@ -48,8 +48,8 @@
 /// ## Standard Process Types
 ///
 /// If the feature `"implement-Len-for-standard_process_types"`
-/// is defined (as it is by `"default"`), then this is also implemented
-/// for the following types:
+/// is defined (which is NOT by `"default"`, but is by `"full"`), then this
+/// is also implemented for the following types:
 /// - [`std::process::CommandArgs`];
 /// - [`std::process::CommandEnvs`];
 #[allow(clippy::len_without_is_empty)]
