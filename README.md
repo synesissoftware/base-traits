@@ -80,7 +80,8 @@ The following crate features are defined:
 | `implement-AsUSize-for-built_ins`                 | Causes `AsUSize` to be implemented for built-in type `usize` | Yes | |
 | `implement-Infinity-for-built_ins`                | Causes `Infinity` to be implemented for built-in types `f32`, `f64` | Yes | |
 | `implement-IsEmpty-for-built_ins`                 | Causes `IsEmpty` to be implemented for built-in types `str`, `[T; N]`, `[T]` | Yes | |
-| `implement-IsEmpty-for-standard_collection_types` | Causes `IsEmpty` to be implemented for standard collection types `BTreeMap`, `BTreeSet`, ..., `Vec`, `VecDeque`, and `String` | Yes | |
+| `implement-IsEmpty-for-standard_collection_types` | Causes `IsEmpty` to be implemented for standard collection types `BTreeMap`, `BTreeSet`, ..., `Vec`, `VecDeque`, and `String` | No | `implement-IsEmpty-for-String` |
+| `implement-IsEmpty-for-String`                    | Causes `IsEmpty` to be implemented for standard collection type `String` | Yes | |
 | `implement-IsEmpty-for-standard_ffi_types`        | Causes `IsEmpty` to be implemented for standard FFI types `CStr`, `CString` | Yes | |
 | `implement-IsEmpty-for-standard_path_types`       | Causes `IsEmpty` to be implemented for standard path types `Path`, `PathBuf` | Yes | |
 | `implement-IsEmpty-for-standard_process_types`    | Causes `IsEmpty` to be implemented for standard process types `CommandArgs`, `CommandEnvs` | **No** | `experimental-exact_size_is_empty` |
@@ -92,7 +93,8 @@ The following crate features are defined:
 | `implement-IsZero-for-standard_process_types`     | Causes `IsZero` to be implemented for standard process type `ExitStatus` | Yes | |
 | `implement-IsZero-for-standard_time_types`        | Causes `IsZero` to be implemented for standard time type `Duration` | Yes | |
 | `implement-Len-for-built_ins`                     | Causes `Len` to be implemented for built-in types `str`, `[T; N]`, `[T]` | Yes | |
-| `implement-Len-for-standard_collection_types`     | Causes `Len` to be implemented for standard collection types `BTreeMap`, `BTreeSet`, ..., `Vec`, `VecDeque`, and `String` | Yes | |
+| `implement-Len-for-standard_collection_types`     | Causes `Len` to be implemented for standard collection types `BTreeMap`, `BTreeSet`, ..., `Vec`, `VecDeque`, and `String` | No | `implement-Len-for-String` |
+| `implement-Len-for-String`                        | Causes `Len` to be implemented for standard collection type `String` | Yes | |
 | `implement-Len-for-standard_ffi_types`            | Causes `Len` to be implemented for standard FFI types `CStr`, `CString` | Yes | |
 | `implement-Len-for-standard_path_types`           | Causes `Len` to be implemented for standard path types `Path`, `PathBuf` | Yes | |
 | `implement-Len-for-standard_process_types`        | Causes `Len` to be implemented for standard process types `CommandArgs`, `CommandEnvs` | **No** | |

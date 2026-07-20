@@ -150,11 +150,11 @@ implement-AsISize-for-built_ins = []
 # AsStr
 
 implement-AsStr-for-built_ins = []
+
+implement-AsStr-for-String = []
 implement-AsStr-for-standard_collection_types = [
 	"implement-AsStr-for-String",
 ]
-
-implement-AsStr-for-String = []
 
 # AsU128
 
@@ -179,13 +179,22 @@ implement-Infinity-for-built_ins = []
 # IsEmpty:
 
 implement-IsEmpty-for-built_ins = []
-implement-IsEmpty-for-standard_collection_types = []
+
+implement-IsEmpty-for-String = []
+implement-IsEmpty-for-standard_collection_types = [
+	"implement-IsEmpty-for-String",
+]
+
 implement-IsEmpty-for-standard_ffi_types = []
+
 implement-IsEmpty-for-standard_path_types = []
+
 implement-IsEmpty-for-standard_process_types = [
 	"experimental-exact_size_is_empty",
 ]
+
 implement-IsEmpty-for-standard_range_types = []
+
 implement-IsEmpty-for-standard_time_types = []
 
 # IsInfinity:
@@ -199,16 +208,26 @@ implement-IsNAN-for-built_ins = []
 # IsZero
 
 implement-IsZero-for-built_ins = []
+
 implement-IsZero-for-standard_num_types = []
+
 implement-IsZero-for-standard_process_types = []
+
 implement-IsZero-for-standard_time_types = []
 
 # Len:
 
 implement-Len-for-built_ins = []
-implement-Len-for-standard_collection_types = []
+
+implement-Len-for-String = []
+implement-Len-for-standard_collection_types = [
+	"implement-Len-for-String",
+]
+
 implement-Len-for-standard_ffi_types = []
+
 implement-Len-for-standard_path_types = []
+
 implement-Len-for-standard_process_types = []
 
 # ToF64

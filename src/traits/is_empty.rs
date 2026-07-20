@@ -25,7 +25,7 @@
 /// - [`std::collections::HashMap`];
 /// - [`std::collections::HashSet`];
 /// - [`std::collections::LinkedList`];
-/// - [`String`];
+/// - [`String`] - individually enabled by `"implement-IsEmpty-for-String"`;
 /// - [`Vec`];
 /// - [`std::collections::VecDeque`];
 ///
@@ -201,12 +201,6 @@ mod impl_for_std_coll_types {
             coll.is_empty()
         }
 
-        // NOTE: parameter type is `&str`, not `&String`
-        #[inline]
-        pub(super) fn get_is_empty_String_(s : &str) -> bool {
-            s.is_empty()
-        }
-
         // NOTE: parameter type is `&[T]`, not `&Vec<T>`
         #[inline]
         pub(super) fn get_is_empty_Vec_<T>(coll : &[T]) -> bool {
@@ -274,15 +268,6 @@ mod impl_for_std_coll_types {
         }
     }
 
-    // String
-
-    impl super::IsEmpty for String {
-        #[inline]
-        fn is_empty(&self) -> bool {
-            isolate_::get_is_empty_String_(self)
-        }
-    }
-
     // Vec<>
 
     impl<T> super::IsEmpty for Vec<T> {
@@ -298,6 +283,32 @@ mod impl_for_std_coll_types {
         #[inline]
         fn is_empty(&self) -> bool {
             isolate_::get_is_empty_VecDeque_(self)
+        }
+    }
+}
+
+
+#[cfg(all(not(feature = "nostd"), feature = "implement-IsEmpty-for-String"))]
+mod impl_for_std_coll_types_string {
+
+    mod isolate_ {
+        #![allow(non_snake_case)]
+
+
+        // NOTE: parameter type is `&str`, not `&String`
+        #[inline]
+        pub(super) fn get_is_empty_String_(s : &str) -> bool {
+            s.is_empty()
+        }
+    }
+
+
+    // String
+
+    impl super::IsEmpty for String {
+        #[inline]
+        fn is_empty(&self) -> bool {
+            isolate_::get_is_empty_String_(self)
         }
     }
 }
@@ -775,12 +786,16 @@ mod tests {
     }
 
 
-    #[cfg(feature = "implement-IsEmpty-for-standard_collection_types")]
+    #[cfg(any(
+        feature = "implement-IsEmpty-for-standard_collection_types",
+         feature = "implement-IsEmpty-for-String",
+        ))]
     mod TEST_STANDARD_TYPES {
         #![allow(non_snake_case)]
 
         use super::*;
 
+        #[cfg(feature = "implement-IsEmpty-for-standard_collection_types")]
         use std::collections::{
             BTreeMap,
             BTreeSet,
@@ -792,6 +807,7 @@ mod tests {
         };
 
 
+        #[cfg(feature = "implement-IsEmpty-for-standard_collection_types")]
         mod TEST_BTreeMapTU {
             #![allow(non_snake_case)]
 
@@ -822,6 +838,7 @@ mod tests {
         }
 
 
+        #[cfg(feature = "implement-IsEmpty-for-standard_collection_types")]
         mod TEST_BTreeSetT {
             #![allow(non_snake_case)]
 
@@ -852,6 +869,7 @@ mod tests {
         }
 
 
+        #[cfg(feature = "implement-IsEmpty-for-standard_collection_types")]
         mod TEST_BinaryHeapT {
             #![allow(non_snake_case)]
 
@@ -882,6 +900,7 @@ mod tests {
         }
 
 
+        #[cfg(feature = "implement-IsEmpty-for-standard_collection_types")]
         mod TEST_HashMapTU {
             #![allow(non_snake_case)]
 
@@ -912,6 +931,7 @@ mod tests {
         }
 
 
+        #[cfg(feature = "implement-IsEmpty-for-standard_collection_types")]
         mod TEST_HashSetT {
             #![allow(non_snake_case)]
 
@@ -942,6 +962,7 @@ mod tests {
         }
 
 
+        #[cfg(feature = "implement-IsEmpty-for-standard_collection_types")]
         mod TEST_LinkedListT {
             #![allow(non_snake_case)]
 
@@ -972,6 +993,7 @@ mod tests {
         }
 
 
+        #[cfg(feature = "implement-IsEmpty-for-String")]
         mod TEST_String {
             #![allow(non_snake_case)]
 
@@ -1002,6 +1024,7 @@ mod tests {
         }
 
 
+        #[cfg(feature = "implement-IsEmpty-for-String")]
         mod TEST_String_IN_Box {
             #![allow(non_snake_case)]
 
@@ -1032,6 +1055,7 @@ mod tests {
         }
 
 
+        #[cfg(feature = "implement-IsEmpty-for-standard_collection_types")]
         mod TEST_VecT {
             #![allow(non_snake_case)]
 
@@ -1062,6 +1086,7 @@ mod tests {
         }
 
 
+        #[cfg(feature = "implement-IsEmpty-for-standard_collection_types")]
         mod TEST_VecDequeT {
             #![allow(non_snake_case)]
 
