@@ -43,6 +43,7 @@ where
 }
 
 fn main() {
+    #[cfg(feature = "implement-ToF64-for-built_ins")]
     {
         let raw_values = vec![
             // insert list

@@ -1,6 +1,11 @@
 # base-traits Changes <!-- omit in toc -->
 
 
+## 0.1.3 - 21st July 2026
+
+* ensuring **--no-default-features** works;
+
+
 ## 0.1.1 - 15th July 2026
 
 * fixed wrong line in NEWS.md;
