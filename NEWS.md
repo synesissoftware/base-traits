@@ -1,4 +1,4 @@
-# base-traits - NEWS <!-- omit in toc -->
+# base-traits - News <!-- omit in toc -->
 
 
 | Date                  | News Item                                 |
