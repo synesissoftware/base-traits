@@ -13,6 +13,10 @@ categories = [
 description = "base traits (for Rust)"
 documentation = "https://docs.rs/base-traits"
 edition = "2021"
+exclude = [
+	".vimrc",
+	".vscode/**",
+]
 homepage = "https://github.com/synesissoftware/base-traits"
 keywords = [
 	"traits",
@@ -22,7 +26,13 @@ name = "base-traits"
 readme = "README.md"
 repository = "https://github.com/synesissoftware/base-traits"
 rust-version = "1.74"
-version = "0.1.3"
+version = "0.1.4"
+
+
+# docs.rs builds the complete std-enabled API with its nightly toolchain.
+
+[package.metadata.docs.rs]
+features = ["full"]
 
 
 # ##########################################################

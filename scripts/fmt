@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+set -euo pipefail
+
+exec cargo fmt --all -- --unstable-features "$@"

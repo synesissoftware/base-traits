@@ -1,5 +1,37 @@
 // lib.rs : base-traits
 
+//! General-purpose traits for generic Rust programming.
+//!
+//! The crate supplies small traits for concepts that are
+//! useful across unrelated types, including [`IsEmpty`],
+//! [`Len`], [`ToF64`], and [`Zero`]. Implementations for
+//! built-in and standard-library types are controlled by
+//! feature flags so consumers can choose the API surface
+//! they need.
+//!
+//! # Example
+//!
+//! ```
+//! use base_traits::ToF64;
+//!
+//! struct Price(f64);
+//!
+//! impl ToF64 for Price {
+//!     fn to_f64(&self) -> f64 {
+//!         self.0
+//!     }
+//! }
+//!
+//! let price = Price(12.50);
+//! assert_eq!(12.50, price.to_f64());
+//! ```
+//!
+//! The default feature set enables the common built-in and
+//! standard-library implementations. The `"full"` feature
+//! enables the broader set, including the experimental
+//! process-type implementations. Use `"nostd"` when the
+//! standard library is unavailable.
+
 // /////////////////////////////////////////////////////////
 // crate-level feature definitions
 

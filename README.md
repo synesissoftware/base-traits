@@ -14,8 +14,10 @@ base traits, for Rust
 ## Introduction
 
 This crate defines general-purpose `trait`s that:
-* seem obvious and yet are missing from the standard library (e.g. `IsEmpty`, `Len`); or
-* provide a basis to introduce specific functionality to allow for other crates to interoperate;
+* seem obvious and yet are missing from the standard library (e.g.
+  `IsEmpty`, `Len`); or
+* provide a basis to introduce specific functionality to allow for other
+  crates to interoperate;
 
 
 ## Table of Contents <!-- omit in toc -->
@@ -48,7 +50,7 @@ This crate defines general-purpose `trait`s that:
 Reference in **Cargo.toml** in the usual way:
 
 ```toml
-base-traits = { version = "0" }
+base-traits = { version = "0.1" }
 ```
 
 
@@ -62,6 +64,11 @@ None defined at this time.
 ### Features
 
 The following crate features are defined:
+
+The `"full"` feature enables the broader standard-library implementation set
+and requires nightly Rust because it enables the experimental
+`exact_size_is_empty` feature. The `"nostd"` feature is intended for builds
+that do not use the standard library.
 
 | Name                                              | Effect                                | Is `"default"`? | Is `"full"`? | Dependent feature(s)                  |
 | ------------------------------------------------- | ------------------------------------- | --------------- | ------------ | ------------------------------------- |
@@ -112,6 +119,8 @@ The following crate features are defined:
 | `implement-ToISize-for-built_ins`                 | Causes `ToISize` to be implemented for built-in types `isize`, `i8`, and all numeric types that, dependent on architecture, that can be represented in `isize` without loss | Yes | Yes | |
 | `implement-ToUSize-for-built_ins`                 | Causes `ToUSize` to be implemented for built-in types `usize`, `u8`, and all unsigned numeric types that, dependent on architecture, that can be represented in `usize` without loss | Yes | Yes | |
 | `implement-Zero-for-built_ins`                    | Causes `Zero` to be implemented for built-in types `i8`, ..., `i128`, `u8`, ..., `u128`, `isize`, `usize`, `f32`, `f64`, `char` | Yes | Yes | |
+| `null-feature`                                    | Has no effect; provided for driver-script compatibility | **No** | **No** | |
+| `nostd`                                           | Builds the crate without the standard library           | **No** | **No** | |
 
 
 ### Functions
@@ -154,10 +163,15 @@ The following traits are defined:
 * `Real` - provides no methods;
 * `Signed` - provides no methods;
 * `ToF64` - provides (non-mutating) instance method `#to_f64() : f64`;
-* `AsU32` - provides (non-mutating) instance method `#as_u32() : u32`;
-* `AsU64` - provides (non-mutating) instance method `#as_u64() : u64`;
-* `AsU128` - provides (non-mutating) instance method `#as_u128() : u128`;
+* `ToI128` - provides (non-mutating) instance method `#to_i128() : i128`;
+* `ToI16` - provides (non-mutating) instance method `#to_i16() : i16`;
+* `ToI32` - provides (non-mutating) instance method `#to_i32() : i32`;
+* `ToI64` - provides (non-mutating) instance method `#to_i64() : i64`;
 * `ToISize` - provides (non-mutating) instance method `#to_isize() : isize`;
+* `ToU128` - provides (non-mutating) instance method `#to_u128() : u128`;
+* `ToU16` - provides (non-mutating) instance method `#to_u16() : u16`;
+* `ToU32` - provides (non-mutating) instance method `#to_u32() : u32`;
+* `ToU64` - provides (non-mutating) instance method `#to_u64() : u64`;
 * `ToUSize` - provides (non-mutating) instance method `#to_usize() : usize`;
 * `Unsigned` - provides no methods;
 * `Zero` - provides class method `::zero() : Self`;
@@ -277,7 +291,7 @@ There are no runtime dependencies (aka "normal dependencies") on other crates.
 
 Libraries used only when building **base-traits** (not required by downstream consumers):
 
-* [**bt-rs**](https://github.com/synesissoftware/bt-rs) — [`rustc::compiler_version()`](https://docs.rs/bt-rs/latest/bt_rs/rustc/fn.compiler_version.html) in **build.rs** to detect Rust 1.79+ and set the `rustc_1_79_or_newer` cfg for use of `CStr#count_bytes()`;
+* [**bt-rs**](https://github.com/synesissoftware/bt-rs) — [`rustc::compiler_version()`](https://docs.rs/bt-rs/latest/bt_rs/rustc/fn.compiler_version.html) in **build.rs** to detect Rust 1.79+ and set the `rustc_1_79_or_newer` cfg for use of `CStr::count_bytes()`;
 
 
 ##### Development Dependencies
@@ -298,6 +312,7 @@ Projects that depend on **base-traits**:
 
 ### Related projects
 
+None currently.
 
 
 ### License
@@ -306,4 +321,3 @@ Projects that depend on **base-traits**:
 
 
 <!-- ########################### end of file ########################### -->
-

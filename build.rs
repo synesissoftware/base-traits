@@ -1,4 +1,4 @@
-// build.rs : test_help-rs
+// build.rs : base-traits
 
 use bt_rs::rustc;
 

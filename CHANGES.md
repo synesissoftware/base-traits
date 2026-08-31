@@ -1,6 +1,17 @@
 # base-traits - Changes <!-- omit in toc -->
 
 
+## 0.1.4 - 31st August 2026
+
+* completed canonical CI branch and pull-request trigger coverage in **.github/workflows/ci.yml**;
+* added stable and nightly tests for formatting, features, documentation, examples, and packaging;
+* added pinned nightly formatting support through **rust-toolchain.toml** and **scripts/fmt**;
+* added **DOC_76**, **DERIVE_LAYOUT**, and **RUST_TEST_NAMING** repository checkers;
+* added crate-level rustdoc and catalogued the **price-to_f64** example;
+* aligned **rustfmt.toml** with the Rust 2021 crate edition;
+* corrected the **build.rs** project label and excluded editor files from packages;
+
+
 ## 0.1.3 - 20th July 2026
 
 * ensuring **--no-default-features** works;

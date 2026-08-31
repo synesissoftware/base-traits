@@ -61,10 +61,22 @@ fn main() {
     {
         let prices = vec![
             // insert list
-            Price { dollars: 10, cents : 0 },
-            Price { dollars: 10, cents : 1 },
-            Price { dollars: 10, cents : 2 },
-            Price { dollars: 10, cents : 3 },
+            Price {
+                dollars : 10,
+                cents :   0,
+            },
+            Price {
+                dollars : 10,
+                cents :   1,
+            },
+            Price {
+                dollars : 10,
+                cents :   2,
+            },
+            Price {
+                dollars : 10,
+                cents :   3,
+            },
         ];
 
         let (price_mean, price_stddev) = calc_mean_and_stddev(prices.iter()).unwrap();

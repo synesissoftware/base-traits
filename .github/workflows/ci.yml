@@ -6,14 +6,25 @@ on:
       - master
       - dev
       - boilerplate
+      - idiomatic
+      - rc1
+      - rc2
+      - rc3
   pull_request:
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    shell: bash
 
 env:
   CARGO_TERM_COLOR: always
 
 jobs:
   check:
-    name: Test, Clippy, Fmt, Checkers
+    name: Stable checks
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -22,16 +33,43 @@ jobs:
         with:
           components: clippy
 
-      - name: Install nightly rustfmt
-        run: rustup toolchain install nightly --profile minimal --component rustfmt
+      - name: Install pinned nightly rustfmt
+        run: rustup toolchain install nightly-2026-08-08 --profile minimal --component rustfmt
 
       - uses: Swatinem/rust-cache@v2
 
-      - name: cargo test
-        run: cargo test
+      - name: cargo test (all targets)
+        run: cargo +stable test --all-targets --locked
 
       - name: cargo clippy
-        run: cargo clippy --all-targets -- -D warnings
+        run: cargo +stable clippy --all-targets --locked -- -D warnings
+
+      - name: cargo test (no default features)
+        run: cargo +stable test --no-default-features --locked
+
+      - name: cargo check (no standard library)
+        run: cargo +stable check --lib --no-default-features --features nostd --locked
+
+      - name: cargo doc
+        run: cargo +stable doc --no-deps --locked
+
+      - name: rustfmt
+        run: RUSTUP_TOOLCHAIN=nightly-2026-08-08 ./scripts/fmt --check
+
+      - name: DOC_76 checker
+        run: python3 scripts/check_doc_76.py
+
+      - name: RUST_TEST_NAMING checker
+        run: python3 scripts/check_test_names.py
+
+      - name: DERIVE_LAYOUT checker
+        run: python3 scripts/check_derives.py
+
+      - name: cargo build (example)
+        run: cargo +stable build --example price-to_f64 --locked
+
+      - name: cargo publish (dry run)
+        run: cargo +stable publish --dry-run --locked
 
   msrv:
     name: MSRV (1.74)
@@ -44,15 +82,29 @@ jobs:
       - uses: Swatinem/rust-cache@v2
 
       - name: cargo check (library)
-        run: cargo check --lib --locked
+        run: cargo +1.74.0 check --lib --locked
 
-  nightly-constants:
-    name: Nightly constants
+  nightly-features:
+    name: Nightly feature checks
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - uses: dtolnay/rust-toolchain@nightly
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: nightly-2026-08-08
+          components: clippy
 
       - uses: Swatinem/rust-cache@v2
 
+      - name: cargo test (experimental feature)
+        run: cargo +nightly-2026-08-08 test --no-default-features --features "experimental-exact_size_is_empty,implement-IsEmpty-for-standard_process_types" --locked
+
+      - name: cargo test (full features)
+        run: cargo +nightly-2026-08-08 test --no-default-features --features full --locked
+
+      - name: cargo clippy (full features)
+        run: cargo +nightly-2026-08-08 clippy --all-targets --features full --locked -- -D warnings
+
+      - name: cargo doc (full features)
+        run: cargo +nightly-2026-08-08 doc --no-deps --features full --locked
