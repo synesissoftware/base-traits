@@ -54,6 +54,10 @@ path = "src/lib.rs"
 name = "price-to_f64"
 path = "examples/price-to_f64.rs"
 
+[[example]]
+name = "versions"
+path = "examples/versions/main.rs"
+
 
 # ##########################################################
 # Features
