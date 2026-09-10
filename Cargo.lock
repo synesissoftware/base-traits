@@ -11,6 +11,6 @@ dependencies = [
 
 [[package]]
 name = "bt-rs"
-version = "0.0.2"
+version = "0.0.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e28ef636359d6c9f59ae07a0c24e62951a5b7054d50c0b00511380a95208e5e2"
+checksum = "66c801a3e540d22c99661706133db245edae489c872cfdb2f5925b2077170285"

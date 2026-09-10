@@ -1,3 +1,4 @@
+
 # ##########################################################
 # Package
 
@@ -14,8 +15,13 @@ description = "base traits (for Rust)"
 documentation = "https://docs.rs/base-traits"
 edition = "2021"
 exclude = [
+	".cargo",
+	".cursor",
+	".github",
 	".vimrc",
-	".vscode/**",
+	".vscode",
+	"scripts",
+	"target",
 ]
 homepage = "https://github.com/synesissoftware/base-traits"
 keywords = [
@@ -32,7 +38,9 @@ version = "0.1.4"
 # docs.rs builds the complete std-enabled API with its nightly toolchain.
 
 [package.metadata.docs.rs]
-features = ["full"]
+features = [
+	"full",
+]
 
 
 # ##########################################################
@@ -198,8 +206,10 @@ full = [
 
 # General features:
 #
+# - "_NEVER_TO_BE_ENABLED" - this is a placeholder feature and must NEVER be specified;
 # - "null-feature" - a feature that has no effect (and, thus, is useful for simplifying driver scripts);
 
+_NEVER_TO_BE_ENABLED = []
 null-feature = []
 
 
@@ -208,174 +218,174 @@ null-feature = []
 # - "experimental-exact_size_is_empty" - enables crate feature exact_size_is_empty;
 # - "nostd" - remove all dependencies to std crate;
 
-experimental-exact_size_is_empty = []
-
+experimental-exact_size_is_empty = [
+]
 # AsF64
 
-implement-AsF64-for-built_ins = []
-
+implement-AsF64-for-built_ins = [
+]
 # AsI128
 
-implement-AsI128-for-built_ins = []
-
+implement-AsI128-for-built_ins = [
+]
 # AsI32
 
-implement-AsI32-for-built_ins = []
-
+implement-AsI32-for-built_ins = [
+]
 # AsI64
 
-implement-AsI64-for-built_ins = []
-
+implement-AsI64-for-built_ins = [
+]
 # AsISize
 
-implement-AsISize-for-built_ins = []
-
+implement-AsISize-for-built_ins = [
+]
 # AsStr
 
-implement-AsStr-for-built_ins = []
-
-implement-AsStr-for-String = []
+implement-AsStr-for-built_ins = [
+]
+implement-AsStr-for-String = [
+]
 implement-AsStr-for-standard_collection_types = [
 	"implement-AsStr-for-String",
 ]
 
 # AsU128
 
-implement-AsU128-for-built_ins = []
-
+implement-AsU128-for-built_ins = [
+]
 # AsU32
 
-implement-AsU32-for-built_ins = []
-
+implement-AsU32-for-built_ins = [
+]
 # AsU64
 
-implement-AsU64-for-built_ins = []
-
+implement-AsU64-for-built_ins = [
+]
 # AsUSize
 
-implement-AsUSize-for-built_ins = []
-
+implement-AsUSize-for-built_ins = [
+]
 # Infinity
 
-implement-Infinity-for-built_ins = []
-
+implement-Infinity-for-built_ins = [
+]
 # IsEmpty:
 
-implement-IsEmpty-for-built_ins = []
-
-implement-IsEmpty-for-String = []
+implement-IsEmpty-for-built_ins = [
+]
+implement-IsEmpty-for-String = [
+]
 implement-IsEmpty-for-standard_collection_types = [
 	"implement-IsEmpty-for-String",
 ]
 
-implement-IsEmpty-for-standard_ffi_types = []
-
-implement-IsEmpty-for-standard_path_types = []
-
+implement-IsEmpty-for-standard_ffi_types = [
+]
+implement-IsEmpty-for-standard_path_types = [
+]
 implement-IsEmpty-for-standard_process_types = [
 	"experimental-exact_size_is_empty",
 ]
 
-implement-IsEmpty-for-standard_range_types = []
-
-implement-IsEmpty-for-standard_time_types = []
-
+implement-IsEmpty-for-standard_range_types = [
+]
+implement-IsEmpty-for-standard_time_types = [
+]
 # IsInfinity:
 
-implement-IsInfinity-for-built_ins = []
-
+implement-IsInfinity-for-built_ins = [
+]
 # IsNAN:
 
-implement-IsNAN-for-built_ins = []
-
+implement-IsNAN-for-built_ins = [
+]
 # IsZero
 
-implement-IsZero-for-built_ins = []
-
-implement-IsZero-for-standard_num_types = []
-
-implement-IsZero-for-standard_process_types = []
-
-implement-IsZero-for-standard_time_types = []
-
+implement-IsZero-for-built_ins = [
+]
+implement-IsZero-for-standard_num_types = [
+]
+implement-IsZero-for-standard_process_types = [
+]
+implement-IsZero-for-standard_time_types = [
+]
 # Len:
 
-implement-Len-for-built_ins = []
-
-implement-Len-for-String = []
+implement-Len-for-built_ins = [
+]
+implement-Len-for-String = [
+]
 implement-Len-for-standard_collection_types = [
 	"implement-Len-for-String",
 ]
 
-implement-Len-for-standard_ffi_types = []
-
-implement-Len-for-standard_path_types = []
-
-implement-Len-for-standard_process_types = []
-
+implement-Len-for-standard_ffi_types = [
+]
+implement-Len-for-standard_path_types = [
+]
+implement-Len-for-standard_process_types = [
+]
 # ToF64
 
-implement-ToF64-for-built_ins = []
-
+implement-ToF64-for-built_ins = [
+]
 # ToI16
 
-implement-ToI16-for-built_ins = []
-
+implement-ToI16-for-built_ins = [
+]
 # ToI32
 
-implement-ToI32-for-built_ins = []
-
+implement-ToI32-for-built_ins = [
+]
 # ToI64
 
-implement-ToI64-for-built_ins = []
-
+implement-ToI64-for-built_ins = [
+]
 # ToI128
 
-implement-ToI128-for-built_ins = []
-
+implement-ToI128-for-built_ins = [
+]
 # ToISize
 
-implement-ToISize-for-built_ins = []
-
+implement-ToISize-for-built_ins = [
+]
 # ToU16
 
-implement-ToU16-for-built_ins = []
-
+implement-ToU16-for-built_ins = [
+]
 # ToU32
 
-implement-ToU32-for-built_ins = []
-
+implement-ToU32-for-built_ins = [
+]
 # ToU64
 
-implement-ToU64-for-built_ins = []
-
+implement-ToU64-for-built_ins = [
+]
 # ToU128
 
-implement-ToU128-for-built_ins = []
-
+implement-ToU128-for-built_ins = [
+]
 # ToUSize
 
-implement-ToUSize-for-built_ins = []
-
+implement-ToUSize-for-built_ins = [
+]
 # Zero
 
-implement-Zero-for-built_ins = []
-
-
-nostd = []
-
-
-
+implement-Zero-for-built_ins = [
+]
+nostd = [
+]
 # ##########################################################
 # Dependencies
-
-[dependencies]
 
 [build-dependencies]
 
 bt-rs = { version = "0.0", default-features = false, features = [
 ] }
 
+
+[dependencies]
 
 [dev-dependencies]
 
