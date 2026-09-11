@@ -33,28 +33,31 @@ jobs:
         with:
           components: clippy
 
-      - name: Install pinned nightly rustfmt
-        run: rustup toolchain install nightly-2026-08-08 --profile minimal --component rustfmt
-
       - uses: Swatinem/rust-cache@v2
 
       - name: cargo test (all targets)
-        run: cargo +stable test --all-targets --locked
-
-      - name: cargo clippy
-        run: cargo +stable clippy --all-targets --locked -- -D warnings
+        run: cargo test --all-targets --locked
 
       - name: cargo test (no default features)
-        run: cargo +stable test --no-default-features --locked
+        run: cargo test --no-default-features --locked
 
       - name: cargo check (no standard library)
-        run: cargo +stable check --lib --no-default-features --features nostd --locked
+        run: cargo check --lib --no-default-features --features nostd --locked
+
+      - name: cargo clippy
+        run: cargo clippy --all-targets --locked -- -D warnings
 
       - name: cargo doc
-        run: cargo +stable doc --no-deps --locked
+        run: RUSTDOCFLAGS="-D warnings" cargo doc --no-deps --locked
+
+      - name: Install pinned nightly rustfmt
+        run: rustup toolchain install nightly-2026-09-10 --profile minimal --component rustfmt
 
       - name: rustfmt
-        run: RUSTUP_TOOLCHAIN=nightly-2026-08-08 ./scripts/fmt --check
+        env:
+          RUSTFMT_TOOLCHAIN: nightly-2026-09-10
+          RUSTUP_TOOLCHAIN: nightly-2026-09-10
+        run: ./scripts/fmt --check
 
       - name: DOC_76 checker
         run: python3 scripts/check_doc_76.py
@@ -65,11 +68,14 @@ jobs:
       - name: DERIVE_LAYOUT checker
         run: python3 scripts/check_derives.py
 
+      - name: cargo build (examples)
+        run: cargo build --examples --locked
+
       - name: cargo build (example)
-        run: cargo +stable build --example price-to_f64 --locked
+        run: cargo build --example price-to_f64 --locked
 
       - name: cargo publish (dry run)
-        run: cargo +stable publish --dry-run --locked
+        run: cargo publish --dry-run --locked
 
   msrv:
     name: MSRV (1.74)
@@ -82,7 +88,7 @@ jobs:
       - uses: Swatinem/rust-cache@v2
 
       - name: cargo check (library)
-        run: cargo +1.74.0 check --lib --locked
+        run: cargo check --lib --locked
 
   nightly-features:
     name: Nightly feature checks
@@ -92,19 +98,19 @@ jobs:
 
       - uses: dtolnay/rust-toolchain@master
         with:
-          toolchain: nightly-2026-08-08
+          toolchain: nightly-2026-09-10
           components: clippy
 
       - uses: Swatinem/rust-cache@v2
 
       - name: cargo test (experimental feature)
-        run: cargo +nightly-2026-08-08 test --no-default-features --features "experimental-exact_size_is_empty,implement-IsEmpty-for-standard_process_types" --locked
+        run: cargo +nightly-2026-09-10 test --no-default-features --features "experimental-exact_size_is_empty,implement-IsEmpty-for-standard_process_types" --locked
 
       - name: cargo test (full features)
-        run: cargo +nightly-2026-08-08 test --no-default-features --features full --locked
+        run: cargo +nightly-2026-09-10 test --no-default-features --features full --locked
 
       - name: cargo clippy (full features)
-        run: cargo +nightly-2026-08-08 clippy --all-targets --features full --locked -- -D warnings
+        run: cargo +nightly-2026-09-10 clippy --all-targets --features full --locked -- -D warnings
 
       - name: cargo doc (full features)
-        run: cargo +nightly-2026-08-08 doc --no-deps --features full --locked
+        run: cargo +nightly-2026-09-10 doc --no-deps --features full --locked
