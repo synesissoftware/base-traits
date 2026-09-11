@@ -1,6 +1,17 @@
 # base-traits - Changes <!-- omit in toc -->
 
 
+## 0.1.5 - 11th September 2026
+
+* modernised repository metadata, editor configuration, ignore rules, and Rust formatting configuration;
+* strengthened stable and nightly CI checks for features, documentation, examples, packaging, and the MSRV;
+* added the **versions** example and excluded development-only files from published packages;
+* documented the MSRV and added the `_NEVER_TO_BE_ENABLED` placeholder feature;
+* canonicalised feature declarations and dependency sections in **Cargo.toml**;
+* improved the test-name checker to handle numeric and padded construct names;
+* clarified macro documentation and refreshed the formatting driver for the pinned nightly toolchain;
+
+
 ## 0.1.4 - 31st August 2026
 
 * completed canonical CI branch and pull-request trigger coverage in **.github/workflows/ci.yml**;
