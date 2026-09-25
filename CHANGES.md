@@ -1,6 +1,12 @@
 # base-traits - Changes <!-- omit in toc -->
 
 
+## 0.2.0 - 25th September 2026
+
+* `IsNegative` trait;
+* `IsPositive` trait;
+
+
 ## 0.1.5 - 11th September 2026
 
 * modernised repository metadata, editor configuration, ignore rules, and Rust formatting configuration;

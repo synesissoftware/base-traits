@@ -3,6 +3,7 @@
 
 | Date                | News Item                   | Details |
 | ------------------- | --------------------------- | ------- |
+| 25th September 2026 | [base-traits 0.2.0](https://github.com/synesissoftware/base-traits/releases/tag/0.2.0) released | `IsNegative` and `IsPositive` traits |
 | 11th September 2026 | [base-traits 0.1.5](https://github.com/synesissoftware/base-traits/releases/tag/0.1.5) released | Repository, CI, packaging, and feature updates |
 | 31st August 2026    | [base-traits 0.1.4](https://github.com/synesissoftware/base-traits/releases/tag/0.1.4) released | Canonical CI and formatting tooling |
 | 20th July 2026      | [base-traits 0.1.3](https://github.com/synesissoftware/base-traits/releases/tag/0.1.3) released | Trait permutations; no-default-features fixes |

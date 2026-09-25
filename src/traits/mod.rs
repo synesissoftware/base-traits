@@ -18,6 +18,8 @@ declare_and_publish!(is_default, IsDefault);
 declare_and_publish!(is_empty, IsEmpty);
 declare_and_publish!(is_infinity, IsInfinity);
 declare_and_publish!(is_nan, IsNAN);
+declare_and_publish!(is_negative, IsNegative);
+declare_and_publish!(is_positive, IsPositive);
 declare_and_publish!(is_zero, IsZero);
 declare_and_publish!(len, Len);
 declare_and_publish!(numeric, Numeric);
