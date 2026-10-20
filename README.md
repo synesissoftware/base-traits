@@ -51,7 +51,7 @@ This crate defines general-purpose `trait`s that:
 Reference in **Cargo.toml** in the usual way:
 
 ```toml
-base-traits = { version = "0.1" }
+base-traits = { version = "0.2" }
 ```
 
 
@@ -98,6 +98,8 @@ that do not use the standard library.
 | `implement-IsEmpty-for-standard_time_types`       | Causes `IsEmpty` to be implemented for standard time type `Duration` | **No** | Yes | |
 | `implement-IsInfinity-for-built_ins`              | Causes `IsInfinity` to be implemented for built-in types `f32`, `f64` | Yes | Yes | |
 | `implement-IsNAN-for-built_ins`                   | Causes `IsNAN` to be implemented for built-in types `f32`, `f64` | Yes | Yes | |
+| `implement-IsNegative-for-built_ins`              | Causes `IsNegative` to be implemented for built-in types `f32`, `f64`, `i8`, ..., `i128`, `u8`, ..., `u128`, `isize`, `usize` | Yes | Yes | |
+| `implement-IsPositive-for-built_ins`              | Causes `IsPositive` to be implemented for built-in types `f32`, `f64`, `i8`, ..., `i128`, `u8`, ..., `u128`, `isize`, `usize` | Yes | Yes | |
 | `implement-IsZero-for-built_ins`                  | Causes `IsZero` to be implemented for built-in types `i8`, ..., `i128`, `u8`, ..., `u128`, `isize`, `usize`, `f32`, `f64`, `char` | Yes | Yes | |
 | `implement-IsZero-for-standard_num_types`         | Reserved for `IsZero` implementations on standard numeric wrapper types | Yes | Yes | |
 | `implement-IsZero-for-standard_process_types`     | Causes `IsZero` to be implemented for standard process type `ExitStatus` | Yes | Yes | |
@@ -158,6 +160,8 @@ The following traits are defined:
 * `IsEmpty` - provides (non-mutating) instance method `#is_empty() : bool`;
 * `IsInfinity` - provides (non-mutating) instance method `#is_infinity() : bool`;
 * `IsNAN` - provides (non-mutating) instance method `#is_nan() : bool`;
+* `IsNegative` - provides (non-mutating) instance method `#is_negative() : bool`;
+* `IsPositive` - provides (non-mutating) instance method `#is_positive() : bool`;
 * `IsZero` - provides (non-mutating) instance method `#is_zero() : bool`;
 * `Len` - provides (non-mutating) instance method `#len() : usize`;
 * `Numeric` - provides no methods;

@@ -32,7 +32,7 @@ name = "base-traits"
 readme = "README.md"
 repository = "https://github.com/synesissoftware/base-traits"
 rust-version = "1.74"
-version = "0.1.5"
+version = "0.2.0"
 
 
 # docs.rs builds the complete std-enabled API with its nightly toolchain.
@@ -98,6 +98,10 @@ default = [
 	"implement-IsInfinity-for-built_ins",
 	# IsNAN:
 	"implement-IsNAN-for-built_ins",
+	# IsNegative:
+	"implement-IsNegative-for-built_ins",
+	# IsPositive:
+	"implement-IsPositive-for-built_ins",
 	# IsZero
 	"implement-IsZero-for-built_ins",
 	"implement-IsZero-for-standard_num_types",
@@ -170,6 +174,10 @@ full = [
 	"implement-IsInfinity-for-built_ins",
 	# IsNAN:
 	"implement-IsNAN-for-built_ins",
+	# IsNegative:
+	"implement-IsNegative-for-built_ins",
+	# IsPositive:
+	"implement-IsPositive-for-built_ins",
 	# IsZero
 	"implement-IsZero-for-built_ins",
 	"implement-IsZero-for-standard_num_types",
@@ -303,6 +311,14 @@ implement-IsInfinity-for-built_ins = [
 # IsNAN:
 
 implement-IsNAN-for-built_ins = [
+]
+# IsNegative:
+
+implement-IsNegative-for-built_ins = [
+]
+# IsPositive:
+
+implement-IsPositive-for-built_ins = [
 ]
 # IsZero
 
