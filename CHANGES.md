@@ -1,11 +1,16 @@
 # base-traits - Changes <!-- omit in toc -->
 
 
-## 0.3.0 - 19th November 2026
+## 0.3.0 - 20th November 2026
 
 * added feature `"implement-ToU64-for-ThreadId"`, selected by `"full"`, so `ToU64` can be implemented for `std::thread::ThreadId`;
 * added conditional tests for `ToU64` on `ThreadId`, `Box<ThreadId>`, and `Rc<ThreadId>`;
 * rejected combining `"implement-ToU64-for-ThreadId"` with `"nostd"` at compile time;
+
+
+## 0.2.1 - 20th November 2026
+
+* fixed release-build failure under `-D warnings` by making `#[allow(dead_code)]` on the `Sealed` trait unconditional;
 
 
 ## 0.2.0 - 25th September 2026
