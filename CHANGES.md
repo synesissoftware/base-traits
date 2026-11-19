@@ -1,6 +1,11 @@
 # base-traits - Changes <!-- omit in toc -->
 
 
+## 0.2.1 - 20th November 2026
+
+* fixed release-build failure under `-D warnings` by making `#[allow(dead_code)]` on the `Sealed` trait unconditional;
+
+
 ## 0.2.0 - 25th September 2026
 
 * `IsNegative` trait;
