@@ -297,11 +297,11 @@ mod impl_for_std_ffi_types {
         pub(super) fn get_len_CStr_(cstr : &std_ffi::CStr) -> usize {
             #![allow(clippy::incompatible_msrv)]
 
-            #[cfg(rustc_1_79_or_newer)]
+            #[cfg(sis_rustc_1_79_or_newer)]
             {
                 cstr.count_bytes()
             }
-            #[cfg(not(rustc_1_79_or_newer))]
+            #[cfg(not(sis_rustc_1_79_or_newer))]
             {
                 cstr.to_bytes_with_nul().len() - 1
             }
@@ -311,11 +311,11 @@ mod impl_for_std_ffi_types {
         pub(super) fn get_len_CString_(cstring : &std_ffi::CString) -> usize {
             #![allow(clippy::incompatible_msrv)]
 
-            #[cfg(rustc_1_79_or_newer)]
+            #[cfg(sis_rustc_1_79_or_newer)]
             {
                 cstring.count_bytes()
             }
-            #[cfg(not(rustc_1_79_or_newer))]
+            #[cfg(not(sis_rustc_1_79_or_newer))]
             {
                 cstring.to_bytes_with_nul().len() - 1
             }
