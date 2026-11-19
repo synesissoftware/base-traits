@@ -458,7 +458,9 @@ mod tests {
 
         #[test]
         fn TEST_WHEN_ZERO_ELEMENTS() {
-            let ct = CustomType { num_elements : 0 };
+            let ct = CustomType {
+                num_elements : 0
+            };
 
             assert_eq!(0, ct.len());
 
@@ -469,7 +471,9 @@ mod tests {
 
         #[test]
         fn TEST_WHEN_HAVE_ELEMENTS() {
-            let ct = CustomType { num_elements : 1 };
+            let ct = CustomType {
+                num_elements : 1
+            };
 
             assert_ne!(0, ct.len());
 

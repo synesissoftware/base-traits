@@ -17,6 +17,13 @@
 /// - [`u16`];
 /// - [`u32`];
 /// - [`u64`];
+///
+/// ## Standard Thread Types
+///
+/// If the feature `"implement-ToU64-for-ThreadId"`
+/// is defined (as it is by `"full"`), then this is also implemented
+/// for the following type(s):
+/// - [`std::thread::ThreadId`];
 pub trait ToU64 {
     fn to_u64(&self) -> u64;
 }
@@ -64,6 +71,55 @@ mod impl_for_built_ins {
     implement_ToU64_!(u8);
     implement_ToU64_!(u16);
     implement_ToU64_!(u32);
+}
+
+
+#[cfg(all(feature = "implement-ToU64-for-ThreadId", not(feature = "nostd")))]
+#[rustfmt::skip]
+mod impl_for_ThreadId {
+    #![allow(non_snake_case)]
+
+    use std::thread as std_thread;
+
+
+    mod isolate_ {
+        #![allow(non_snake_case)]
+
+        use std::thread as std_thread;
+
+
+        pub(crate) fn threadid_u64_or_0_(tid : &std_thread::ThreadId) -> u64 {
+
+            let mut r = 0;
+
+            #[cfg(all(sis_rustc_1_76_or_newer, sis_rustc_nightly))]
+            {
+                if r == 0 {
+
+                    r = tid.as_u64().get();
+                }
+            }
+
+            if r == 0 {
+                let s = format!("{:?}", tid);
+                let s = s.trim();
+                let s = s.strip_prefix("ThreadId(").and_then(|rem| rem.strip_suffix(")"));
+                let s = s.unwrap_or("0");
+
+                r = s.parse().unwrap_or(0);
+            }
+
+            r
+        }
+    }
+
+
+    impl super::ToU64 for std_thread::ThreadId {
+        fn to_u64(&self) -> u64 {
+
+            isolate_::threadid_u64_or_0_(self)
+        }
+    }
 }
 
 
@@ -115,7 +171,9 @@ mod tests {
 
             for &value in VALUES {
                 let expected = value;
-                let instance = CustomType { value: value };
+                let instance = CustomType {
+                    value,
+                };
                 let actual = instance.to_u64();
 
                 assert_eq!(expected, actual);
@@ -336,6 +394,90 @@ mod tests {
 
                 assert_eq!(expected, actual);
             }
+        }
+    }
+
+
+    #[cfg(all(feature = "implement-ToU64-for-ThreadId", not(feature = "nostd")))]
+    mod TEST_ThreadId {
+        #![allow(non_snake_case)]
+
+        use super::*;
+
+        use std::thread;
+
+
+        fn thread_id_u64_(id : &thread::ThreadId) -> u64 {
+            id.to_u64()
+        }
+
+        #[test]
+        fn TEST_CURRENT_THREAD() {
+            let id = thread::current().id();
+            let actual = thread_id_u64_(&id);
+
+            assert_ne!(0, actual);
+            assert_eq!(actual, id.to_u64());
+        }
+
+        #[test]
+        fn TEST_CURRENT_THREAD_REF() {
+            let id = thread::current().id();
+            let expected = thread_id_u64_(&id);
+            let id = &id;
+            let actual = id.to_u64();
+
+            assert_eq!(expected, actual);
+        }
+
+        #[test]
+        fn TEST_CURRENT_THREAD_IN_Box() {
+            let id = thread::current().id();
+            let expected = thread_id_u64_(&id);
+            let instance = Box::new(id);
+            let actual = instance.to_u64();
+
+            assert_eq!(expected, actual);
+        }
+
+        #[test]
+        fn TEST_CURRENT_THREAD_IN_REF_Box() {
+            let id = thread::current().id();
+            let expected = thread_id_u64_(&id);
+            let instance = &Box::new(id);
+            let actual = instance.to_u64();
+
+            assert_eq!(expected, actual);
+        }
+
+        #[test]
+        fn TEST_CURRENT_THREAD_IN_Rc() {
+            let id = thread::current().id();
+            let expected = thread_id_u64_(&id);
+            let instance = std_rc::Rc::new(id);
+            let actual = instance.to_u64();
+
+            assert_eq!(expected, actual);
+        }
+
+        #[test]
+        fn TEST_CURRENT_THREAD_IN_REF_Rc() {
+            let id = thread::current().id();
+            let expected = thread_id_u64_(&id);
+            let instance = &std_rc::Rc::new(id);
+            let actual = instance.to_u64();
+
+            assert_eq!(expected, actual);
+        }
+
+        #[test]
+        fn TEST_DISTINCT_THREADS() {
+            let main_id = thread::current().id();
+            let child_id = thread::spawn(|| thread::current().id()).join().unwrap();
+
+            assert_ne!(main_id.to_u64(), child_id.to_u64());
+            assert_ne!(0, main_id.to_u64());
+            assert_ne!(0, child_id.to_u64());
         }
     }
 }

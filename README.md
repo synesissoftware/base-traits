@@ -68,13 +68,14 @@ The following crate features are defined:
 
 The `"full"` feature enables the broader standard-library implementation set
 and requires nightly Rust because it enables the experimental
-`exact_size_is_empty` feature. The `"nostd"` feature is intended for builds
+`exact_size_is_empty` feature. That set includes `ToU64` for
+`std::thread::ThreadId`. The `"nostd"` feature is intended for builds
 that do not use the standard library.
 
 | Name                                              | Effect                                | Is `"default"`? | Is `"full"`? | Dependent feature(s)                  |
 | ------------------------------------------------- | ------------------------------------- | --------------- | ------------ | ------------------------------------- |
 | `experimental-exact_size_is_empty`                | Causes the experimental feature `exact_size_is_empty` to be enabled | **No** | Yes (via `implement-IsEmpty-for-standard_process_types`) | |
-| `full`                                            | Enables the broader set of foreign-type implementations (including process/time IsEmpty and process Len) | **No** | Yes | (see `Cargo.toml`) |
+| `full`                                            | Enables the broader set of foreign-type implementations (including process/time IsEmpty, process Len, and `ToU64` for `ThreadId`) | **No** | Yes | (see `Cargo.toml`) |
 | `implement-AsF64-for-built_ins`                   | Causes `AsF64` to be implemented for built-in type `f64` | Yes | Yes | |
 | `implement-AsI128-for-built_ins`                  | Causes `AsI128` to be implemented for built-in type `i128` | Yes | Yes | |
 | `implement-AsI32-for-built_ins`                   | Causes `AsI32` to be implemented for built-in type `i32` | Yes | Yes | |
@@ -119,6 +120,7 @@ that do not use the standard library.
 | `implement-ToU16-for-built_ins`                   | Causes `ToU16` to be implemented for built-in type `u8`, `u16` | Yes | Yes | |
 | `implement-ToU32-for-built_ins`                   | Causes `ToU32` to be implemented for built-in type `u8`, `u16`, `u32` | Yes | Yes | |
 | `implement-ToU64-for-built_ins`                   | Causes `ToU64` to be implemented for built-in type `u8`, `u16`, `u32`, `u64` | Yes | Yes | |
+| `implement-ToU64-for-ThreadId`                    | Causes `ToU64` to be implemented for standard thread type `ThreadId`; incompatible with `nostd` | **No** | Yes | |
 | `implement-ToISize-for-built_ins`                 | Causes `ToISize` to be implemented for built-in types `isize`, `i8`, and all numeric types that, dependent on architecture, that can be represented in `isize` without loss | Yes | Yes | |
 | `implement-ToUSize-for-built_ins`                 | Causes `ToUSize` to be implemented for built-in types `usize`, `u8`, and all unsigned numeric types that, dependent on architecture, that can be represented in `usize` without loss | Yes | Yes | |
 | `implement-Zero-for-built_ins`                    | Causes `Zero` to be implemented for built-in types `i8`, ..., `i128`, `u8`, ..., `u128`, `isize`, `usize`, `f32`, `f64`, `char` | Yes | Yes | |

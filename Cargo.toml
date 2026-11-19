@@ -32,7 +32,7 @@ name = "base-traits"
 readme = "README.md"
 repository = "https://github.com/synesissoftware/base-traits"
 rust-version = "1.74"
-version = "0.2.0"
+version = "0.3.0"
 
 
 # docs.rs builds the complete std-enabled API with its nightly toolchain.
@@ -207,6 +207,7 @@ full = [
 	"implement-ToU32-for-built_ins",
 	# ToU64
 	"implement-ToU64-for-built_ins",
+	"implement-ToU64-for-ThreadId",
 	# ToU128
 	"implement-ToU128-for-built_ins",
 	# ToUSize
@@ -228,6 +229,7 @@ null-feature = []
 # Crate-specific features:
 #
 # - "experimental-exact_size_is_empty" - enables crate feature exact_size_is_empty;
+# - "implement-ToU64-for-ThreadId" - implement `ToU64` for `std::thread::ThreadId` (selected by `"full"`; incompatible with `"nostd"`);
 # - "nostd" - remove all dependencies to std crate;
 
 experimental-exact_size_is_empty = [
@@ -382,6 +384,9 @@ implement-ToU32-for-built_ins = [
 
 implement-ToU64-for-built_ins = [
 ]
+
+implement-ToU64-for-ThreadId = [
+]
 # ToU128
 
 implement-ToU128-for-built_ins = [
@@ -394,6 +399,8 @@ implement-ToUSize-for-built_ins = [
 
 implement-Zero-for-built_ins = [
 ]
+# general
+
 nostd = [
 ]
 # ##########################################################
@@ -401,7 +408,7 @@ nostd = [
 
 [build-dependencies]
 
-bt-rs = { version = "0.0", default-features = false, features = [
+bt-rs = { version = "0.0.5", default-features = false, features = [
 ] }
 
 
