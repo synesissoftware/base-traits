@@ -6,6 +6,9 @@
 * added feature `"implement-ToU64-for-ThreadId"`, selected by `"full"`, so `ToU64` can be implemented for `std::thread::ThreadId`;
 * added conditional tests for `ToU64` on `ThreadId`, `Box<ThreadId>`, and `Rc<ThreadId>`;
 * rejected combining `"implement-ToU64-for-ThreadId"` with `"nostd"` at compile time;
+* updated **build.rs** (with **bt-rs** 0.0.5) to set `sis_rustc_1_76_or_newer` and `sis_rustc_nightly` for nightly `ThreadId::as_u64()`, and renamed `rustc_1_79_or_newer` to `sis_rustc_1_79_or_newer`;
+* improved **README.md**: added the **Developer Experience** section, a linked traits table (now including `IsDefault` and `Scalar`), an "In use in other projects" subsection, and corrected dependency, feature, and MSRV details;
+* documented in **README.md** that `"full"` now includes `"implement-ToU64-for-ThreadId"`, which may also be enabled alone and does not itself require nightly Rust;
 
 
 ## 0.2.1 - 20th November 2026

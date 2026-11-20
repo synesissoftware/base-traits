@@ -115,6 +115,7 @@ mod tests {
         t
     }
 
+    #[cfg(feature = "implement-IsNegative-for-built_ins")]
     fn assert_is_negative_<T : IsNegative + std::fmt::Debug>(
         value : &T,
         expected : bool,

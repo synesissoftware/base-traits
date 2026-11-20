@@ -1,4 +1,4 @@
-// src/traits/is_default.rs : `ToF64`
+// examples/price-to_f64.rs : `ToF64`
 
 use base_traits::ToF64;
 

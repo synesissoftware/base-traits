@@ -10,7 +10,7 @@
 
 ## Functional improvements
 
-* \<none>
+* [x] ~~~list `Scalar` trait with its peers~~~ - ✅;
 
 
 ## Performance improvements

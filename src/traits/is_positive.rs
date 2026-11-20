@@ -104,6 +104,7 @@ mod tests {
         t
     }
 
+    #[cfg(feature = "implement-IsPositive-for-built_ins")]
     fn assert_is_positive_<T : IsPositive + std::fmt::Debug>(
         value : &T,
         expected : bool,
