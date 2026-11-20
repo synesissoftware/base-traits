@@ -288,7 +288,7 @@ The declared Minimum Supported Rust Version (MSRV) for **base-traits** is **1.74
 
 This MSRV guarantee applies to the library crate itself, its runtime dependencies (`[dependencies]`), and its build dependencies (`[build-dependencies]`). Downstream consumers compiling this crate as a dependency are guaranteed that it builds cleanly on the declared MSRV toolchain.
 
-Development dependencies (`[dev-dependencies]`, such as benchmarking frameworks like **criterion**) may require newer Rust toolchains for local development or performance testing. These dev-dependencies are never fetched or compiled by downstream consumers and do not affect the library's MSRV guarantee.
+There are currently no development dependencies (`[dev-dependencies]`). Should any be added, they are never fetched or compiled by downstream consumers and do not affect the library's MSRV guarantee, even if they require a newer Rust toolchain for local development.
 
 
 ### Dependencies
@@ -308,7 +308,7 @@ There are no runtime dependencies (aka "normal dependencies") on other crates.
 
 Libraries used only when building **base-traits** (not required by downstream consumers):
 
-* [**bt-rs**](https://github.com/synesissoftware/bt-rs) — [`rustc::compiler_version()`](https://docs.rs/bt-rs/latest/bt_rs/rustc/fn.compiler_version.html) in **build.rs** to detect Rust 1.79+ and set the `rustc_1_79_or_newer` cfg for use of `CStr::count_bytes()`;
+* [**bt-rs**](https://github.com/synesissoftware/bt-rs) — [`rustc::compiler_version()`](https://docs.rs/bt-rs/latest/bt_rs/rustc/fn.compiler_version.html) in **build.rs** to detect the compiler version and set the `sis_rustc_1_76_or_newer`, `sis_rustc_1_79_or_newer` (for use of `CStr::count_bytes()`), and `sis_rustc_nightly` cfgs;
 
 
 ##### Development Dependencies
