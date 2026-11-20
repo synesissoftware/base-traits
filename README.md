@@ -236,17 +236,16 @@ The following traits are defined (marker traits provide no methods):
 
 The purpose of all traits provided in this package is to enhance generic programming.
 
-For example, you may be working on a subsystem that needs to abstract numbers into strong types, but you also need to build algorithms that can work generically on such types as well as on basic types. You might, therefore, implement `ToF64` on your `Price` type and then go ahead and build your generic algorithm(s) around `ToF64`, as in:
+For example, you may be working on a subsystem that needs to abstract numbers into strong types, but you also need to build algorithms that can work generically on such types as well as on basic types. You might, therefore, implement `ToF64` on your `Price` type and then go ahead and build your generic algorithm(s) around `ToF64`, as in the following (the complete program is the [**price-to_f64**](./examples/price-to_f64.rs) example, listed in **EXAMPLES.md**; run it with `cargo run --example price-to_f64`):
 
 ```Rust
-
 use base_traits::ToF64;
 
 /// Trivial implementation of a price type using exact types (integers)
 #[derive(Debug)]
 struct Price {
     dollars : u32,
-    cents : u8,
+    cents :   u8,
 }
 
 impl ToF64 for Price {
@@ -267,7 +266,7 @@ where
     F : ToF64 + 'a,
     I : Iterator<Item = &'a F>,
 {
-    let values = i.map(|v| v.to_f64()).collect::<Vec::<_>>();
+    let values = i.map(|v| v.to_f64()).collect::<Vec<_>>();
 
     if values.is_empty() {
         None
@@ -287,7 +286,6 @@ where
 fn main() {
     {
         let raw_values = vec![
-            // insert list
             10.0,
             10.1,
             10.2,
@@ -301,7 +299,6 @@ fn main() {
 
     {
         let prices = vec![
-            // insert list
             Price { dollars: 10, cents : 0 },
             Price { dollars: 10, cents : 1 },
             Price { dollars: 10, cents : 2 },
