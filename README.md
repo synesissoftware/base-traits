@@ -51,7 +51,7 @@ This crate defines general-purpose `trait`s that:
 Reference in **Cargo.toml** in the usual way:
 
 ```toml
-base-traits = { version = "0.2" }
+base-traits = { version = "0.3" }
 ```
 
 
