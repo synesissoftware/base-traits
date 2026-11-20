@@ -16,10 +16,10 @@ General-purpose traits for Rust that the standard library lacks, such as `IsEmpt
 - [Introduction](#introduction)
 - [Developer Experience](#developer-experience)
 - [Installation](#installation)
+- [Features](#features)
+  - [Trait Features](#trait-features)
+  - [Special Features](#special-features)
 - [Components](#components)
-  - [Features](#features)
-    - [Trait Features](#trait-features)
-    - [Special Features](#special-features)
   - [Traits](#traits)
 - [Examples](#examples)
   - [In use in other projects](#in-use-in-other-projects)
@@ -98,17 +98,12 @@ base-traits = { version = "0.3" }
 ```
 
 
-## Components
-
-This crate defines traits only; no enumerations, functions, macros, or structures are defined at this time.
-
-
-### Features
+## Features
 
 The following crate features are defined:
 
 
-#### Trait Features
+### Trait Features
 
 | Name                                              | Effect | Is `"default"`? | Is `"full"`? | Dependent feature(s) |
 | ------------------------------------------------- | ------ | --------------- | ------------ | -------------------- |
@@ -162,7 +157,7 @@ The following crate features are defined:
 | `implement-Zero-for-built_ins`                    | Causes `Zero` to be implemented for built-in types `i8`, ..., `i128`, `u8`, ..., `u128`, `isize`, `usize`, `f32`, `f64`, `char` | Yes | Yes | |
 
 
-#### Special Features
+### Special Features
 
 | Name                                              | Effect | Is `"default"`? | Is `"full"`? | Dependent feature(s) |
 | ------------------------------------------------- | ------ | --------------- | ------------ | -------------------- |
@@ -185,6 +180,11 @@ a compile-time error.
 
 The `"nostd"` feature is intended for builds that do not use the standard
 library.
+
+
+## Components
+
+This crate defines traits only; no enumerations, functions, macros, or structures are defined at this time.
 
 
 ### Traits
