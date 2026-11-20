@@ -69,15 +69,12 @@ For more, see [Examples](#examples), **EXAMPLES.md**, [Features](#features), and
 - [Developer Experience](#developer-experience)
 - [Installation](#installation)
 - [Components](#components)
-  - [Enumerations](#enumerations)
   - [Features](#features)
     - [Trait Features](#trait-features)
     - [Special Features](#special-features)
-  - [Functions](#functions)
-  - [Macros](#macros)
-  - [Structures](#structures)
   - [Traits](#traits)
 - [Examples](#examples)
+  - [In use in other projects](#in-use-in-other-projects)
 - [Project Information](#project-information)
   - [Where to get help](#where-to-get-help)
   - [Contribution guidelines](#contribution-guidelines)
@@ -103,9 +100,7 @@ base-traits = { version = "0.3" }
 
 ## Components
 
-### Enumerations
-
-None defined at this time.
+This crate defines traits only; no enumerations, functions, macros, or structures are defined at this time.
 
 
 ### Features
@@ -190,21 +185,6 @@ a compile-time error.
 
 The `"nostd"` feature is intended for builds that do not use the standard
 library.
-
-
-### Functions
-
-None defined at this time.
-
-
-### Macros
-
-None defined at this time.
-
-
-### Structures
-
-None defined at this time.
 
 
 ### Traits
@@ -332,6 +312,15 @@ fn main() {
 }
 
 ```
+
+
+### In use in other projects
+
+Other Synesis crates build on these traits:
+
+* [**to-be.Rust**](https://github.com/synesissoftware/to-be.Rust) — a blanket implementation, `impl<T : AsStr> Truthy for T`, so that any type that can present itself as a `&str` can be tested for "truthiness" (`"yes"`, `"no"`, etc.) without further code;
+* [**shwild.Rust**](https://github.com/synesissoftware/shwild.Rust) — with its `"flexible-flags-type"` feature, the `matches!` macro accepts a flags argument of any type that implements `AsI64`, so callers can pass their own flag enumerations or newtypes rather than a bare `i64`;
+* [**test_help-rs**](https://github.com/synesissoftware/test_help-rs) — `TestableAsF64` is implemented for every `ToF64 + Debug` type, so approximate-comparison assertions work with your own strong types, and `assert_as_str_eq!` / `assert_as_str_ne!` compare anything that implements `AsStr`;
 
 
 ## Project Information
