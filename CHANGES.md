@@ -6,6 +6,7 @@
 * added feature `"implement-ToU64-for-ThreadId"`, selected by `"full"`, so `ToU64` can be implemented for `std::thread::ThreadId`;
 * added conditional tests for `ToU64` on `ThreadId`, `Box<ThreadId>`, and `Rc<ThreadId>`;
 * rejected combining `"implement-ToU64-for-ThreadId"` with `"nostd"` at compile time;
+* documented in **README.md** that `"full"` now includes `"implement-ToU64-for-ThreadId"`, which may also be enabled alone and does not itself require nightly Rust;
 
 
 ## 0.2.1 - 20th November 2026

@@ -135,7 +135,14 @@ The following crate features are defined:
 The `"full"` feature enables the broader standard-library implementation set
 and requires nightly Rust because it enables the experimental
 `exact_size_is_empty` feature. That set includes `ToU64` for
-`std::thread::ThreadId`.
+`std::thread::ThreadId`, which is selected by
+`"implement-ToU64-for-ThreadId"`.
+
+The `"implement-ToU64-for-ThreadId"` feature may also be enabled on its own,
+and does not itself require nightly Rust: on stable it derives the value from
+the `Debug` form of the `ThreadId`; on a nightly toolchain (Rust 1.76+) it
+uses `ThreadId::as_u64()`. It cannot be combined with `"nostd"`; doing so is
+a compile-time error.
 
 The `"nostd"` feature is intended for builds that do not use the standard
 library.
