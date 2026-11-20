@@ -44,7 +44,9 @@
 	"files.trimTrailingWhitespace": true,
 	"git.mergeEditor": false,
 	"rust-analyzer.cargo.buildScripts.enable": true,
-	"rust-analyzer.cargo.features": [],
+	"rust-analyzer.cargo.features": [
+		"full",
+	],
 	"rust-analyzer.cargo.noDefaultFeatures": true,
 	"rust-analyzer.check.allTargets": true,
 	"rust-analyzer.check.command": "clippy",

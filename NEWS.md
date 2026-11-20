@@ -3,6 +3,7 @@
 
 | Date                | News Item                   | Details |
 | ------------------- | --------------------------- | ------- |
+| 20th November 2026  | [base-traits 0.3.0](https://github.com/synesissoftware/base-traits/releases/tag/0.3.0) released | `ToU64` for `ThreadId` |
 | 20th November 2026  | [base-traits 0.2.1](https://github.com/synesissoftware/base-traits/releases/tag/0.2.1) released | Release-build `dead_code` fix for `Sealed` |
 | 25th September 2026 | [base-traits 0.2.0](https://github.com/synesissoftware/base-traits/releases/tag/0.2.0) released | `IsNegative` and `IsPositive` traits |
 | 11th September 2026 | [base-traits 0.1.5](https://github.com/synesissoftware/base-traits/releases/tag/0.1.5) released | Repository, CI, packaging, and feature updates |

@@ -29,17 +29,34 @@
 //! The default feature set enables the common built-in and
 //! standard-library implementations. The `"full"` feature
 //! enables the broader set, including the experimental
-//! process-type implementations. Use `"nostd"` when the
-//! standard library is unavailable.
+//! process-type implementations and `ToU64` for
+//! `ThreadId`. Use `"nostd"` when the standard library is
+//! unavailable.
 
 // /////////////////////////////////////////////////////////
 // crate-level feature definitions
 
 #![cfg_attr(feature = "experimental-exact_size_is_empty", feature(exact_size_is_empty))]
+#![cfg_attr(
+    all(
+        // require list
+        feature = "implement-ToU64-for-ThreadId",
+        not(feature = "nostd"),
+        sis_rustc_nightly,
+    ),
+    feature(thread_id_value),
+)]
 #![cfg_attr(all(not(test), feature = "nostd"), no_std)]
 
 // /////////////////////////////////////////////////////////
 // crate-level feature discrimination
+
+#[cfg(all(
+    // require list
+    feature = "implement-ToU64-for-ThreadId",
+    feature = "nostd",
+))]
+compile_error!(r#"features "implement-ToU64-for-ThreadId" and "nostd" cannot be enabled together"#);
 
 // /////////////////////////////////////////////////////////
 // imports
