@@ -327,7 +327,9 @@ Other Synesis crates build on these traits:
 
 ### Where to get help
 
-[GitHub Page](https://github.com/synesissoftware/base-traits "GitHub Page")
+* [GitHub Page](https://github.com/synesissoftware/base-traits "GitHub Page");
+* [GitHub Issues](https://github.com/synesissoftware/base-traits/issues "GitHub Issues") for defect reports and questions;
+* [API documentation](https://docs.rs/base-traits "API documentation on docs.rs");
 
 
 ### Contribution guidelines
@@ -382,7 +384,8 @@ Projects that depend on **base-traits**:
 
 ### Related projects
 
-None currently.
+* [**bt-rs**](https://github.com/synesissoftware/bt-rs) — build-time toolchain detection, used by **build.rs** (see [Build Dependencies](#build-dependencies));
+* [**test_help-rs**](https://github.com/synesissoftware/test_help-rs) — test helpers built on **base-traits** traits (see [In use in other projects](#in-use-in-other-projects));
 
 
 ### License
