@@ -11,6 +11,32 @@ General-purpose traits for Rust that the standard library lacks, such as `IsEmpt
 [![docs.rs](https://docs.rs/base-traits/badge.svg)](https://docs.rs/base-traits)
 
 
+## Table of Contents <!-- omit in toc -->
+
+- [Introduction](#introduction)
+- [Developer Experience](#developer-experience)
+- [Installation](#installation)
+- [Components](#components)
+  - [Features](#features)
+    - [Trait Features](#trait-features)
+    - [Special Features](#special-features)
+  - [Traits](#traits)
+- [Examples](#examples)
+  - [In use in other projects](#in-use-in-other-projects)
+- [Project Information](#project-information)
+  - [Where to get help](#where-to-get-help)
+  - [Contribution guidelines](#contribution-guidelines)
+  - [Minimum Supported Rust Version (MSRV)](#minimum-supported-rust-version-msrv)
+  - [Dependencies](#dependencies)
+    - [Efferent (fan-out)](#efferent-fan-out)
+      - [Runtime Dependencies](#runtime-dependencies)
+      - [Build Dependencies](#build-dependencies)
+      - [Development Dependencies](#development-dependencies)
+    - [Afferent (fan-in)](#afferent-fan-in)
+  - [Related projects](#related-projects)
+  - [License](#license)
+
+
 ## Introduction
 
 This crate defines general-purpose `trait`s that:
@@ -61,32 +87,6 @@ fn main() {
 ```
 
 For more, see [Examples](#examples), **EXAMPLES.md**, [Features](#features), and the [API documentation](https://docs.rs/base-traits).
-
-
-## Table of Contents <!-- omit in toc -->
-
-- [Introduction](#introduction)
-- [Developer Experience](#developer-experience)
-- [Installation](#installation)
-- [Components](#components)
-  - [Features](#features)
-    - [Trait Features](#trait-features)
-    - [Special Features](#special-features)
-  - [Traits](#traits)
-- [Examples](#examples)
-  - [In use in other projects](#in-use-in-other-projects)
-- [Project Information](#project-information)
-  - [Where to get help](#where-to-get-help)
-  - [Contribution guidelines](#contribution-guidelines)
-  - [Minimum Supported Rust Version (MSRV)](#minimum-supported-rust-version-msrv)
-  - [Dependencies](#dependencies)
-    - [Efferent (fan-out)](#efferent-fan-out)
-      - [Runtime Dependencies](#runtime-dependencies)
-      - [Build Dependencies](#build-dependencies)
-      - [Development Dependencies](#development-dependencies)
-    - [Afferent (fan-in)](#afferent-fan-in)
-  - [Related projects](#related-projects)
-  - [License](#license)
 
 
 ## Installation
