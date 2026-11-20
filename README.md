@@ -232,6 +232,12 @@ The following traits are defined (marker traits provide no methods):
 | [`Unsigned`](https://docs.rs/base-traits/latest/base_traits/trait.Unsigned.html)     | *(marker; no methods)*          |
 | [`Zero`](https://docs.rs/base-traits/latest/base_traits/trait.Zero.html)             | `fn zero() -> Self`             |
 
+Design notes:
+
+* **`As*` vs `To*` conversions** — `As*` traits expose a cost-free direct representation (implemented on built-ins only for the exact target primitive, such as `AsU64` on `u64` or `AsStr` on `str`), whereas `To*` traits perform a no-cost or low-cost logical conversion (implemented on built-ins for lossless widening, such as `ToU64` on `u8`, `u16`, `u32`, `u64`, and optionally `ThreadId`, or `ToISize` / `ToUSize` for widths that are lossless on the target architecture);
+* **Marker traits** — `Integer`, `Numeric`, `Real`, `Scalar`, `Signed`, and `Unsigned` are implemented unconditionally on their respective built-in primitive sets (`Scalar` adds `bool` and `char` to `Numeric`; `Signed` includes `f32` and `f64` alongside signed integers), independent of feature flags and `"nostd"`;
+* **Smart-pointer forwarding** — when `"nostd"` is not enabled, all `Is*`, `Len`, and `To*` traits (along with `AsF64`, `AsISize`, `AsStr`, and `AsUSize`) provide blanket forwarding implementations for `Box<T>` and `std::rc::Rc<T>` (`T : ?Sized`);
+
 
 ## Examples
 
