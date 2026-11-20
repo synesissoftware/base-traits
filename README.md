@@ -168,6 +168,7 @@ The following traits are defined:
 * `Len` - provides (non-mutating) instance method `#len() : usize`;
 * `Numeric` - provides no methods;
 * `Real` - provides no methods;
+* `Scalar` - provides no methods;
 * `Signed` - provides no methods;
 * `ToF64` - provides (non-mutating) instance method `#to_f64() : f64`;
 * `ToI128` - provides (non-mutating) instance method `#to_i128() : i128`;
