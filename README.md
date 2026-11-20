@@ -318,9 +318,9 @@ fn main() {
 
 Other Synesis crates build on these traits:
 
-* [**to-be.Rust**](https://github.com/synesissoftware/to-be.Rust) — a blanket implementation, `impl<T : AsStr> Truthy for T`, so that any type that can present itself as a `&str` can be tested for "truthiness" (`"yes"`, `"no"`, etc.) without further code;
-* [**shwild.Rust**](https://github.com/synesissoftware/shwild.Rust) — with its `"flexible-flags-type"` feature, the `matches!` macro accepts a flags argument of any type that implements `AsI64`, so callers can pass their own flag enumerations or newtypes rather than a bare `i64`;
+* [**shwild.Rust**](https://github.com/synesissoftware/shwild.Rust) — with its `"flexible-flags-type"` feature, the `shwild_matches!`, `assert_shwild_matches!`, and `assert_shwild_not_matches!` macros accept a flags argument of any type that implements `AsI64`, so callers can pass their own flag enumerations or newtypes rather than a bare `i64`;
 * [**test_help-rs**](https://github.com/synesissoftware/test_help-rs) — `TestableAsF64` is implemented for every `ToF64 + Debug` type, so approximate-comparison assertions work with your own strong types, and `assert_as_str_eq!` / `assert_as_str_ne!` compare anything that implements `AsStr`;
+* [**to-be.Rust**](https://github.com/synesissoftware/to-be.Rust) — a blanket implementation, `impl<T : AsStr> Truthy for T`, so that any type that can present itself as a `&str` can be tested for "truthiness" (`"yes"`, `"no"`, etc.) without further code;
 
 
 ## Project Information
