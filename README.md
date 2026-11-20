@@ -189,44 +189,47 @@ library.
 
 ### Traits
 
-The following traits are defined:
+The following traits are defined (marker traits provide no methods):
 
-* `AsF64` - provides (nonmutating) instance method `#as_f64() : f64`;
-* `AsI128` - provides (nonmutating) instance method `#as_i128() : i128`;
-* `AsI32` - provides (nonmutating) instance method `#as_i32() : i32`;
-* `AsI64` - provides (nonmutating) instance method `#as_i64() : i64`;
-* `AsISize` - provides (nonmutating) instance method `#as_isize() : isize`;
-* `AsStr` - provides (nonmutating) instance method `#as_str() : &str`;
-* `AsU128` - provides (nonmutating) instance method `#as_u128() : u128`;
-* `AsU32` - provides (nonmutating) instance method `#as_u32() : u32`;
-* `AsU64` - provides (nonmutating) instance method `#as_u64() : u64`;
-* `AsUSize` - provides (nonmutating) instance method `#as_usize() : usize`;
-* `Infinity` - provides method `::infinity() : Self`;
-* `Integer` - provides no methods;
-* `IsEmpty` - provides (nonmutating) instance method `#is_empty() : bool`;
-* `IsInfinity` - provides (nonmutating) instance method `#is_infinity() : bool`;
-* `IsNAN` - provides (nonmutating) instance method `#is_nan() : bool`;
-* `IsNegative` - provides (nonmutating) instance method `#is_negative() : bool`;
-* `IsPositive` - provides (nonmutating) instance method `#is_positive() : bool`;
-* `IsZero` - provides (nonmutating) instance method `#is_zero() : bool`;
-* `Len` - provides (nonmutating) instance method `#len() : usize`;
-* `Numeric` - provides no methods;
-* `Real` - provides no methods;
-* `Scalar` - provides no methods;
-* `Signed` - provides no methods;
-* `ToF64` - provides (nonmutating) instance method `#to_f64() : f64`;
-* `ToI128` - provides (nonmutating) instance method `#to_i128() : i128`;
-* `ToI16` - provides (nonmutating) instance method `#to_i16() : i16`;
-* `ToI32` - provides (nonmutating) instance method `#to_i32() : i32`;
-* `ToI64` - provides (nonmutating) instance method `#to_i64() : i64`;
-* `ToISize` - provides (nonmutating) instance method `#to_isize() : isize`;
-* `ToU128` - provides (nonmutating) instance method `#to_u128() : u128`;
-* `ToU16` - provides (nonmutating) instance method `#to_u16() : u16`;
-* `ToU32` - provides (nonmutating) instance method `#to_u32() : u32`;
-* `ToU64` - provides (nonmutating) instance method `#to_u64() : u64`;
-* `ToUSize` - provides (nonmutating) instance method `#to_usize() : usize`;
-* `Unsigned` - provides no methods;
-* `Zero` - provides class method `::zero() : Self`;
+| Trait                                                                                | Method                          |
+| ------------------------------------------------------------------------------------ | ------------------------------- |
+| [`AsF64`](https://docs.rs/base-traits/latest/base_traits/trait.AsF64.html)           | `fn as_f64(&self) -> f64`       |
+| [`AsI128`](https://docs.rs/base-traits/latest/base_traits/trait.AsI128.html)         | `fn as_i128(&self) -> i128`     |
+| [`AsI32`](https://docs.rs/base-traits/latest/base_traits/trait.AsI32.html)           | `fn as_i32(&self) -> i32`       |
+| [`AsI64`](https://docs.rs/base-traits/latest/base_traits/trait.AsI64.html)           | `fn as_i64(&self) -> i64`       |
+| [`AsISize`](https://docs.rs/base-traits/latest/base_traits/trait.AsISize.html)       | `fn as_isize(&self) -> isize`   |
+| [`AsStr`](https://docs.rs/base-traits/latest/base_traits/trait.AsStr.html)           | `fn as_str(&self) -> &str`      |
+| [`AsU128`](https://docs.rs/base-traits/latest/base_traits/trait.AsU128.html)         | `fn as_u128(&self) -> u128`     |
+| [`AsU32`](https://docs.rs/base-traits/latest/base_traits/trait.AsU32.html)           | `fn as_u32(&self) -> u32`       |
+| [`AsU64`](https://docs.rs/base-traits/latest/base_traits/trait.AsU64.html)           | `fn as_u64(&self) -> u64`       |
+| [`AsUSize`](https://docs.rs/base-traits/latest/base_traits/trait.AsUSize.html)       | `fn as_usize(&self) -> usize`   |
+| [`Infinity`](https://docs.rs/base-traits/latest/base_traits/trait.Infinity.html)     | `fn infinity() -> Self`         |
+| [`Integer`](https://docs.rs/base-traits/latest/base_traits/trait.Integer.html)       | *(marker; no methods)*          |
+| [`IsDefault`](https://docs.rs/base-traits/latest/base_traits/trait.IsDefault.html)   | `fn is_default(&self) -> bool`  |
+| [`IsEmpty`](https://docs.rs/base-traits/latest/base_traits/trait.IsEmpty.html)       | `fn is_empty(&self) -> bool`    |
+| [`IsInfinity`](https://docs.rs/base-traits/latest/base_traits/trait.IsInfinity.html) | `fn is_infinity(&self) -> bool` |
+| [`IsNAN`](https://docs.rs/base-traits/latest/base_traits/trait.IsNAN.html)           | `fn is_nan(&self) -> bool`      |
+| [`IsNegative`](https://docs.rs/base-traits/latest/base_traits/trait.IsNegative.html) | `fn is_negative(&self) -> bool` |
+| [`IsPositive`](https://docs.rs/base-traits/latest/base_traits/trait.IsPositive.html) | `fn is_positive(&self) -> bool` |
+| [`IsZero`](https://docs.rs/base-traits/latest/base_traits/trait.IsZero.html)         | `fn is_zero(&self) -> bool`     |
+| [`Len`](https://docs.rs/base-traits/latest/base_traits/trait.Len.html)               | `fn len(&self) -> usize`        |
+| [`Numeric`](https://docs.rs/base-traits/latest/base_traits/trait.Numeric.html)       | *(marker; no methods)*          |
+| [`Real`](https://docs.rs/base-traits/latest/base_traits/trait.Real.html)             | *(marker; no methods)*          |
+| [`Scalar`](https://docs.rs/base-traits/latest/base_traits/trait.Scalar.html)         | *(marker; no methods)*          |
+| [`Signed`](https://docs.rs/base-traits/latest/base_traits/trait.Signed.html)         | *(marker; no methods)*          |
+| [`ToF64`](https://docs.rs/base-traits/latest/base_traits/trait.ToF64.html)           | `fn to_f64(&self) -> f64`       |
+| [`ToI128`](https://docs.rs/base-traits/latest/base_traits/trait.ToI128.html)         | `fn to_i128(&self) -> i128`     |
+| [`ToI16`](https://docs.rs/base-traits/latest/base_traits/trait.ToI16.html)           | `fn to_i16(&self) -> i16`       |
+| [`ToI32`](https://docs.rs/base-traits/latest/base_traits/trait.ToI32.html)           | `fn to_i32(&self) -> i32`       |
+| [`ToI64`](https://docs.rs/base-traits/latest/base_traits/trait.ToI64.html)           | `fn to_i64(&self) -> i64`       |
+| [`ToISize`](https://docs.rs/base-traits/latest/base_traits/trait.ToISize.html)       | `fn to_isize(&self) -> isize`   |
+| [`ToU128`](https://docs.rs/base-traits/latest/base_traits/trait.ToU128.html)         | `fn to_u128(&self) -> u128`     |
+| [`ToU16`](https://docs.rs/base-traits/latest/base_traits/trait.ToU16.html)           | `fn to_u16(&self) -> u16`       |
+| [`ToU32`](https://docs.rs/base-traits/latest/base_traits/trait.ToU32.html)           | `fn to_u32(&self) -> u32`       |
+| [`ToU64`](https://docs.rs/base-traits/latest/base_traits/trait.ToU64.html)           | `fn to_u64(&self) -> u64`       |
+| [`ToUSize`](https://docs.rs/base-traits/latest/base_traits/trait.ToUSize.html)       | `fn to_usize(&self) -> usize`   |
+| [`Unsigned`](https://docs.rs/base-traits/latest/base_traits/trait.Unsigned.html)     | *(marker; no methods)*          |
+| [`Zero`](https://docs.rs/base-traits/latest/base_traits/trait.Zero.html)             | `fn zero() -> Self`             |
 
 
 ## Examples
