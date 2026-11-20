@@ -1,6 +1,6 @@
 # base-traits <!-- omit in toc -->
 
-base traits, for Rust
+General-purpose traits for Rust that the standard library lacks, such as `IsEmpty`, `Len`, `ToU64`
 
 ![Language](https://img.shields.io/badge/Rust-000000?style=flat&logo=rust&logoColor=white)
 [![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
