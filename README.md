@@ -6,6 +6,7 @@ General-purpose traits for Rust that the standard library lacks, such as `IsEmpt
 [![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 [![Crates.io](https://img.shields.io/crates/v/base-traits.svg)](https://crates.io/crates/base-traits)
 [![GitHub release](https://img.shields.io/github/v/release/synesissoftware/base-traits.svg)](https://github.com/synesissoftware/base-traits/releases/latest)
+[![Last Commit](https://img.shields.io/github/last-commit/synesissoftware/base-traits)](https://github.com/synesissoftware/base-traits/commits/master)
 ![MSRV](https://img.shields.io/badge/MSRV-1.74-lightgrey)
 [![CI](https://github.com/synesissoftware/base-traits/actions/workflows/ci.yml/badge.svg)](https://github.com/synesissoftware/base-traits/actions/workflows/ci.yml)
 [![docs.rs](https://docs.rs/base-traits/badge.svg)](https://docs.rs/base-traits)
@@ -58,7 +59,7 @@ cargo run --example price-to_f64
 
 The simplest use case is to implement a trait on your own type, and then write generic code against that trait (this is the essence of the **price-to_f64** example):
 
-```Rust
+```rust
 use base_traits::ToF64;
 
 struct Price {
@@ -86,7 +87,7 @@ fn main() {
 }
 ```
 
-For more, see [Examples](#examples), **EXAMPLES.md**, [Features](#features), and the [API documentation](https://docs.rs/base-traits).
+For more, see [Examples](#examples), [**EXAMPLES.md**](./EXAMPLES.md), [Features](#features), and the [API documentation](https://docs.rs/base-traits).
 
 
 ## Installation
@@ -184,7 +185,7 @@ library.
 
 ## Components
 
-This crate defines traits only; no enumerations, functions, macros, or structures are defined at this time.
+This crate defines traits only; no public constants, enumerations, functions, macros, or structures are defined at this time.
 
 
 ### Traits
@@ -236,9 +237,9 @@ The following traits are defined (marker traits provide no methods):
 
 The purpose of all traits provided in this package is to enhance generic programming.
 
-For example, you may be working on a subsystem that needs to abstract numbers into strong types, but you also need to build algorithms that can work generically on such types as well as on basic types. You might, therefore, implement `ToF64` on your `Price` type and then go ahead and build your generic algorithm(s) around `ToF64`, as in the following (the complete program is the [**price-to_f64**](./examples/price-to_f64.rs) example, listed in **EXAMPLES.md**; run it with `cargo run --example price-to_f64`):
+For example, you may be working on a subsystem that needs to abstract numbers into strong types, but you also need to build algorithms that can work generically on such types as well as on basic types. You might, therefore, implement `ToF64` on your `Price` type and then go ahead and build your generic algorithm(s) around `ToF64`, as in the following:
 
-```Rust
+```rust
 use base_traits::ToF64;
 
 /// Trivial implementation of a price type using exact types (integers)
@@ -310,8 +311,9 @@ fn main() {
         println!("for {prices:?}, mean={price_mean}, std-dev={price_stddev}");
     }
 }
-
 ```
+
+> NOTE: The complete program is the [**price-to_f64**](./examples/price-to_f64.rs) example, listed in [**EXAMPLES.md**](./EXAMPLES.md); run it with `cargo run --example price-to_f64`.
 
 
 ### In use in other projects
@@ -325,6 +327,7 @@ Other Synesis crates build on these traits:
 
 ## Project Information
 
+
 ### Where to get help
 
 * [GitHub Page](https://github.com/synesissoftware/base-traits "GitHub Page");
@@ -334,7 +337,7 @@ Other Synesis crates build on these traits:
 
 ### Contribution guidelines
 
-Defect reports, feature requests, and pull requests are welcome on https://github.com/synesissoftware/base-traits.
+Defect reports, feature requests, and pull requests are welcome on [https://github.com/synesissoftware/base-traits](https://github.com/synesissoftware/base-traits).
 
 
 ### Minimum Supported Rust Version (MSRV)
