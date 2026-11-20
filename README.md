@@ -20,9 +20,53 @@ This crate defines general-purpose `trait`s that:
   crates to interoperate;
 
 
+## Developer Experience
+
+**Requires:** a Rust toolchain at or above the MSRV (**1.74**); no other crates are needed at runtime.
+
+```bash
+cargo add base-traits
+cargo test
+cargo run --example price-to_f64
+```
+
+The simplest use case is to implement a trait on your own type, and then write generic code against that trait (this is the essence of the **price-to_f64** example):
+
+```Rust
+use base_traits::ToF64;
+
+struct Price {
+    dollars : u32,
+    cents :   u8,
+}
+
+impl ToF64 for Price {
+    fn to_f64(&self) -> f64 {
+        self.dollars as f64 + (self.cents as f64 / 100.0)
+    }
+}
+
+fn total<T : ToF64>(values : &[T]) -> f64 {
+    values.iter().map(|v| v.to_f64()).sum()
+}
+
+fn main() {
+    let prices = [
+        Price { dollars : 10, cents : 50 },
+        Price { dollars : 4, cents : 25 },
+    ];
+
+    println!("total = {}", total(&prices));
+}
+```
+
+For more, see [Examples](#examples), **EXAMPLES.md**, [Features](#features), and the [API documentation](https://docs.rs/base-traits).
+
+
 ## Table of Contents <!-- omit in toc -->
 
 - [Introduction](#introduction)
+- [Developer Experience](#developer-experience)
 - [Installation](#installation)
 - [Components](#components)
   - [Enumerations](#enumerations)
